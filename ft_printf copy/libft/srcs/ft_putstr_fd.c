@@ -6,7 +6,7 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/25 10:11:43 by bsavinel          #+#    #+#             */
-/*   Updated: 2021/12/17 17:27:42 by bsavinel         ###   ########.fr       */
+/*   Updated: 2021/12/18 17:08:12 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,5 +24,5 @@ int	ft_putstr_fd(char *s, int fd)
 		ft_putchar_fd(s[i], fd);
 		i++;
 	}
-	return (i - 1);
+	return (i);
 }

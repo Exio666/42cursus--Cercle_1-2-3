@@ -6,49 +6,66 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/02 15:53:15 by bsavinel          #+#    #+#             */
-/*   Updated: 2021/12/17 17:36:03 by bsavinel         ###   ########.fr       */
+/*   Updated: 2021/12/18 17:11:14 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static int ft_putstr_null(t_info info)
+static int	ft_putstr_null(t_info *info)
 {
-	
+	int	count;
+	int len;
+
+	count = 0;
+	len = 6;
+	if (info->precision < 6 && info->precision != -1)
+		len = 0;
+	if (info->minus == FALSE)
+		count += ft_width(len, info->width, FALSE);
+	if (len == 6)
+	{
+		count += ft_putstr_fd("(null)", 1);
+	}
+	if (info->minus == TRUE)
+		count += ft_width(len, info->width, FALSE);
+	return (count);
 }
 
-int	ft_format_c(char c, t_info info)
+int	ft_format_c(char c, t_info *info)
 {
 	int	count;
 
 	count = 1;
-	if (info.minus == FALSE)
-		ft_width(1, info.width, FALSE);
+	if (info->minus == FALSE)
+		count += ft_width(1, info->width, FALSE);
 	write(1, &c, 1);
-	if (info.minus == TRUE)
-		ft_width(1, info.width, FALSE);
+	if (info->minus == TRUE)
+		count += ft_width(1, info->width, FALSE);
 	return (count);
 }
 
-int	ft_format_s(char *str, t_info info)
+int	ft_format_s(char *str, t_info *info)
 {
 	int	i;
-	int	j;
+	int	len;
+	int	count;
 
-	i = 0;
-	j = ft_strlen(str);
-	if (j > info.precision)
-		j = info.precision;
 	if (!str)
 		return (ft_putstr_null(info));
-	if (info.minus == FALSE)
-		ft_width(j, info.width, FALSE);
-	while (str[i] && i < info.precision)
+	i = 0;
+	count = 0;
+	len = ft_strlen(str);
+	if (len > info->precision && info->precision != -1)
+		len = info->precision;
+	if (info->minus == FALSE)
+		count += ft_width(len, info->width, FALSE);
+	while (str[i] && (i < len || len == -1))
 	{
 		ft_putchar_fd(str[i], 1);
 		i++;
 	}
-	if (info.minus == FALSE)
-		ft_width(j, info.width, FALSE);
-	return (i);
+	if (info->minus == TRUE)
+		count += ft_width(len, info->width, FALSE);
+	return (i + count);
 }

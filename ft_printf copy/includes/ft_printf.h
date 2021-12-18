@@ -6,7 +6,7 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/02 15:18:18 by bsavinel          #+#    #+#             */
-/*   Updated: 2021/12/17 17:17:02 by bsavinel         ###   ########.fr       */
+/*   Updated: 2021/12/18 16:26:57 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 # include <stdlib.h>
 # include <stdbool.h>
 # include "libft.h"
+#include <stdio.h>
 
 /*
  *	structure flag
@@ -43,38 +44,38 @@ typedef struct s_info
  *	ft_printf.c
  */
 
-int		ft_select_format(char *str, va_list arg, t_info info);
+int		ft_select_format(char *str, va_list arg, t_info *info);
 int		ft_printf(const char *str, ...);
 
 /*
  *	char.c
  */
 
-int		ft_format_c(char c, t_info info);
-int		ft_format_s(char *str, t_info info);
+int		ft_format_c(char c, t_info *info);
+int		ft_format_s(char *str, t_info *info);
 
 /*
  *	hexa_and_void.c
  */
 
-int		ft_format_xup(unsigned int nb, t_info info);
-int		ft_format_x(unsigned int nb, t_info info);
-int		ft_format_p(void *ad, t_info info);
+int		ft_format_xup(unsigned int nb, t_info *info);
+int		ft_format_x(unsigned int nb, t_info *info);
+int		ft_format_p(void *ad);
 
 /*
  *	decimal.c
  */
 
-int		ft_format_d(int nb, t_info info);
-int		ft_format_u(unsigned int nb, t_info info);
+int		ft_format_d(int nb, t_info *info);
+int		ft_format_u(unsigned int nb, t_info *info);
 
 /*
  *	flag.c	
  */
 
-void	ft_flush_info(t_info info);
-void	ft_first_flag(char c, t_info info);
-void	ft_feed_info(t_info info, va_list arg, char *str);
+void	ft_flush_info(t_info *info);
+int		ft_first_flag(char *str, t_info *info);
+void	ft_feed_info(t_info *info, va_list arg, char *str);
 int		ft_width(int len, int with, bool zero);
 
 #endif

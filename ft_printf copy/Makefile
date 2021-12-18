@@ -6,7 +6,7 @@
 #    By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/12/02 15:20:52 by bsavinel          #+#    #+#              #
-#    Updated: 2021/12/17 17:32:14 by bsavinel         ###   ########.fr        #
+#    Updated: 2021/12/18 15:27:19 by bsavinel         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,14 +14,13 @@ SRCS =			srcs/ft_printf.c		\
 				srcs/char.c				\
 				srcs/decimal.c			\
 				srcs/hexa_and_void.c	\
-				srcs/putnbr.c			\
-				srcs/struc_info.c
+				srcs/struct_info.c
 
 OBJS = $(SRCS:.c=.o)
 
 CC = gcc
 
-CFLAGS = -Wall -Wextra -Werror -g3
+CFLAGS = -Wall -Wextra -Werror
 
 RM = rm -f
 
@@ -33,7 +32,7 @@ INCS = includes
 
 all: $(NAME)
 
-$(NAME): $(OBJS) makelibft
+$(NAME): makelibft $(OBJS)
 	$(CLIB) $(NAME) $(OBJS)
 
 .c.o:
