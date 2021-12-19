@@ -6,7 +6,7 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/03 14:01:42 by bsavinel          #+#    #+#             */
-/*   Updated: 2021/12/18 16:26:31 by bsavinel         ###   ########.fr       */
+/*   Updated: 2021/12/19 14:41:55 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ int	ft_format_x(unsigned int nb, t_info *info)
 		count += ft_width(count, info->width, info->zero);
 	if (info->hastag == TRUE && nb != 0)
 	{
-		ft_putstr_fd("0X", 1);
+		ft_putstr_fd("0x", 1);
 		count += 2;
 	}
 	ft_putnbr_unsign_base(nb, "0123456789abcdef");
@@ -59,15 +59,13 @@ int	ft_format_x(unsigned int nb, t_info *info)
 int	ft_format_p(void *ad)
 {
 	int						count;
-	char					*base;
 	unsigned long long int	nb;
 
 	if (!ad)
 		return (ft_putstr_fd("0x0", 1));
 	nb = (unsigned long long int)ad;
-	base = "0123456789abcdef";
-	count = ft_len_nbr_unsign(nb, base) + 2;
+	count = ft_len_nbr_unsign(nb, "0123456789abcdef") + 2;
 	write(1, "0x", 2);
-	ft_putnbr_unsign_base(nb, base);
+	ft_putnbr_unsign_base(nb, "0123456789abcdef");
 	return (count);
 }

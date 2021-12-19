@@ -6,7 +6,7 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/02 15:52:37 by bsavinel          #+#    #+#             */
-/*   Updated: 2021/12/18 16:43:14 by bsavinel         ###   ########.fr       */
+/*   Updated: 2021/12/19 14:05:12 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	ft_select_format(char *str, va_list arg, t_info *info)
 	else if (info->conversion == 'p')
 		return (ft_format_p(va_arg(arg, void *)));
 	else if (info->conversion == 'd' || info->conversion == 'i')
-		return (ft_format_d(va_arg(arg, int), info));
+		return (ft_format_d(va_arg(arg, long int), info));
 	else if (info->conversion == 'u')
 		return (ft_format_u(va_arg(arg, unsigned int), info));
 	else if (info->conversion == 'x')
@@ -43,6 +43,8 @@ int	ft_printf(const char *str, ...)
 
 	va_start (arg, str);
 	info = malloc(sizeof(t_info));
+	if (!info)
+		return (0);
 	info->index = 0;
 	counter = 0;
 	while (str[info->index])
@@ -57,5 +59,6 @@ int	ft_printf(const char *str, ...)
 		}
 	}
 	va_end(arg);
+	free(info);
 	return (counter);
 }

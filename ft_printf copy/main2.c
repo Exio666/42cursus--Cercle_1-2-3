@@ -6,7 +6,7 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/18 16:39:45 by bsavinel          #+#    #+#             */
-/*   Updated: 2021/12/18 16:40:05 by bsavinel         ###   ########.fr       */
+/*   Updated: 2021/12/19 13:15:04 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,4 +51,7 @@ int	main(void)
 	printf("|%i\n", printf("%6.4u", 15));
 	printf("|%i\n", printf("%2.4u", 15));
 	printf("|%i\n", printf("%06.4u", 15));
+	printf("====== TEST decimal =====\n");
+	printf("|%i\n", printf("%06d", -15));
+	printf("|%i\n", printf("%06.d", -15));
 }

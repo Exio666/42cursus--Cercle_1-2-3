@@ -6,37 +6,95 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/05 15:47:18 by bsavinel          #+#    #+#             */
-/*   Updated: 2021/12/18 16:54:32 by bsavinel         ###   ########.fr       */
+/*   Updated: 2021/12/19 14:47:25 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_format_d(int nb, t_info *info)
+static long int	ft_positive_nb(long int nb, t_info *info)
 {
-	int	count;
-
-	count = ft_len_nbr(nb, "0123456789");
-	if (count < info->precision)
-		count = info->precision;
-	if (info->minus == FALSE && ((info->plus == TRUE
-				|| info->space == TRUE) && nb >= 0))
-		count += ft_width(count + 1, info->width, info->zero);
-	else if (info->minus == FALSE)
-		count += ft_width(count, info->width, info->zero);
-	if (info->plus == TRUE && nb >= 0)
-		count += ft_putchar_fd('+', 1);
-	else if (info->space == TRUE && nb >= 0 && info->plus == FALSE)
-		count += ft_putchar_fd(' ', 1);
-	while (ft_len_nbr(nb, "0123456789") < info->precision)
+	if ((int)nb < 0)
 	{
-		count += ft_putchar_fd('0', 1);
-		info->precision--;
+		info->negative = TRUE;
+		nb = -nb;
 	}
-	ft_putnbr_base(nb, "0123456789");
+	return (nb);
+}
+
+static char ft_signe(t_info *info)
+{
+	if (info->negative == TRUE)
+		return ('-');
+	else if (info->plus == TRUE)
+		return ('+');
+	else
+		return (' ');
+}
+
+static char *ft_first_zero(int len, t_info *info)
+{
+	char *str;
+	int size;
+	
+	if (info->negative == TRUE || info->plus == TRUE || info->space == TRUE)
+		info->width--;
+	size = info->width - len;
+	if (size < info->precision)
+		size = info->precision - len;
+	if (size < 0)
+		size = 0;
+	if (info->negative == TRUE || info->plus == TRUE || info->space == TRUE)
+		size++;
+	str = malloc(sizeof(char) * size + 1);
+	if (!str)
+		return (NULL);
+	str[size] = '\0';
+	while ((info->zero == TRUE && info->precision == -1 && len < info->width && info-> minus == FALSE) || len < info->precision)
+	{
+		str[--size] = '0';
+		len++;
+	}
+	if (info->negative == TRUE || info->plus == TRUE || info->space == TRUE)
+	{
+		str[--size] = ft_signe(info);
+		len++;
+	}
+	while (info->width >= len)
+	{
+		str[--size] = ' ';
+		len++;
+	}
+	return (str);
+}
+
+int	ft_format_d(long int nb, t_info *info)
+{
+	char *str1;
+	char *str2;
+	char *str3;
+	int len;
+	
+	len = 0;
+	nb = ft_positive_nb(nb, info);
+	str1 = ft_itoa(nb);
+	if (str1[0] == '-')
+	{
+		str2 = ft_first_zero(ft_strlen(&str1[1]), info);
+		str3 = ft_strjoin(str2,&str1[1]);
+	}
+	else
+	{
+		str2 = ft_first_zero(ft_strlen(str1), info);
+		str3 = ft_strjoin(str2,str1);
+	}
+	free (str1);
+	free (str2);
+	len += ft_putstr_fd(str3, 1);
+	free(str3);
 	if (info->minus == TRUE)
-		count += ft_width(count, info->width, FALSE);
-	return (count);
+		len += ft_width(len, info->width, FALSE);
+	return (len);
 }
 
 int	ft_format_u(unsigned int nb, t_info *info)

@@ -34,16 +34,16 @@ int	ft_width(int len, int with, bool zero)
 }
 
 void	ft_flush_info(t_info *info)
-{
-	if (info->hastag != FALSE)
-		info->hastag = FALSE;
+{	
+	info->hastag = FALSE;
 	info->plus = FALSE;
 	info->space = FALSE;
 	info->zero = FALSE;
 	info->minus = FALSE;
+	info->negative = FALSE;
 	info->width = -1;
-	info->negative = 0;
-	info->precision = -1;
+	if (info->hastag == FALSE)
+		info->precision = -1;
 }
 
 int	ft_first_flag(char *str, t_info *info)

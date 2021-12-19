@@ -6,7 +6,7 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/17 14:31:39 by bsavinel          #+#    #+#             */
-/*   Updated: 2021/12/18 17:09:25 by bsavinel         ###   ########.fr       */
+/*   Updated: 2021/12/19 14:20:38 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,41 +17,45 @@
 int	main(void)
 {
 	ft_printf("====== TEST char =====\n");
-	ft_printf("|%i\n", ft_printf("%0c", 'c'));
-	ft_printf("|%i\n", ft_printf("%2c", 'c'));
-	ft_printf("|%i\n", ft_printf("%0-12c", 'c'));
-	ft_printf("|%i\n", ft_printf("%.0c", 'c'));
-	ft_printf("|%i\n", ft_printf("%.35c", 'c'));
+	printf("|%i\n", ft_printf("%0c", 'c'));
+	printf("|%i\n", ft_printf("%2c", 'c'));
+	printf("|%i\n", ft_printf("%0-12c", 'c'));
+	printf("|%i\n", ft_printf("%.0c", 'c'));
+	printf("|%i\n", ft_printf("%.35c", 'c'));
 	ft_printf("====== TEST str =====\n");
-	ft_printf("|%i\n", ft_printf("%0s", "truc"));
-	ft_printf("|%i\n", ft_printf("%4s", "truc"));
-	ft_printf("|%i\n", ft_printf("%10s", "truc"));
+	printf("|%i\n", ft_printf("%0s", "truc"));
+	printf("|%i\n", ft_printf("%4s", "truc"));
+	printf("|%i\n", ft_printf("%10s", "truc"));
 	ft_printf("   ** str null **\n");
-	ft_printf("|%i\n", ft_printf("%5s", NULL));
-	ft_printf("|%i\n", ft_printf("%8s", NULL));
-	ft_printf("|%i\n", ft_printf("%.5s", NULL));
-	ft_printf("|%i\n", ft_printf("%.8s", NULL));
-	ft_printf("|%i\n", ft_printf("%10.8s", NULL));
-	ft_printf("|%i\n", ft_printf("%2.8s", NULL));
-	ft_printf("|%i\n", ft_printf("%2.4s", NULL));
-	ft_printf("|%i\n", ft_printf("%2.-4s", NULL));
+	printf("|%i\n", ft_printf("%5s", NULL));
+	printf("|%i\n", ft_printf("%8s", NULL));
+	printf("|%i\n", ft_printf("%.5s", NULL));
+	printf("|%i\n", ft_printf("%.8s", NULL));
+	printf("|%i\n", ft_printf("%10.8s", NULL));
+	printf("|%i\n", ft_printf("%2.8s", NULL));
+	printf("|%i\n", ft_printf("%2.4s", NULL));
+	printf("|%i\n", ft_printf("%2.-4s", NULL));
 	ft_printf("   **  fin str null **\n");
-	ft_printf("|%i\n", ft_printf("%.0s", "truc"));
-	ft_printf("|%i\n", ft_printf("%.3s", "truc"));
-	ft_printf("|%i\n", ft_printf("%.10s", "truc"));
-	ft_printf("|%i\n", ft_printf("%10.3s", "truc"));
+	printf("|%i\n", ft_printf("%.0s", "truc"));
+	printf("|%i\n", ft_printf("%.3s", "truc"));
+	printf("|%i\n", ft_printf("%.10s", "truc"));
+	printf("|%i\n", ft_printf("%10.3s", "truc"));
 	ft_printf("====== TEST unsigned =====\n");
-	ft_printf("|%i\n", ft_printf("%+ #u", 15));
-	ft_printf("|%i\n", ft_printf("%4u", 15));
-	ft_printf("|%i\n", ft_printf("%-4u", 15));
-	ft_printf("|%i\n", ft_printf("%04u", 15));
-	ft_printf("|%i\n", ft_printf("%0-4u", 15));
-	ft_printf("|%i\n", ft_printf("%+ #u", 15));
-	ft_printf("|%i\n", ft_printf("%.4u", 15));
-	ft_printf("|%i\n", ft_printf("%.2u", 15));
-	ft_printf("|%i\n", ft_printf("%6.4u", 15));
-	ft_printf("|%i\n", ft_printf("%2.4u", 15));
-	ft_printf("|%i\n", ft_printf("%06.4u", 15));
+	printf("|%i\n", ft_printf("%+ #u", 15));
+	printf("|%i\n", ft_printf("%4u", 15));
+	printf("|%i\n", ft_printf("%-4u", 15));
+	printf("|%i\n", ft_printf("%04u", 15));
+	printf("|%i\n", ft_printf("%0-4u", 15));
+	printf("|%i\n", ft_printf("%+ #u", 15));
+	printf("|%i\n", ft_printf("%.4u", 15));
+	printf("|%i\n", ft_printf("%.2u", 15));
+	printf("|%i\n", ft_printf("%6.4u", 15));
+	printf("|%i\n", ft_printf("%2.4u", 15));
+	printf("|%i\n", ft_printf("%06.4u", 15));
+	ft_printf("====== TEST decimal =====\n");
+	printf("|%i\n", ft_printf("%d", -15));
+	printf("|%i\n", ft_printf("%d", -15));
+	
 }
 /*
 

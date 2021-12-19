@@ -6,7 +6,7 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/02 15:18:18 by bsavinel          #+#    #+#             */
-/*   Updated: 2021/12/18 16:26:57 by bsavinel         ###   ########.fr       */
+/*   Updated: 2021/12/19 14:31:19 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ typedef struct s_info
 	bool	zero;
 	bool	minus;
 	int		width;
-	int		negative;
+	bool	negative;
 	int		precision;
 }	t_info;
 
@@ -66,7 +66,7 @@ int		ft_format_p(void *ad);
  *	decimal.c
  */
 
-int		ft_format_d(int nb, t_info *info);
+int		ft_format_d(long int nb, t_info *info);
 int		ft_format_u(unsigned int nb, t_info *info);
 
 /*
