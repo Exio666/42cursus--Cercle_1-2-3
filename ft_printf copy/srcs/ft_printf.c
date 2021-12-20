@@ -6,7 +6,7 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/02 15:52:37 by bsavinel          #+#    #+#             */
-/*   Updated: 2021/12/19 14:05:12 by bsavinel         ###   ########.fr       */
+/*   Updated: 2021/12/20 17:20:00 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	ft_select_format(char *str, va_list arg, t_info *info)
 	else if (info->conversion == 's')
 		return (ft_format_s(va_arg(arg, char *), info));
 	else if (info->conversion == 'p')
-		return (ft_format_p(va_arg(arg, void *)));
+		return (ft_format_p(va_arg(arg, void *), info));
 	else if (info->conversion == 'd' || info->conversion == 'i')
 		return (ft_format_d(va_arg(arg, long int), info));
 	else if (info->conversion == 'u')
@@ -38,7 +38,7 @@ int	ft_select_format(char *str, va_list arg, t_info *info)
 int	ft_printf(const char *str, ...)
 {
 	va_list	arg;
-	t_info	*info = NULL;
+	t_info	*info;
 	int		counter;
 
 	va_start (arg, str);

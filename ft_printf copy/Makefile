@@ -6,7 +6,7 @@
 #    By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/12/02 15:20:52 by bsavinel          #+#    #+#              #
-#    Updated: 2021/12/18 15:27:19 by bsavinel         ###   ########.fr        #
+#    Updated: 2021/12/20 15:40:42 by bsavinel         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,8 @@ SRCS =			srcs/ft_printf.c		\
 				srcs/char.c				\
 				srcs/decimal.c			\
 				srcs/hexa_and_void.c	\
-				srcs/struct_info.c
+				srcs/struct_info.c		\
+				srcs/unsign.c
 
 OBJS = $(SRCS:.c=.o)
 

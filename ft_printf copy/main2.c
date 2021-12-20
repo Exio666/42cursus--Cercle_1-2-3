@@ -6,7 +6,7 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/18 16:39:45 by bsavinel          #+#    #+#             */
-/*   Updated: 2021/12/19 13:15:04 by bsavinel         ###   ########.fr       */
+/*   Updated: 2021/12/20 17:43:06 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,4 +54,18 @@ int	main(void)
 	printf("====== TEST decimal =====\n");
 	printf("|%i\n", printf("%06d", -15));
 	printf("|%i\n", printf("%06.d", -15));
+	printf("====== TEST unsign =====\n");
+	printf("|%i\n", printf("%06u", 15));	
+	printf("|%i\n", printf("%+06.6u", 15));
+	printf("|%i\n", printf("%06.u", 15));
+	printf("   *** 0 ***\n");
+	printf("|%i\n", printf("%u", 0));	
+	printf("|%i\n", printf("%06u", 0));	
+	printf("|%i\n", printf("%06.6u", 0));
+	printf("|%i\n", printf("%06.u", 0));
+	printf("|%i\n", printf("%06.0u", 0));
+	printf("|%i\n", printf("%00u", 0));
+	printf("====== TEST hexa =====\n");
+	printf("|%i\n", printf("%#6x", 0));
+	printf("|%i\n", printf("%#06.3x", 0));
 }

@@ -6,7 +6,7 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/05 15:47:18 by bsavinel          #+#    #+#             */
-/*   Updated: 2021/12/19 14:47:25 by bsavinel         ###   ########.fr       */
+/*   Updated: 2021/12/20 16:25:53 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,10 +37,12 @@ static char *ft_first_zero(int len, t_info *info)
 	char *str;
 	int size;
 	
-	if (info->negative == TRUE || info->plus == TRUE || info->space == TRUE)
+	size = -1;
+	if ((info->negative == TRUE || info->plus == TRUE || info->space == TRUE) && info->minus == FALSE)
 		info->width--;
-	size = info->width - len;
-	if (size < info->precision)
+	if (info->minus == FALSE)
+		size = info->width - len;
+	if (size < info->precision - len)
 		size = info->precision - len;
 	if (size < 0)
 		size = 0;
@@ -60,7 +62,7 @@ static char *ft_first_zero(int len, t_info *info)
 		str[--size] = ft_signe(info);
 		len++;
 	}
-	while (info->width >= len)
+	while (info->width >= len && size >= 1)
 	{
 		str[--size] = ' ';
 		len++;
@@ -77,7 +79,13 @@ int	ft_format_d(long int nb, t_info *info)
 	
 	len = 0;
 	nb = ft_positive_nb(nb, info);
-	str1 = ft_itoa(nb);
+	if (!(nb == 0 && info->precision == 0))
+		str1 = ft_itoa(nb);
+	else 
+	{
+		str1 = malloc(1);
+		str1[0] = '\0';
+	}
 	if (str1[0] == '-')
 	{
 		str2 = ft_first_zero(ft_strlen(&str1[1]), info);
@@ -95,24 +103,4 @@ int	ft_format_d(long int nb, t_info *info)
 	if (info->minus == TRUE)
 		len += ft_width(len, info->width, FALSE);
 	return (len);
-}
-
-int	ft_format_u(unsigned int nb, t_info *info)
-{
-	int		count;
-
-	count = ft_len_nbr_unsign(nb, "0123456789");
-	if (count < info->precision)
-		count = info->precision;
-	if (info->minus == FALSE)
-		count += ft_width(count, info->width, info->zero);
-	while (ft_len_nbr(nb, "0123456789") < info->precision)
-	{
-		ft_putchar_fd('0', 1);
-		info->precision--;
-	}
-	ft_putnbr_unsign_base(nb, "0123456789");
-	if (info->minus == TRUE)
-		count += ft_width(count, info->width, FALSE);
-	return (count);
 }

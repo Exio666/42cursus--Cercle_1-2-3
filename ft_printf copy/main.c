@@ -6,7 +6,7 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/17 14:31:39 by bsavinel          #+#    #+#             */
-/*   Updated: 2021/12/19 14:20:38 by bsavinel         ###   ########.fr       */
+/*   Updated: 2021/12/20 16:07:04 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@
 
 int	main(void)
 {
+	ft_printf("%020.19i is how many tests are going to be made", 8000);
+	/*
 	ft_printf("====== TEST char =====\n");
 	printf("|%i\n", ft_printf("%0c", 'c'));
 	printf("|%i\n", ft_printf("%2c", 'c'));
@@ -55,7 +57,7 @@ int	main(void)
 	ft_printf("====== TEST decimal =====\n");
 	printf("|%i\n", ft_printf("%d", -15));
 	printf("|%i\n", ft_printf("%d", -15));
-	
+	*/
 }
 /*
 

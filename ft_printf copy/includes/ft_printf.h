@@ -6,7 +6,7 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/02 15:18:18 by bsavinel          #+#    #+#             */
-/*   Updated: 2021/12/19 14:31:19 by bsavinel         ###   ########.fr       */
+/*   Updated: 2021/12/20 16:34:36 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ int		ft_format_s(char *str, t_info *info);
 
 int		ft_format_xup(unsigned int nb, t_info *info);
 int		ft_format_x(unsigned int nb, t_info *info);
-int		ft_format_p(void *ad);
+int		ft_format_p(void *ad, t_info *info);
 
 /*
  *	decimal.c
