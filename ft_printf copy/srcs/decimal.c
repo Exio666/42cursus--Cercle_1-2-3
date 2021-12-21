@@ -6,7 +6,7 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/05 15:47:18 by bsavinel          #+#    #+#             */
-/*   Updated: 2021/12/20 16:25:53 by bsavinel         ###   ########.fr       */
+/*   Updated: 2021/12/21 15:12:11 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ static long int	ft_positive_nb(long int nb, t_info *info)
 	return (nb);
 }
 
-static char ft_signe(t_info *info)
+static char	ft_signe(t_info *info)
 {
 	if (info->negative == TRUE)
 		return ('-');
@@ -32,13 +32,35 @@ static char ft_signe(t_info *info)
 		return (' ');
 }
 
-static char *ft_first_zero(int len, t_info *info)
+static char	*ft_first_zero2(char *str, t_info *info, int size, int len)
 {
-	char *str;
-	int size;
-	
+	str[size] = '\0';
+	while ((info->zero == TRUE && info->precision == -1 && len < info->width
+			&& info-> minus == FALSE) || len < info->precision)
+	{
+		str[--size] = '0';
+		len++;
+	}
+	if (info->negative == TRUE || info->plus == TRUE || info->space == TRUE)
+	{
+		str[--size] = ft_signe(info);
+		len++;
+	}
+	while (info->width >= len++ && size >= 1)
+	{
+		str[--size] = ' ';
+	}
+	return (str);
+}
+
+char	*ft_first_zero(int len, t_info *info)
+{
+	char	*str;
+	int		size;
+
 	size = -1;
-	if ((info->negative == TRUE || info->plus == TRUE || info->space == TRUE) && info->minus == FALSE)
+	if ((info->negative == TRUE || info->plus == TRUE || info->space == TRUE)
+		&& info->minus == FALSE)
 		info->width--;
 	if (info->minus == FALSE)
 		size = info->width - len;
@@ -51,53 +73,27 @@ static char *ft_first_zero(int len, t_info *info)
 	str = malloc(sizeof(char) * size + 1);
 	if (!str)
 		return (NULL);
-	str[size] = '\0';
-	while ((info->zero == TRUE && info->precision == -1 && len < info->width && info-> minus == FALSE) || len < info->precision)
-	{
-		str[--size] = '0';
-		len++;
-	}
-	if (info->negative == TRUE || info->plus == TRUE || info->space == TRUE)
-	{
-		str[--size] = ft_signe(info);
-		len++;
-	}
-	while (info->width >= len && size >= 1)
-	{
-		str[--size] = ' ';
-		len++;
-	}
-	return (str);
+	return (ft_first_zero2(str, info, size, len));
 }
 
 int	ft_format_d(long int nb, t_info *info)
 {
-	char *str1;
-	char *str2;
-	char *str3;
-	int len;
-	
+	char	*str1;
+	char	*str3;
+	int		len;
+
 	len = 0;
 	nb = ft_positive_nb(nb, info);
 	if (!(nb == 0 && info->precision == 0))
 		str1 = ft_itoa(nb);
-	else 
-	{
-		str1 = malloc(1);
-		str1[0] = '\0';
-	}
-	if (str1[0] == '-')
-	{
-		str2 = ft_first_zero(ft_strlen(&str1[1]), info);
-		str3 = ft_strjoin(str2,&str1[1]);
-	}
 	else
 	{
-		str2 = ft_first_zero(ft_strlen(str1), info);
-		str3 = ft_strjoin(str2,str1);
+		str1 = malloc(1);
+		if (!str1)
+			return (0);
+		str1[0] = '\0';
 	}
-	free (str1);
-	free (str2);
+	str3 = ft_make_strd(str1, info);
 	len += ft_putstr_fd(str3, 1);
 	free(str3);
 	if (info->minus == TRUE)

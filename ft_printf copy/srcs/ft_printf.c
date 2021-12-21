@@ -6,11 +6,24 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/02 15:52:37 by bsavinel          #+#    #+#             */
-/*   Updated: 2021/12/20 17:20:00 by bsavinel         ###   ########.fr       */
+/*   Updated: 2021/12/21 15:03:45 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+
+static int	ft_format_porcent(t_info *info)
+{
+	int	count;
+
+	count = 1;
+	if (info->minus == FALSE)
+		count += ft_width(1, info->width, info->zero);
+	ft_putchar_fd('%', 1);
+	if (info->minus == TRUE)
+		count += ft_width(1, info->width, FALSE);
+	return (count);
+}
 
 int	ft_select_format(char *str, va_list arg, t_info *info)
 {
@@ -31,7 +44,7 @@ int	ft_select_format(char *str, va_list arg, t_info *info)
 	else if (info->conversion == 'X')
 		return (ft_format_xup(va_arg(arg, unsigned int), info));
 	else if (info->conversion == '%')
-		return (ft_format_c('%', info));
+		return (ft_format_porcent(info));
 	return (0);
 }
 

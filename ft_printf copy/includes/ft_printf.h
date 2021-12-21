@@ -6,7 +6,7 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/02 15:18:18 by bsavinel          #+#    #+#             */
-/*   Updated: 2021/12/20 16:34:36 by bsavinel         ###   ########.fr       */
+/*   Updated: 2021/12/21 15:06:59 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@
 # include <stdlib.h>
 # include <stdbool.h>
 # include "libft.h"
-#include <stdio.h>
 
 /*
  *	structure flag
@@ -77,5 +76,7 @@ void	ft_flush_info(t_info *info);
 int		ft_first_flag(char *str, t_info *info);
 void	ft_feed_info(t_info *info, va_list arg, char *str);
 int		ft_width(int len, int with, bool zero);
+char	*ft_make_strd(char *str1, t_info *info);
+char	*ft_first_zero(int len, t_info *info);
 
 #endif

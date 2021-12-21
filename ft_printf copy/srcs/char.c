@@ -6,7 +6,7 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/02 15:53:15 by bsavinel          #+#    #+#             */
-/*   Updated: 2021/12/18 17:11:14 by bsavinel         ###   ########.fr       */
+/*   Updated: 2021/12/21 13:51:34 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 static int	ft_putstr_null(t_info *info)
 {
 	int	count;
-	int len;
+	int	len;
 
 	count = 0;
 	len = 6;
