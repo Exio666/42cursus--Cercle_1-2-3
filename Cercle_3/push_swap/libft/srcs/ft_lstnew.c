@@ -1,25 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test.c                                             :+:      :+:    :+:   */
+/*   ft_lstnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/22 10:42:06 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/01/04 17:05:54 by bsavinel         ###   ########.fr       */
+/*   Created: 2021/11/25 16:25:57 by bsavinel          #+#    #+#             */
+/*   Updated: 2021/11/27 13:46:09 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void	ft_putchar_fd(unsigned char c, int fd)
-{
-	write(fd, &c, 1);
-}
+#include "libft.h"
 
-
-int main()
+t_list	*ft_lstnew(void *content)
 {
-	ft_putchar_fd(226, 1);
-	ft_putchar_fd(152, 1);
-	ft_putchar_fd(186, 1);
-	ft_putchar_fd(2147483748, 1);
+	t_list	*new;
+
+	new = malloc(sizeof(t_list));
+	if (!new)
+		return (NULL);
+	new->content = content;
+	new->next = NULL;
+	return (new);
 }

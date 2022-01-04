@@ -1,25 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test.c                                             :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/22 10:42:06 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/01/04 17:05:54 by bsavinel         ###   ########.fr       */
+/*   Created: 2021/11/23 11:18:06 by bsavinel          #+#    #+#             */
+/*   Updated: 2021/11/25 13:40:03 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void	ft_putchar_fd(unsigned char c, int fd)
-{
-	write(fd, &c, 1);
-}
+#include "libft.h"
 
-
-int main()
+size_t	ft_strlen(const char *s)
 {
-	ft_putchar_fd(226, 1);
-	ft_putchar_fd(152, 1);
-	ft_putchar_fd(186, 1);
-	ft_putchar_fd(2147483748, 1);
+	size_t	i;
+
+	i = 0;
+	while (s[i] != 0)
+		i++;
+	return (i);
 }

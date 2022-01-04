@@ -1,25 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test.c                                             :+:      :+:    :+:   */
+/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/22 10:42:06 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/01/04 17:05:54 by bsavinel         ###   ########.fr       */
+/*   Created: 2021/11/23 11:18:03 by bsavinel          #+#    #+#             */
+/*   Updated: 2021/11/26 12:12:51 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void	ft_putchar_fd(unsigned char c, int fd)
-{
-	write(fd, &c, 1);
-}
+#include "libft.h"
 
-
-int main()
+size_t	ft_strlcpy(char *dst, const char *src, size_t size)
 {
-	ft_putchar_fd(226, 1);
-	ft_putchar_fd(152, 1);
-	ft_putchar_fd(186, 1);
-	ft_putchar_fd(2147483748, 1);
+	size_t	x;
+	size_t	i;
+
+	i = 0;
+	x = ft_strlen(src);
+	if (size > 0)
+	{
+		while (i < size - 1 && src[i])
+		{
+			dst[i] = src[i];
+			i++;
+		}
+		dst[i] = '\0';
+	}
+	return (x);
 }

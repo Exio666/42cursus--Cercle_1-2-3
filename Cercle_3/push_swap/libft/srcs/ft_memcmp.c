@@ -1,25 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test.c                                             :+:      :+:    :+:   */
+/*   ft_memcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/22 10:42:06 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/01/04 17:05:54 by bsavinel         ###   ########.fr       */
+/*   Created: 2021/11/24 08:06:13 by bsavinel          #+#    #+#             */
+/*   Updated: 2021/11/26 08:39:51 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void	ft_putchar_fd(unsigned char c, int fd)
-{
-	write(fd, &c, 1);
-}
+#include "libft.h"
 
-
-int main()
+int	ft_memcmp(const void *s1, const void *s2, size_t n)
 {
-	ft_putchar_fd(226, 1);
-	ft_putchar_fd(152, 1);
-	ft_putchar_fd(186, 1);
-	ft_putchar_fd(2147483748, 1);
+	unsigned char	*src1;
+	unsigned char	*src2;
+	size_t			i;
+
+	i = 0;
+	if (n <= 0)
+		return (0);
+	src1 = (unsigned char *)s1;
+	src2 = (unsigned char *)s2;
+	while (src1[i] == src2[i] && i < n - 1)
+		i++;
+	return (src1[i] - src2[i]);
 }

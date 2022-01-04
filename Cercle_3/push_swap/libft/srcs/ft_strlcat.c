@@ -1,25 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test.c                                             :+:      :+:    :+:   */
+/*   ft_strlcat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/22 10:42:06 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/01/04 17:05:54 by bsavinel         ###   ########.fr       */
+/*   Created: 2021/11/23 11:18:00 by bsavinel          #+#    #+#             */
+/*   Updated: 2021/11/29 14:54:32 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void	ft_putchar_fd(unsigned char c, int fd)
-{
-	write(fd, &c, 1);
-}
+#include "libft.h"
 
-
-int main()
+size_t	ft_strlcat(char *dst, const char *src, size_t size)
 {
-	ft_putchar_fd(226, 1);
-	ft_putchar_fd(152, 1);
-	ft_putchar_fd(186, 1);
-	ft_putchar_fd(2147483748, 1);
+	size_t	len_dest;
+	size_t	len_src;
+	size_t	temp;
+	size_t	i;
+
+	len_dest = ft_strlen(dst);
+	len_src = ft_strlen(src);
+	i = 0;
+	temp = len_dest;
+	if (size <= len_dest)
+		return (len_src + size);
+	while (src[i] != '\0' && temp < size - 1)
+	{
+		dst[temp] = src[i];
+		i++;
+		temp++;
+	}
+	dst[temp] = '\0';
+	return (len_dest + len_src);
 }

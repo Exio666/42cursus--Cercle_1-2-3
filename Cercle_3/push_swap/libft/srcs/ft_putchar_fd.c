@@ -1,53 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minitalk_utils.c                                   :+:      :+:    :+:   */
+/*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/25 10:11:41 by bsavinel          #+#    #+#             */
-/*   Updated: 2021/12/22 12:01:00 by bsavinel         ###   ########.fr       */
+/*   Updated: 2021/12/17 17:26:31 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minitalk.h"
-
-static int	ft_isspace(char c)
-{
-	if (c == ' ' || c == '\f' || c == '\n')
-		return (1);
-	else if (c == '\r' || c == '\t' || c == '\v')
-		return (1);
-	return (0);
-}
-
-int	ft_atoi(const char *nptr)
-{
-	int	neg;
-	int	i;
-	int	nb;
-
-	i = 0;
-	nb = 0;
-	neg = 1;
-	while (ft_isspace(nptr[i]) == 1)
-		i++;
-	if (nptr[i] == '-' || nptr[i] == '+')
-	{
-		if (nptr[i] == '-')
-			neg = -1;
-		i++;
-	}
-	while (nptr[i] <= '9' && nptr[i] >= '0')
-	{
-		nb = nb * 10 + nptr[i] - 48;
-		i++;
-	}
-	if (neg == -1)
-		nb = -nb;
-	return (nb);
-}
-
+#include "libft.h"
 
 int	ft_putchar_fd(char c, int fd)
 {

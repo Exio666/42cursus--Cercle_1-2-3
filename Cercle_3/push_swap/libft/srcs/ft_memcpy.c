@@ -1,25 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test.c                                             :+:      :+:    :+:   */
+/*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/22 10:42:06 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/01/04 17:05:54 by bsavinel         ###   ########.fr       */
+/*   Created: 2021/11/23 17:13:55 by bsavinel          #+#    #+#             */
+/*   Updated: 2021/11/29 11:25:43 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void	ft_putchar_fd(unsigned char c, int fd)
-{
-	write(fd, &c, 1);
-}
+#include "libft.h"
 
-
-int main()
+void	*ft_memcpy(void *dest, const void *src, size_t n)
 {
-	ft_putchar_fd(226, 1);
-	ft_putchar_fd(152, 1);
-	ft_putchar_fd(186, 1);
-	ft_putchar_fd(2147483748, 1);
+	unsigned char	*bd;
+	unsigned char	*bs;
+	size_t			i;
+
+	if (!dest && !src)
+		return (NULL);
+	bd = (unsigned char *)dest;
+	bs = (unsigned char *)src;
+	i = 0;
+	while (i < n)
+	{
+		bd[i] = bs[i];
+		i++;
+	}
+	return (dest);
 }

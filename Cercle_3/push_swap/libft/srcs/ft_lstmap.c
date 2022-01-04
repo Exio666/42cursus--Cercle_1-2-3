@@ -1,33 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minitalk.h                                         :+:      :+:    :+:   */
+/*   ft_lstmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/22 09:35:23 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/01/04 15:52:29 by bsavinel         ###   ########.fr       */
+/*   Created: 2021/11/25 16:25:54 by bsavinel          #+#    #+#             */
+/*   Updated: 2021/11/29 10:25:33 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINITALK_H
-# define MINITALK_H
+#include "libft.h"
 
-# include <unistd.h>
-# include <signal.h>
-
-typedef struct s_talk
+t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
-	int bit;
-	int size;
-	int power2;
-	int num;
-	int end;
-	int PID;
-}	t_talk;
+	t_list	*begin;
+	t_list	*index_lst;
+	t_list	*new_elem;
 
-
-int	ft_putchar_fd(char c, int fd);
-int	ft_atoi(const char *nptr);
-
-#endif
+	begin = NULL;
+	index_lst = lst;
+	while (index_lst)
+	{
+		new_elem = ft_lstnew(f(index_lst->content));
+		if (!new_elem)
+		{
+			ft_lstclear(&begin, del);
+			return (NULL);
+		}
+		index_lst = index_lst->next;
+		ft_lstadd_back(&begin, new_elem);
+	}
+	return (begin);
+}

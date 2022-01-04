@@ -1,63 +1,72 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main_serveur.c                                     :+:      :+:    :+:   */
+/*   main_client.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/22 10:17:03 by bsavinel          #+#    #+#             */
-/*   Updated: 2021/12/22 12:21:01 by bsavinel         ###   ########.fr       */
+/*   Created: 2021/12/22 09:34:57 by bsavinel          #+#    #+#             */
+/*   Updated: 2022/01/04 17:42:18 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk.h" 
-#include <stdio.h>
 
-static int	ft_recive_PID()
+static void ft_send_PID(int PID)
 {
-	int	PID;
 	int	i;
 	int power2;
 
-	
+
 	i = 0;
 	power2 = 1;
-	while(i != 32)
+	while(i != 24)
 	{
-		if (/*resoie sig2*/)
-			bin = bin + power2;
-		power2 = power2 * 2;
-		i++;
+		if (PID % 2 == 1)
+			kill(PID, 10);
+		else
+			kill(PID, 12);
+		PID == PID / 2;
 		pause();
+		i++;
 	}
 }
 
-int main()
+static void ft_send_PID(int PID)
 {
-	int	bin;
+	
+}
+
+int main(int argc, char **argv)
+{
+	int bin;
+	int	i;
 	int	j;
-	int power2;
 	int PID;
 	
 	i = 0;
-	ft_printf("%i\n", getpid());
-	pause();
-	PID = ft_recive_PID();
-	while (i != 1)
+	PID = ft_atoi(argv[1]);
+	if (argc != 3)
+		ft_printf("ERROR\n");
+	else
 	{
-		pause();
-		j = 1
-		power2 = 1;
-		bin = 0;
-		while(j % 9 != 0)
+		ft_send_PID(getpid());
+		while (argv[2][i])
 		{
-			if (/*resoie sig2*/)
-				bin = bin + power2;
-			power2 = power2 * 2;
-			j++;
+			bin = (int)argv[2][i];
+			j = 1;
+			while (j % 9 != 0)
+			{
+				if (bin % 2 == 1)
+					kill(PID, 10);
+				else
+					kill(PID, 12);
+				bin == bin / 2;
+				pause();
+				j++;
+			}
+			i++;
 		}
-		ft_putchar_fd(bin, 1);
-		kill(PID,10);
 	}
 	return (0);
 }
