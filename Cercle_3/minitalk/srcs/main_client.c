@@ -6,19 +6,18 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/22 09:34:57 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/01/06 16:05:37 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/01/06 17:21:15 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk.h" 
-#include <stdio.h>
 
 t_talk	g_client;
 
 static void	ft_send_char(int pid, int car)
 {
-	int x;
-	
+	int	x;
+
 	x = 0;
 	g_client.power2 = 128;
 	while (g_client.power2 != 0 && g_client.debug != 1)
@@ -50,7 +49,7 @@ int	main(int argc, char **argv)
 	int	i;
 	int	len;
 	int	pid;
-	
+
 	g_client.debug = 0;
 	i = 0;
 	pid = ft_atoi(argv[1]);
@@ -66,7 +65,7 @@ int	main(int argc, char **argv)
 			ft_send_char(pid, (unsigned char)argv[2][i]);
 			if (g_client.debug == 1)
 			{
-				ft_putstr_fd("Transmition failed. It's probably a PID mystake", 1);
+				ft_putstr_fd("Transmition failed. Probably a PID mystake", 1);
 				exit(1);
 			}
 			i++;

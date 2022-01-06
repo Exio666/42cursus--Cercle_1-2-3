@@ -6,12 +6,11 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/22 10:17:03 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/01/06 15:53:10 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/01/06 17:30:13 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk.h" 
-#include <stdio.h>
 
 t_talk	g_talk;
 
@@ -26,15 +25,10 @@ void	ft_treat_signal(int signal, siginfo_t *sa, void *vp)
 		g_talk.bit = 1;
 }
 
-void	ft_flush_talk(void)
+static void	ft_recive_char(void)
 {
 	g_talk.num = 0;
 	g_talk.power2 = 128;
-}
-
-static void	ft_recive_char(void)
-{
-	ft_flush_talk();
 	while (g_talk.power2 != 0)
 	{		
 		while (g_talk.ready == 0)
@@ -71,7 +65,7 @@ unsigned char	*ft_realloc(unsigned char *str1, int i)
 void	ft_start_minitalk(void)
 {
 	struct sigaction	sa;
-	
+
 	sa.sa_flags = SA_SIGINFO;
 	sa.sa_sigaction = ft_treat_signal;
 	g_talk.debug = 0;
@@ -86,7 +80,7 @@ int	main(void)
 {
 	unsigned char	*str;
 	int				i;
-	
+
 	ft_start_minitalk();
 	while (1)
 	{
@@ -95,7 +89,6 @@ int	main(void)
 		g_talk.num = 1;
 		while (g_talk.num != 0)
 		{
-			ft_flush_talk();
 			str = ft_realloc(str, i);
 			ft_recive_char();
 			if (g_talk.debug == 1)

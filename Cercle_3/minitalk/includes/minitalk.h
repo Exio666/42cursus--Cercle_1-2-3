@@ -6,7 +6,7 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/22 09:35:23 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/01/06 14:30:18 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/01/06 17:20:21 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 
 typedef struct s_talk
 {
-	int debug;
+	int	debug;
 	int	bit;
 	int	power2;
 	int	num;
