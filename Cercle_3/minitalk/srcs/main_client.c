@@ -6,64 +6,68 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/22 09:34:57 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/01/04 17:42:18 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/01/06 16:05:37 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk.h" 
+#include <stdio.h>
 
-static void ft_send_PID(int PID)
+t_talk	g_client;
+
+static void	ft_send_char(int pid, int car)
 {
-	int	i;
-	int power2;
-
-
-	i = 0;
-	power2 = 1;
-	while(i != 24)
+	int x;
+	
+	x = 0;
+	g_client.power2 = 128;
+	while (g_client.power2 != 0 && g_client.debug != 1)
 	{
-		if (PID % 2 == 1)
-			kill(PID, 10);
+		while (g_client.ready == 0 || x < 10000)
+			x++;
+		g_client.ready = 0;
+		if (car >= g_client.power2)
+		{
+			car = car - g_client.power2;
+			x = kill(pid, 12);
+		}
 		else
-			kill(PID, 12);
-		PID == PID / 2;
-		pause();
-		i++;
+			x = kill(pid, 10);
+		g_client.power2 = g_client.power2 / 2;
+		if (x == -1)
+			g_client.debug = 1;
 	}
 }
 
-static void ft_send_PID(int PID)
+void	ft_signal(int signal)
 {
-	
+	if (signal == 10)
+		g_client.ready = 1;
 }
 
-int main(int argc, char **argv)
+int	main(int argc, char **argv)
 {
-	int bin;
 	int	i;
-	int	j;
-	int PID;
+	int	len;
+	int	pid;
 	
+	g_client.debug = 0;
 	i = 0;
-	PID = ft_atoi(argv[1]);
+	pid = ft_atoi(argv[1]);
+	g_client.ready = 1;
+	signal(10, &ft_signal);
 	if (argc != 3)
-		ft_printf("ERROR\n");
+		ft_putstr_fd("Bad number of argument", 1);
 	else
 	{
-		ft_send_PID(getpid());
-		while (argv[2][i])
+		len = ft_unsigned_strlen((unsigned char *)argv[2]);
+		while (i <= len)
 		{
-			bin = (int)argv[2][i];
-			j = 1;
-			while (j % 9 != 0)
+			ft_send_char(pid, (unsigned char)argv[2][i]);
+			if (g_client.debug == 1)
 			{
-				if (bin % 2 == 1)
-					kill(PID, 10);
-				else
-					kill(PID, 12);
-				bin == bin / 2;
-				pause();
-				j++;
+				ft_putstr_fd("Transmition failed. It's probably a PID mystake", 1);
+				exit(1);
 			}
 			i++;
 		}

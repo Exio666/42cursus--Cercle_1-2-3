@@ -6,27 +6,23 @@
 #    By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/12/22 12:21:51 by bsavinel          #+#    #+#              #
-#    Updated: 2021/12/22 12:46:01 by bsavinel         ###   ########.fr        #
+#    Updated: 2022/01/05 12:18:15 by bsavinel         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRCS = 	minitalk_utils.c
-
-MS = main_serveur.c
-
-MC = main_client.c
-
-INCS = includes
+MS = srcs/main_server.c
 
 MSO = $(MS:.c=.o)
 
-MCO = $(MC:.c=.o) 
+EXTS = server
 
-OBJS = $(SRCS:.c=.o)
+MC = srcs/main_client.c
+
+MCO = $(MC:.c=.o) 
 
 EXTC = client
 
-EXTS = serveur
+INCS = includes
 
 CFLAGS = -Wall -Wextra -Werror
 
@@ -36,21 +32,28 @@ RM = rm -rf
 
 all : $(EXTC) $(EXTS)
 
+$(EXTC) : $(MCO) makelibft
+	$(CC) $(CFLAGS) $(MCO) libft/libft.a -o $(EXTC)
+
+$(EXTS) : $(MSO) makelibft
+	$(CC) $(CFLAGS) $(MSO) libft/libft.a -o $(EXTS)
+
 .c.o:
-	$(CC) $(CFLAGS) -c $< -o $(<:.c=.o) -I $(INCS)
-
-$(EXTC) : $(OBJS) $(MCO)
-	$(CC) $(CFLAGS) $(OBJS) $(MCO) -o $(ETC)
-
-$(EXTS) : $(OBJS) $(MSO)
-	$(CC) $(CFLAGS) $(OBJS) $(MSO) -o $(ETS)
+	$(CC) $(CFLAGS) -c $< -o $(<:.c=.o) -I libft/includes -I $(INCS)
 
 clean :
-	$(RM) $(OBJS) $(MCO) $(MVO)
+	$(RM) $(MCO) $(MSO)
+	$(MAKE) -C libft clean
 
 fclean : clean
-	$(RM) $(EXTC) $(EXTV)
+	$(RM) $(EXTC) $(EXTS)
+	$(RM) libft/libft.a
+
+makelibft :
+	$(MAKE) -C libft all
+
+bonus : all
 
 re : fclean all
 
-.PHONY: all clean fclean re
+.PHONY: all clean fclean re makelibft

@@ -6,7 +6,7 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/22 09:35:23 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/01/04 15:52:29 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/01/06 14:30:18 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,19 +15,16 @@
 
 # include <unistd.h>
 # include <signal.h>
+# include "libft.h"
 
 typedef struct s_talk
 {
-	int bit;
-	int size;
-	int power2;
-	int num;
-	int end;
-	int PID;
+	int debug;
+	int	bit;
+	int	power2;
+	int	num;
+	int	pid;
+	int	ready;
 }	t_talk;
-
-
-int	ft_putchar_fd(char c, int fd);
-int	ft_atoi(const char *nptr);
 
 #endif
