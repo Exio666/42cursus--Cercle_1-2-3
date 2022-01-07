@@ -6,7 +6,7 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/22 10:17:03 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/01/06 17:30:13 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/01/07 08:59:17 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,11 +92,7 @@ int	main(void)
 			str = ft_realloc(str, i);
 			ft_recive_char();
 			if (g_talk.debug == 1)
-			{
-				ft_putstr_fd("Very bad probleme, please relaunch", 1);
-				free(str);
-				exit(1);
-			}
+				ft_bug_server(str);
 			str[i] = (unsigned char)g_talk.num;
 			i++;
 		}

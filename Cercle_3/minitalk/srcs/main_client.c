@@ -6,7 +6,7 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/22 09:34:57 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/01/06 17:21:15 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/01/07 09:02:36 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,30 +44,33 @@ void	ft_signal(int signal)
 		g_client.ready = 1;
 }
 
+void	ft_bug_client(void)
+{
+	ft_putstr_fd("Transmition failed. Probably a PID mystake", 1);
+	exit(1);
+}
+
 int	main(int argc, char **argv)
 {
 	int	i;
 	int	len;
 	int	pid;
 
-	g_client.debug = 0;
-	i = 0;
-	pid = ft_atoi(argv[1]);
-	g_client.ready = 1;
-	signal(10, &ft_signal);
 	if (argc != 3)
 		ft_putstr_fd("Bad number of argument", 1);
 	else
 	{
+		g_client.debug = 0;
+		i = 0;
+		pid = ft_atoi(argv[1]);
+		g_client.ready = 1;
+		signal(10, &ft_signal);
 		len = ft_unsigned_strlen((unsigned char *)argv[2]);
 		while (i <= len)
 		{
 			ft_send_char(pid, (unsigned char)argv[2][i]);
 			if (g_client.debug == 1)
-			{
-				ft_putstr_fd("Transmition failed. Probably a PID mystake", 1);
-				exit(1);
-			}
+				ft_bug_client();
 			i++;
 		}
 	}

@@ -6,11 +6,12 @@
 #    By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/12/22 12:21:51 by bsavinel          #+#    #+#              #
-#    Updated: 2022/01/05 12:18:15 by bsavinel         ###   ########.fr        #
+#    Updated: 2022/01/07 08:57:47 by bsavinel         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-MS = srcs/main_server.c
+MS = 	srcs/main_server.c	\
+		srcs/utils_server.c
 
 MSO = $(MS:.c=.o)
 
