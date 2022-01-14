@@ -6,7 +6,7 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/23 10:38:07 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/01/06 10:33:17 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/01/12 16:54:21 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@ void	ft_lstiter(t_list *lst, void (*f)(void *));
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
 
 /*
- *	autre.c
+ *	autre
  */
 
 int		ft_putnbr_unsign_base(unsigned long long int nbr, char *base);
@@ -96,5 +96,6 @@ int		ft_len_nbr_unsign(unsigned long long int n, char *base);
 int		ft_putchar_unsigned_fd(unsigned char c, int fd);
 int		ft_putstr_unsigned_fd(unsigned char *s, int fd);
 size_t	ft_unsigned_strlen(const unsigned char *s);
+int		ft_abs(int a);
 
 #endif

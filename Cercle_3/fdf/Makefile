@@ -6,14 +6,18 @@
 #    By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/07 11:02:27 by bsavinel          #+#    #+#              #
-#    Updated: 2022/01/07 15:51:33 by bsavinel         ###   ########.fr        #
+#    Updated: 2022/01/14 12:14:33 by bsavinel         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRCS =	srcs/algo_bresenham.c	\
+SRCS =	srcs/draw_line.c	\
+		srcs/fdf_utils.c		\
+		srcs/file.c				\
 		srcs/main.c
 
 OBJS = $(SRCS:.c=.o)
+
+DEPS = $(SRCS:.c=.d)
 
 CC = gcc
 
@@ -23,25 +27,27 @@ RM = rm -f
 
 CLIB = ar -rcs
 
-LIBFDF = fdf.a
+LIB = fdf.a
 
-INCS = includes
-
-ALLINCS = -I includes -I minilibx -I libft/includes
+INCS = -I includes -I minilibx -I libft/includes
 
 NAME = fdf
+
+ALLLIB = libft/libft.a minilibx/libmlx_Linux.a
+
+LIBIXFLAGS = -lm -lbsd -lX11 -lXext
 
 all: $(NAME)
 
 $(NAME) : makelibft makeminilibx $(OBJS)
-	$(CC) $(CFLAGS) $(OBJS) libft/libft.a minilibx/libmlx_Linux.a -Lmlx_linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz -o $(NAME) $(ALLINCS)
+	$(CC) $(CFLAGS) $(OBJS) $(ALLLIB) $(LIBIXFLAGS) -o $(NAME) $(INCS)
 
-.c.o:
-	$(CC) $(CFLAGS) -c $< -o $(<:.c=.o) $(ALLINCS)
+%.o: %.c
+	$(CC) $(CFLAGS) -MMD -MP -c $< -o $@ $(INCS)
 
 clean :
-	$(RM) $(OBJS)
-	$(RM) $(MAINO)
+	$(RM) $(OBJS) $(DEPS)
+	$(MAKE) -C minilibx clean
 	$(MAKE) -C libft clean
 
 fclean : clean
@@ -58,4 +64,6 @@ bonus : all
 
 re : fclean all
 
-.PHONY: all clean fclean re makelibft
+-include $(DEPS)
+
+.PHONY: all clean fclean re makelibft makeminilibx bonus

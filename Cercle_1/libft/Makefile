@@ -6,7 +6,7 @@
 #    By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/23 11:34:09 by bsavinel          #+#    #+#              #
-#    Updated: 2022/01/05 12:43:46 by bsavinel         ###   ########.fr        #
+#    Updated: 2022/01/12 16:52:53 by bsavinel         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -55,7 +55,8 @@ SRC	= 	srcs/ft_atoi.c				\
 		srcs/ft_lstclear.c			\
 		srcs/ft_lstiter.c			\
 		srcs/ft_lstmap.c			\
-		srcs/ft_putstr_unsigned.c
+		srcs/ft_putstr_unsigned.c	\
+		srcs/abs.c
 
 OBJ_BONUS = $(SRC_BONUS:.c=.o)
 
