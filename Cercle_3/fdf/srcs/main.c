@@ -6,12 +6,31 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/07 13:25:54 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/01/15 14:45:09 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/01/15 17:10:29 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
+
+/*
+int	main(int ac, char **av)
+{
+	void	*mlx_ptr;
+	void	*mlx_win;
+	int		**map;
+
+	if (ac != 2)
+		return (0);
+	map = parser(av[1]);
+	mlx_ptr = mlx_init();
+	mlx_win = mlx_new_window (mlx_ptr, WEIGHT, HEIGHT, "Le titre");
+	while (1)
+		;
+	mlx_destroy_window(mlx_ptr, mlx_win);
+	mlx_destroy_display(mlx_ptr);
+	free(mlx_ptr);
+}*/
 
 /*
 ******************************
