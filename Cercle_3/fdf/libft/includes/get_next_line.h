@@ -6,7 +6,7 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/30 08:36:07 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/01/14 15:58:56 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/01/15 15:28:34 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # include <unistd.h>
 # include <stdlib.h>
 
-#define BUFFER_SIZE 100
+# define BUFFER_SIZE 100
 
 /*
  *  get_next_line.c

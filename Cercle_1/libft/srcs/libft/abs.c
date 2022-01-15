@@ -6,11 +6,11 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/12 16:50:42 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/01/12 16:52:04 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/01/15 15:25:19 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int ft_abs(int a)
+int	ft_abs(int a)
 {
 	if (a < 0)
 		a = -a;
