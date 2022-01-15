@@ -6,12 +6,17 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/07 13:25:54 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/01/14 14:18:34 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/01/15 14:45:09 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
+
+/*
+******************************
+* main pour tarcer des ligne *
+******************************
 int	main(void)
 {
 	void		*mlx_ptr;
@@ -89,4 +94,4 @@ int	main(void)
 	mlx_destroy_window(mlx_ptr, mlx_win);
 	mlx_destroy_display(mlx_ptr);
 	free(mlx_ptr);
-}
+}*/
