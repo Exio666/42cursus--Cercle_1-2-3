@@ -6,7 +6,7 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/07 13:25:54 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/01/16 13:35:03 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/01/16 13:57:30 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,13 +25,12 @@ int main(int ac, char **av)
 		return (0);
 	map = malloc(sizeof(t_map));
 	parser(av[1], map);
-	printf("Parsing fini\n");
-	printf("%i \n", map->map3d[i][j]);
-	while (i != map->nb_line - 1)
+	while (i != map->nb_line)
 	{
-		while (j != map->len_line - 1)
+		j = 0;
+		while (j != map->len_line)
 		{
-			printf("%i ", map->map3d[i][j]);
+			printf("%5i ", map->map3d[i][j]);
 			j++;
 		}
 		printf("\n");

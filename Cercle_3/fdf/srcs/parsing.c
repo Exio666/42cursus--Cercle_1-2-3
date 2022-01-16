@@ -6,14 +6,16 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/15 12:45:46 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/01/16 13:30:05 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/01/16 13:52:18 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
+#include <stdio.h>
 
 void free_map(int **map)
 {
+	printf("Merde\n");
 	int i;
 	
 	i = 0;
@@ -30,16 +32,20 @@ void free_map(int **map)
 
 int len_line(char *str)
 {
-	int i;
-	int counter;
+	int 	i;
+	int 	counter;
+	char	**tab;
 
 	i = 0;
-	while (str[i])
+	counter = 0;
+	tab = ft_split(str, ' ');
+	while (tab[i])
 	{
-		if (str[i] == ' ')
-			counter++;
+		counter++;
+		free(tab[i]);
 		i++;
 	}
+	free(tab);
 	return (counter);
 }
 
@@ -52,7 +58,7 @@ int	parse_map(int fd, t_map *map)
 
 	j = 0;
 	map->map3d = malloc(sizeof(int *) * (map->nb_line + 1));
-	if (map->map3d)
+	if (!map->map3d)
 		return (0);
 	while (j != map->nb_line)
 	{
