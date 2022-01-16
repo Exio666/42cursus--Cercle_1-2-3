@@ -6,7 +6,7 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/07 11:08:26 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/01/16 13:17:11 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/01/16 14:50:12 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,9 +38,9 @@ typedef struct s_2Dpoint
 
 typedef struct s_map
 {
-	int 		**map3d;
-	t_2Dpoint 	*map2d;
-	int 		len_line;
+	int			**map3d;
+	t_2Dpoint	*map2d;
+	int			len_line;
 	int			nb_line;
 }	t_map;
 
@@ -73,6 +73,6 @@ int		encode_rgb(int red, int green, int blue);
  *	parssing.c
  */
 
-int	parser(char *file, t_map *map);
+int		parser(char *file, t_map *map);
 
 #endif

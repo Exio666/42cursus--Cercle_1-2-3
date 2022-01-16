@@ -6,14 +6,18 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/07 13:25:54 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/01/16 13:57:30 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/01/16 14:54:16 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
-
-
 #include <stdio.h>
+
+// TODO dessiner des ligne
+// TODO parser la map
+// TODO convertir 3d en 2d
+// TODO faire le menu
+// TODO tout relie 
 
 int main(int ac, char **av)
 {
