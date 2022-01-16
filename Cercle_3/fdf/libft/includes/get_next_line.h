@@ -6,7 +6,7 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/30 08:36:07 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/01/15 15:28:34 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/01/16 12:49:06 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include <unistd.h>
 # include <stdlib.h>
+# include "libft.h"
 
 # define BUFFER_SIZE 100
 
@@ -34,7 +35,6 @@ char	*ft_line_return(char *str, char *tab);
 
 void	ft_replace2(char *str, char *tmp, int i, int j);
 void	ft_joinstr2(char *str, char *buf, char *ret);
-int		ft_strlen(char *str);
 void	ft_bzero(void *s, size_t n);
 char	*ft_end(char *str);
 

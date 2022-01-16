@@ -6,7 +6,7 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/07 11:08:26 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/01/15 17:10:48 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/01/16 13:17:11 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@
 # include "mlx.h"
 # include "libft.h"
 # include "get_next_line.h"
+# include <unistd.h>
+# include <fcntl.h>
 
 /*
  *	Define
@@ -34,12 +36,13 @@ typedef struct s_2Dpoint
 	int	y;
 }	t_2Dpoint;
 
-typedef struct s_3Dpoint
+typedef struct s_map
 {
-	int	x;
-	int	y;
-	int	z;
-}	t_3Dpoint;
+	int 		**map3d;
+	t_2Dpoint 	*map2d;
+	int 		len_line;
+	int			nb_line;
+}	t_map;
 
 typedef struct s_line
 {
@@ -70,6 +73,6 @@ int		encode_rgb(int red, int green, int blue);
  *	parssing.c
  */
 
-int		**parser(char *file);
+int	parser(char *file, t_map *map);
 
 #endif

@@ -6,21 +6,11 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/30 08:36:11 by bsavinel          #+#    #+#             */
-/*   Updated: 2021/12/02 11:49:47 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/01/16 12:49:20 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
-
-int	ft_strlen(char *str)
-{
-	int	i;
-
-	i = 0;
-	while (str[i])
-		i++;
-	return (i);
-}
 
 void	ft_bzero(void *s, size_t n)
 {

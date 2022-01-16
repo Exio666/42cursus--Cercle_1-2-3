@@ -6,12 +6,38 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/07 13:25:54 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/01/15 17:10:29 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/01/16 13:35:03 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
+
+#include <stdio.h>
+
+int main(int ac, char **av)
+{
+	int 	i = 0;
+	int 	j = 0;
+	t_map	*map;
+
+	if (ac != 2)
+		return (0);
+	map = malloc(sizeof(t_map));
+	parser(av[1], map);
+	printf("Parsing fini\n");
+	printf("%i \n", map->map3d[i][j]);
+	while (i != map->nb_line - 1)
+	{
+		while (j != map->len_line - 1)
+		{
+			printf("%i ", map->map3d[i][j]);
+			j++;
+		}
+		printf("\n");
+		i++;
+	}
+}
 
 /*
 int	main(int ac, char **av)
