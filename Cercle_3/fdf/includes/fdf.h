@@ -6,7 +6,7 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/07 11:08:26 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/01/16 14:50:12 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/01/17 10:22:00 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,9 +39,10 @@ typedef struct s_2Dpoint
 typedef struct s_map
 {
 	int			**map3d;
-	t_2Dpoint	*map2d;
+	t_2Dpoint	**map2d;
 	int			len_line;
 	int			nb_line;
+	int			camera;
 }	t_map;
 
 typedef struct s_line

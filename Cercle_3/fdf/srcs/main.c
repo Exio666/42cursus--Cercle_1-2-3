@@ -6,7 +6,7 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/07 13:25:54 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/01/16 14:54:16 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/01/17 10:26:48 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,24 +42,27 @@ int main(int ac, char **av)
 	}
 }
 
-/*
+
 int	main(int ac, char **av)
 {
 	void	*mlx_ptr;
 	void	*mlx_win;
-	int		**map;
+	t_map	*map;
 
 	if (ac != 2)
 		return (0);
-	map = parser(av[1]);
+	map = malloc(sizeof(t_map));
+	parser(av[1], map);
 	mlx_ptr = mlx_init();
-	mlx_win = mlx_new_window (mlx_ptr, WEIGHT, HEIGHT, "Le titre");
-	while (1)
-		;
+	parser(av[1], map);
+	
+	mlx_win = mlx_new_window (mlx_ptr, WEIGHT, HEIGHT, "Fdf 42");
+	
+	
 	mlx_destroy_window(mlx_ptr, mlx_win);
 	mlx_destroy_display(mlx_ptr);
 	free(mlx_ptr);
-}*/
+}
 
 /*
 ******************************
