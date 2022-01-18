@@ -6,18 +6,18 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/07 13:25:54 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/01/18 10:08:45 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/01/18 16:07:17 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 #include <stdio.h>
 
-// TODO initialiser->parser->rotation_de_base->convertir_en_2d->tracer_la_map->attendre des instruction	->mollete->zoom
-//																										->esc->exit_poprement
-//																										->fleche->bouger
-//																										->wasd->rotation
-//																										->c->couleur
+// TODO initialiser->parser->rotation_de_base->convertir_en_2d->tracer_la_map->attendre des instruction->remmtre_noir	->mollete->zoom
+//																														->esc->exit_poprement
+//																														->fleche->bouger
+//																														->wasd->rotation
+//																														->c->couleur
 // TODO modif draw line pour image
 
 typedef struct	s_vars {

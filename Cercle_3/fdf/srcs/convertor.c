@@ -6,27 +6,27 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/17 15:53:14 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/01/18 09:12:10 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/01/18 16:20:29 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-t_2Dpoint isometric_point(t_3Dpoint p3d)
+t_2Dpoint	isometric_point(t_3Dpoint p3d)
 {
-	t_2Dpoint p2d;
-	
-	p2d.x = (int)((float)p3d.x * cos(0) + (float)p3d.y * cos((2 * M_PI) / 3) 
+	t_2Dpoint	p2d;
+
+	p2d.x = (int)((float)p3d.x * cos(0) + (float)p3d.y * cos((2 * M_PI) / 3)
 			+ (float)p3d.z * cos(-((2 * M_PI) / 3)));
-	p2d.y  =(int)((float)p3d.x * sin(0) + (float)p3d.y * sin((2 * M_PI) / 3) 
+	p2d.y = (int)((float)p3d.x * sin(0) + (float)p3d.y * sin((2 * M_PI) / 3)
 			+ (float)p3d.z * sin(-((2 * M_PI) / 3)));
 	return (p2d);
 }
 
-int convertor(t_map *map)
+int	convertor(t_map *map)
 {
-	int i;
-	int j;
+	int	i;
+	int	j;
 
 	j = 0;
 	map->map2d = malloc(sizeof(t_2Dpoint *) * map->nb_line);

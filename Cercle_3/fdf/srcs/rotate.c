@@ -6,16 +6,17 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/15 13:47:21 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/01/18 09:12:06 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/01/18 16:19:12 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-int rotate_alpha(t_3Dpoint *point, int rotation) //z
+//z
+int	rotate_alpha(t_3Dpoint *point, int rotation)
 {
-	float xtmp;
-	float ytmp;
+	float	xtmp;
+	float	ytmp;
 
 	xtmp = (float)point->x;
 	ytmp = (float)point->y;
@@ -24,10 +25,11 @@ int rotate_alpha(t_3Dpoint *point, int rotation) //z
 	return (1);
 }
 
-int rotate_beta(t_3Dpoint *point, int rotation) //y
+//y
+int	rotate_beta(t_3Dpoint *point, int rotation)
 {
-	float xtmp;
-	float ztmp;
+	float	xtmp;
+	float	ztmp;
 
 	xtmp = (float)point->x;
 	ztmp = (float)point->z;
@@ -36,10 +38,11 @@ int rotate_beta(t_3Dpoint *point, int rotation) //y
 	return (1);
 }
 
-int rotate_gamma(t_3Dpoint *point, int rotation) //x
+//x
+int	rotate_gamma(t_3Dpoint *point, int rotation)
 {
-	float ytmp;
-	float ztmp;
+	float	ytmp;
+	float	ztmp;
 
 	ytmp = (float)point->y;
 	ztmp = (float)point->z;
@@ -48,10 +51,10 @@ int rotate_gamma(t_3Dpoint *point, int rotation) //x
 	return (1);
 }
 
-void	apply_rotate(t_map *map, int rotation)
+void	apply_rotate(t_map *map, t_rot rot)
 {
-	int i;
-	int j;
+	int	i;
+	int	j;
 
 	j = 0;
 	while (j < map->nb_line)
@@ -59,9 +62,9 @@ void	apply_rotate(t_map *map, int rotation)
 		i = 0;
 		while (i < map->len_line)
 		{
-			rotate_alpha(&map->map3d[j][i], rotation);
-			rotate_beta(&map->map3d[j][i], rotation);
-			rotate_gamma(&map->map3d[j][i], rotation);
+			rotate_alpha(&map->map3d[j][i], rot.rot_z);
+			rotate_beta(&map->map3d[j][i], rot.rot_y);
+			rotate_gamma(&map->map3d[j][i], rot.rot_x);
 			i++;
 		}
 		j++;
