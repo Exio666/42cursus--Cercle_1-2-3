@@ -6,16 +6,18 @@
 #    By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/07 11:02:27 by bsavinel          #+#    #+#              #
-#    Updated: 2022/01/17 15:45:18 by bsavinel         ###   ########.fr        #
+#    Updated: 2022/01/18 15:58:47 by bsavinel         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRCS =	srcs/draw_line.c		\
+SRCS =	srcs/main.c				\
+		srcs/convertor.c		\
+		srcs/draw_line.c		\
+		srcs/end.c				\
 		srcs/fdf_utils.c		\
 		srcs/main.c				\
 		srcs/parsing.c			\
-		srcs/rotate.c			\
-		srcs/free.c
+		srcs/rotate.c
 
 OBJS = $(SRCS:.c=.o)
 
@@ -39,7 +41,7 @@ ALLLIB = libft/libft.a minilibx/libmlx_Linux.a
 
 LIBIXFLAGS = -lm -lbsd -lX11 -lXext
 
-all: $(NAME)
+all: $(NAME)t
 
 $(NAME) : makelibft makeminilibx $(OBJS)
 	$(CC) $(CFLAGS) $(OBJS) $(ALLLIB) $(LIBIXFLAGS) -o $(NAME) $(INCS)

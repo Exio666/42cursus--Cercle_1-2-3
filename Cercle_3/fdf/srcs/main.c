@@ -6,19 +6,43 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/07 13:25:54 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/01/17 16:08:25 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/01/18 10:08:45 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 #include <stdio.h>
 
-// TODO initialiser->parser->convertir_en_2d->tracer_la_map->attendre des instruction	->mollete->zoom
-//																						->esc->exit_poprement
-//																						->fleche->bouger
-//																						->wasd->rotation
-//																						->c->couleur
+// TODO initialiser->parser->rotation_de_base->convertir_en_2d->tracer_la_map->attendre des instruction	->mollete->zoom
+//																										->esc->exit_poprement
+//																										->fleche->bouger
+//																										->wasd->rotation
+//																										->c->couleur
+// TODO modif draw line pour image
 
+typedef struct	s_vars {
+	void	*mlx;
+	void	*win;
+}				t_vars;
+
+int	key_hook(int keycode, t_vars *vars)
+{
+	(void)vars;
+	printf("Touche : %i\n", keycode);
+	return (0);
+}
+
+int	main(void)
+{
+	t_vars	vars;
+
+	vars.mlx = mlx_init();
+	vars.win = mlx_new_window(vars.mlx, 640, 480, "Hello world!");
+	mlx_key_hook(vars.win, key_hook, &vars);
+	mlx_loop(vars.mlx);
+}
+
+/*
 int main(int ac, char **av)
 {
 	int 	i = 0;
@@ -61,7 +85,7 @@ int	main(int ac, char **av)
 	free(map->mlx_ptr);
 }
 
-/*
+
 ******************************
 * main pour tarcer des ligne *
 ******************************
