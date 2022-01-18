@@ -6,7 +6,7 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/15 13:47:21 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/01/18 16:19:12 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/01/18 17:02:41 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ int	rotate_gamma(t_3Dpoint *point, int rotation)
 	return (1);
 }
 
-void	apply_rotate(t_map *map, t_rot rot)
+void	apply_rotate(t_map *map, int z, int y, int x)
 {
 	int	i;
 	int	j;
@@ -62,9 +62,9 @@ void	apply_rotate(t_map *map, t_rot rot)
 		i = 0;
 		while (i < map->len_line)
 		{
-			rotate_alpha(&map->map3d[j][i], rot.rot_z);
-			rotate_beta(&map->map3d[j][i], rot.rot_y);
-			rotate_gamma(&map->map3d[j][i], rot.rot_x);
+			rotate_alpha(&map->map3d[j][i], z);
+			rotate_beta(&map->map3d[j][i], y);
+			rotate_gamma(&map->map3d[j][i], x);
 			i++;
 		}
 		j++;

@@ -6,7 +6,7 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/07 11:08:26 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/01/18 16:39:18 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/01/18 17:05:42 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@
 
 # define HEIGHT 1200
 # define WEIGHT 2000
+# define ROTATION 1
 
 /*
  *	Define touche
@@ -151,12 +152,21 @@ int			parser(char *file, t_map *map);
 int			rotate_alpha(t_3Dpoint *point, int rotation);
 int			rotate_beta(t_3Dpoint *point, int rotation);
 int			rotate_gamma(t_3Dpoint *point, int rotation);
-void		apply_rotate(t_map *map, t_rot rot);
+void		apply_rotate(t_map *map, int z, int y, int x);
+
+/*
+ *	select_hook.c
+ */
+
+void		select_hook(int hook, t_map *map);
+void		select_hook2(int hook, t_map *map);
 
 /*
  *	translate_zoom.c
  */
 
+int			up_zoom(t_map *map, int zoom);
+int			down_zoom(t_map *map, int zoom);
 int			translat_horizontal(t_map *map, int tran);
 int			translat_vertical(t_map *map, int tran);
 
