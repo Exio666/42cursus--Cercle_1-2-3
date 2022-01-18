@@ -6,7 +6,7 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/07 11:08:26 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/01/18 17:05:42 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/01/18 17:13:11 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@
 # define HEIGHT 1200
 # define WEIGHT 2000
 # define ROTATION 1
+# define TRANSLATION 1
 
 /*
  *	Define touche
@@ -51,7 +52,7 @@
 # define D_PARALLEL 112
 
 /*
- *	Structur
+ *	Structure
  */
 
 typedef struct s_2Dpoint

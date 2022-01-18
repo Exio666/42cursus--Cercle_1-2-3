@@ -6,7 +6,7 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/18 17:06:23 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/01/18 17:06:28 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/01/18 17:08:57 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,13 +29,13 @@ void	select_hook(int hook, t_map *map)
 	else if (hook == D_ROT_DOWNY)
 		apply_rotate(map, 0, -ROTATION, 0);
 	else if (hook == D_TRANS_UP)
-		;
+		translat_vertical(map, TRANSLATION);
 	else if (hook == D_TRANS_DOWN)
-		;
+		translat_vertical(map, -TRANSLATION);
 	else if (hook == D_TRANS_LEFT)
-		;
+		translat_horizontal(map, TRANSLATION);
 	else if (hook == D_TRANS_RIGHT)
-		;
+		translat_horizontal(map, -TRANSLATION);
 	else
 		select_hook2(hook,map);
 }
