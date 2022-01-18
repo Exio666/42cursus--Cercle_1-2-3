@@ -1,43 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   3d_to_2d.c                                         :+:      :+:    :+:   */
+/*   convertor.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/15 13:47:21 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/01/17 10:29:31 by bsavinel         ###   ########.fr       */
+/*   Created: 2022/01/17 15:53:14 by bsavinel          #+#    #+#             */
+/*   Updated: 2022/01/18 09:12:10 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-t_2Dpoint convert_3d(int x, int y, int z, int camera)
+t_2Dpoint isometric_point(t_3Dpoint p3d)
 {
-	t_2Dpoint point;
-
-	point.x = x * cos(camera) + y * cos(camera) + z * cos(camera);
-	point.y = x * sin(camera) + y * sin(camera) + z * sin(camera);
-	return (point);
+	t_2Dpoint p2d;
+	
+	p2d.x = (int)((float)p3d.x * cos(0) + (float)p3d.y * cos((2 * M_PI) / 3) 
+			+ (float)p3d.z * cos(-((2 * M_PI) / 3)));
+	p2d.y  =(int)((float)p3d.x * sin(0) + (float)p3d.y * sin((2 * M_PI) / 3) 
+			+ (float)p3d.z * sin(-((2 * M_PI) / 3)));
+	return (p2d);
 }
 
-int converteur(t_map *map)
+int convertor(t_map *map)
 {
 	int i;
 	int j;
 
 	j = 0;
 	map->map2d = malloc(sizeof(t_2Dpoint *) * map->nb_line);
-	if (!map->map2d)
-		
-	
 	while (j < map->nb_line)
 	{
 		i = 0;
 		map->map2d[j] = malloc(sizeof(t_2Dpoint) * map->len_line);
 		while (i < map->len_line)
 		{
-			map->map2d[i][j] = convert_3d(j, i, map->map3d[j][i], map->camera);
+			map->map2d[j][i] = isometric_point(map->map3d[i][j]);
 			i++;
 		}
 		j++;

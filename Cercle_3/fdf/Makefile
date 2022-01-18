@@ -6,14 +6,16 @@
 #    By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/07 11:02:27 by bsavinel          #+#    #+#              #
-#    Updated: 2022/01/16 12:49:59 by bsavinel         ###   ########.fr        #
+#    Updated: 2022/01/17 15:45:18 by bsavinel         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 SRCS =	srcs/draw_line.c		\
 		srcs/fdf_utils.c		\
 		srcs/main.c				\
-		srcs/parsing.c
+		srcs/parsing.c			\
+		srcs/rotate.c			\
+		srcs/free.c
 
 OBJS = $(SRCS:.c=.o)
 

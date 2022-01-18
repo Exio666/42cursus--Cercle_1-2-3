@@ -6,18 +6,18 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/07 13:25:54 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/01/17 10:26:48 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/01/17 16:08:25 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 #include <stdio.h>
 
-// TODO dessiner des ligne
-// TODO parser la map
-// TODO convertir 3d en 2d
-// TODO faire le menu
-// TODO tout relie 
+// TODO initialiser->parser->convertir_en_2d->tracer_la_map->attendre des instruction	->mollete->zoom
+//																						->esc->exit_poprement
+//																						->fleche->bouger
+//																						->wasd->rotation
+//																						->c->couleur
 
 int main(int ac, char **av)
 {
@@ -45,23 +45,20 @@ int main(int ac, char **av)
 
 int	main(int ac, char **av)
 {
-	void	*mlx_ptr;
-	void	*mlx_win;
 	t_map	*map;
 
 	if (ac != 2)
 		return (0);
 	map = malloc(sizeof(t_map));
 	parser(av[1], map);
-	mlx_ptr = mlx_init();
+	map->mlx_ptr = mlx_init();
 	parser(av[1], map);
+	map->mlx_win = mlx_new_window (map->mlx_ptr, WEIGHT, HEIGHT, "Fdf 42");
 	
-	mlx_win = mlx_new_window (mlx_ptr, WEIGHT, HEIGHT, "Fdf 42");
 	
-	
-	mlx_destroy_window(mlx_ptr, mlx_win);
-	mlx_destroy_display(mlx_ptr);
-	free(mlx_ptr);
+	mlx_destroy_window(map->mlx_ptr, map->mlx_win);
+	mlx_destroy_display(map->mlx_ptr);
+	free(map->mlx_ptr);
 }
 
 /*

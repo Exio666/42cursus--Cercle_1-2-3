@@ -6,27 +6,20 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/15 12:45:46 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/01/16 14:19:57 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/01/18 09:06:55 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-int	free_map(int **map)
+t_3Dpoint	set_3d_map(int x, int y, char *z)
 {
-	int	i;
+	t_3Dpoint p;
 
-	i = 0;
-	if (map)
-	{
-		while (map[i])
-		{
-			free(map[i]);
-			i++;
-		}
-		free(map);
-	}
-	return (0);
+	p.x = x;
+	p.y = y;
+	p.z = ft_atoi(z);
+	return (p);
 }
 
 int	len_line(char *str)
@@ -56,7 +49,7 @@ int	parse_map(int fd, t_map *map)
 	char	**tab;
 
 	j = 0;
-	map->map3d = malloc(sizeof(int *) * (map->nb_line + 1));
+	map->map3d = malloc(sizeof(t_3Dpoint *) * (map->nb_line + 1));
 	if (!map->map3d)
 		return (0);
 	while (j != map->nb_line)
@@ -65,7 +58,7 @@ int	parse_map(int fd, t_map *map)
 		line = get_next_line(fd);
 		if (j == 0)
 			map->len_line = len_line(line);
-		map->map3d[j] = malloc(sizeof(int) * (map->len_line + 1));
+		map->map3d[j] = malloc(sizeof(t_3Dpoint) * (map->len_line + 1));
 		if (!map->map3d[j])
 			return (free_map(map->map3d));
 		tab = ft_split(line, ' ');
@@ -74,7 +67,7 @@ int	parse_map(int fd, t_map *map)
 			return (0);
 		while (tab[i])
 		{
-			map->map3d[j][i] = ft_atoi(tab[i]);
+			map->map3d[j][i] = set_3d_map(j, i, tab[i]);
 			free(tab[i]);
 			i++;
 		}
