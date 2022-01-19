@@ -6,7 +6,7 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/07 13:25:54 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/01/18 16:07:17 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/01/19 16:01:23 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,27 +19,48 @@
 //																														->wasd->rotation
 //																														->c->couleur
 // TODO modif draw line pour image
-
-typedef struct	s_vars {
-	void	*mlx;
-	void	*win;
-}				t_vars;
-
-int	key_hook(int keycode, t_vars *vars)
+int 	print_map(t_map	*map)
 {
-	(void)vars;
-	printf("Touche : %i\n", keycode);
-	return (0);
+	int	i;
+	int	j;
+
+	j = 0;
+	printf("shit\n");
+	convertor(map);
+	printf("you shit\n");
+	while (j < map->nb_line)
+	{
+		i = 0;
+		while (i < map->len_line)
+		{
+			if (i < map->len_line - 1)
+				draw_line(map->mlx_ptr, map->mlx_win, map->map2d[j][i], map->map2d[j][i + 1]);
+			if (j < map->nb_line - 1)
+				draw_line(map->mlx_ptr, map->mlx_win, map->map2d[j][i], map->map2d[j + 1][i]);
+			i++;
+		}
+		j++;
+	}
+	return (1);
 }
 
-int	main(void)
+int	main(int ac, char **av)
 {
-	t_vars	vars;
+	t_map	map;
 
-	vars.mlx = mlx_init();
-	vars.win = mlx_new_window(vars.mlx, 640, 480, "Hello world!");
-	mlx_key_hook(vars.win, key_hook, &vars);
-	mlx_loop(vars.mlx);
+	if (ac != 2)
+		return (0);
+	map.mlx_ptr = mlx_init();
+	parser(av[1], &map);
+	map.mlx_win = mlx_new_window(map.mlx_ptr, WEIGHT, HEIGHT, av[1]);
+	map.image = mlx_new_image(map.mlx_ptr, WEIGHT, HEIGHT);
+	print_map(&map);
+	printf("shit\n");
+	mlx_key_hook(map.mlx_win, select_hook, &map);
+	mlx_loop(map.mlx_ptr);
+	mlx_destroy_window(map.mlx_ptr, map.mlx_win);
+	mlx_destroy_image(map.mlx_ptr,map.image);
+	mlx_destroy_display(map.mlx_ptr);
 }
 
 /*

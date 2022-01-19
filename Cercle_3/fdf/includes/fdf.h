@@ -6,7 +6,7 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/07 11:08:26 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/01/18 17:13:11 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/01/19 16:04:15 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 # include <unistd.h>
 # include <fcntl.h>
 # include <math.h>
+# include <stdio.h>
 
 /*
  *	Define windows
@@ -28,6 +29,7 @@
 # define WEIGHT 2000
 # define ROTATION 1
 # define TRANSLATION 1
+# define V_ZOOM 1
 
 /*
  *	Define touche
@@ -77,6 +79,7 @@ typedef struct s_angle
 
 typedef struct s_map
 {
+	void		*image;
 	t_angle		*angle;
 	void		*mlx_ptr;
 	void		*mlx_win;
@@ -84,6 +87,7 @@ typedef struct s_map
 	t_2Dpoint	**map2d;
 	int			len_line;
 	int			nb_line;
+	int			zoom;
 	int			camera;
 }	t_map;
 
@@ -128,13 +132,19 @@ void		draw_line(void *mlx, void *mlx_win, t_2Dpoint p1, t_2Dpoint p2);
  *	end.c
  */
 
-int			free_map(int **map);
+int			free_map(t_3Dpoint **map);
 
 /*
  *	fdf_utils.c
  */
 
 int			encode_rgb(int red, int green, int blue);
+
+/*
+ *	main.c
+ */
+
+void		start_fdf(t_map *map);
 
 /*
  *	parsing.c
@@ -159,7 +169,7 @@ void		apply_rotate(t_map *map, int z, int y, int x);
  *	select_hook.c
  */
 
-void		select_hook(int hook, t_map *map);
+int			select_hook(int hook, t_map *map);
 void		select_hook2(int hook, t_map *map);
 
 /*

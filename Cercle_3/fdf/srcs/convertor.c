@@ -6,7 +6,7 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/17 15:53:14 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/01/18 16:20:29 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/01/19 16:07:37 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,13 +29,16 @@ int	convertor(t_map *map)
 	int	j;
 
 	j = 0;
+	printf("sa mere\n");
 	map->map2d = malloc(sizeof(t_2Dpoint *) * map->nb_line);
 	while (j < map->nb_line)
 	{
 		i = 0;
+		printf("en slip\n");
 		map->map2d[j] = malloc(sizeof(t_2Dpoint) * map->len_line);
 		while (i < map->len_line)
 		{
+			printf("suck\n");
 			map->map2d[j][i] = isometric_point(map->map3d[i][j]);
 			i++;
 		}

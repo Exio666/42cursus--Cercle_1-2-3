@@ -6,18 +6,18 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/18 17:06:23 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/01/18 17:08:57 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/01/19 15:56:29 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-void	select_hook(int hook, t_map *map)
+int	select_hook(int hook, t_map *map)
 {
 	if (hook == D_ESCAPE)
 		;
 	else if (hook == D_ROT_UPZ)
-		apply_rotate(map, ROTATION, 0, 0);	
+		apply_rotate(map, ROTATION, 0, 0);
 	else if (hook == D_ROT_DOWNZ)
 		apply_rotate(map, -ROTATION, 0, 0);
 	else if (hook == D_ROT_UPX)
@@ -37,21 +37,22 @@ void	select_hook(int hook, t_map *map)
 	else if (hook == D_TRANS_RIGHT)
 		translat_horizontal(map, -TRANSLATION);
 	else
-		select_hook2(hook,map);
+		select_hook2(hook, map);
+	return (0);
 }
 
 void	select_hook2(int hook, t_map *map)
 {
 	if (hook == D_UP_ZOOM)
-		;	
+		up_zoom(map, V_ZOOM);
 	else if (hook == D_DOWN_ZOOM)
-		;
-	else if (hook == D_COLOR)
+		down_zoom(map, V_ZOOM);
+	/*else if (hook == D_COLOR)
 		;
 	else if (hook == D_RESET)
 		;
 	else if (hook == D_ISOMETRIC)
 		;
 	else if (hook == D_PARALLEL)
-		;
+		;*/
 }

@@ -6,7 +6,7 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/15 12:45:46 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/01/18 09:06:55 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/01/19 12:13:53 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 t_3Dpoint	set_3d_map(int x, int y, char *z)
 {
-	t_3Dpoint p;
+	t_3Dpoint	p;
 
 	p.x = x;
 	p.y = y;

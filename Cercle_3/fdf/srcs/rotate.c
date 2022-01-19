@@ -6,7 +6,7 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/15 13:47:21 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/01/18 17:02:41 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/01/19 15:54:54 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,5 +69,4 @@ void	apply_rotate(t_map *map, int z, int y, int x)
 		}
 		j++;
 	}
-	return (1);
 }

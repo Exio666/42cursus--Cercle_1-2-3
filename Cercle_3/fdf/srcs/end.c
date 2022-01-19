@@ -6,13 +6,13 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/17 15:42:53 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/01/18 16:19:24 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/01/19 15:54:03 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-int	free_map(int **map)
+int	free_map(t_3Dpoint **map)
 {
 	int	i;
 
