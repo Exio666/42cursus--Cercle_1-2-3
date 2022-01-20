@@ -6,7 +6,7 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/15 12:45:46 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/01/19 12:13:53 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/01/20 13:50:28 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,8 @@ int	len_line(char *str)
 	tab = ft_split(str, ' ');
 	while (tab[i])
 	{
-		counter++;
+		if (ft_isdigit(tab[i][0]) == 1)
+			counter++;
 		free(tab[i]);
 		i++;
 	}
@@ -71,6 +72,7 @@ int	parse_map(int fd, t_map *map)
 			free(tab[i]);
 			i++;
 		}
+		
 		free(tab);
 		j++;
 	}

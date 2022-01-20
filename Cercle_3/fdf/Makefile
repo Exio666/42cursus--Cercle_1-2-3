@@ -6,7 +6,7 @@
 #    By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/07 11:02:27 by bsavinel          #+#    #+#              #
-#    Updated: 2022/01/19 15:58:12 by bsavinel         ###   ########.fr        #
+#    Updated: 2022/01/20 12:04:28 by bsavinel         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,8 @@ SRCS =	srcs/convertor.c		\
 		srcs/parsing.c			\
 		srcs/rotate.c			\
 		srcs/select_hook.c		\
-		srcs/translate_zoom.c
+		srcs/translate_zoom.c	\
+		srcs/debug.c			
 
 OBJS = $(SRCS:.c=.o)
 
@@ -26,7 +27,7 @@ DEPS = $(SRCS:.c=.d)
 
 CC = gcc
 
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -g -Wall -Wextra -Werror
 
 RM = rm -f
 

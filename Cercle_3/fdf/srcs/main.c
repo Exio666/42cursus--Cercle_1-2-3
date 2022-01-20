@@ -6,7 +6,7 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/07 13:25:54 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/01/19 16:01:23 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/01/20 14:10:41 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,8 @@ int 	print_map(t_map	*map)
 	int	j;
 
 	j = 0;
-	printf("shit\n");
 	convertor(map);
-	printf("you shit\n");
+	up_zoom(map, 20);
 	while (j < map->nb_line)
 	{
 		i = 0;
@@ -44,6 +43,7 @@ int 	print_map(t_map	*map)
 	return (1);
 }
 
+
 int	main(int ac, char **av)
 {
 	t_map	map;
@@ -55,13 +55,38 @@ int	main(int ac, char **av)
 	map.mlx_win = mlx_new_window(map.mlx_ptr, WEIGHT, HEIGHT, av[1]);
 	map.image = mlx_new_image(map.mlx_ptr, WEIGHT, HEIGHT);
 	print_map(&map);
-	printf("shit\n");
 	mlx_key_hook(map.mlx_win, select_hook, &map);
 	mlx_loop(map.mlx_ptr);
 	mlx_destroy_window(map.mlx_ptr, map.mlx_win);
 	mlx_destroy_image(map.mlx_ptr,map.image);
 	mlx_destroy_display(map.mlx_ptr);
 }
+
+/*
+int main(int ac, char **av)
+{
+	t_map	map;
+	int i;
+	int j;
+	
+	if (ac != 2)
+		return (0);
+	parser(av[1], &map);
+	printf("nb line: %i len_line: %i\n",map.nb_line, map.len_line);
+	while (j < map.nb_line)
+	{
+		i = 0;
+		while (i < map.len_line)
+		{
+			printf("i: %i j: %i\n", i,j);
+			print_point_3d(map.map3d[j][i]);
+			i++;
+		}
+		printf("You suck to\n");
+		j++;
+	}
+	
+}*/
 
 /*
 int main(int ac, char **av)
@@ -107,9 +132,7 @@ int	main(int ac, char **av)
 }
 
 
-******************************
-* main pour tarcer des ligne *
-******************************
+
 int	main(void)
 {
 	void		*mlx_ptr;

@@ -6,7 +6,7 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/07 11:08:26 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/01/19 16:04:15 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/01/20 11:48:20 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -180,5 +180,13 @@ int			up_zoom(t_map *map, int zoom);
 int			down_zoom(t_map *map, int zoom);
 int			translat_horizontal(t_map *map, int tran);
 int			translat_vertical(t_map *map, int tran);
+
+/*
+ *
+ */
+
+void print_point_3d(t_3Dpoint p);
+
+void print_point_2d(t_2Dpoint p);
 
 #endif

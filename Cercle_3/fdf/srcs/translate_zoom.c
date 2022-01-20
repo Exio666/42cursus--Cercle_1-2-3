@@ -6,7 +6,7 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/18 14:57:47 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/01/18 16:49:07 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/01/20 14:10:23 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,12 @@ int	up_zoom(t_map *map, int zoom)
 	while (j < map->nb_line)
 	{
 		i = 0;
+		printf("ICI\n");
 		while (i < map->len_line)
 		{
-			map->map2d[j][i].x += zoom * j;
-			map->map2d[j][i].y += zoom * i;
+			map->map2d[j][i].x *= zoom;
+			map->map2d[j][i].y *= zoom;
+			printf("LA\n");
 			i++;
 		}
 		j++;
