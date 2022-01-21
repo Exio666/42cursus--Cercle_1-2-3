@@ -6,7 +6,7 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/07 11:28:20 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/01/14 15:17:08 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/01/21 13:33:00 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	const_line(void *mlx, void *mlx_win, t_line line)
 		!= line.p2.y + line.inc_y)
 	{
 		mlx_pixel_put(mlx, mlx_win, line.p1.x, line.p1.y,
-			encode_rgb(255, 255, 255));
+			line.color);
 		if (line.dy == 0)
 			line.p1.x += line.inc_x;
 		if (line.dx == 0)
@@ -45,7 +45,7 @@ void	line_hor(void *mlx, void *mlx_win, t_line line)
 	while (line.p1.x != line.p2.x + line.inc_x)
 	{
 		mlx_pixel_put(mlx, mlx_win, line.p1.x, line.p1.y,
-			encode_rgb(255, 255, 255));
+			line.color);
 		line.error += line.slope;
 		if (line.error >= 0)
 		{
@@ -64,7 +64,7 @@ void	line_ver(void *mlx, void *mlx_win, t_line line)
 	while (line.p1.y != line.p2.y + line.inc_y)
 	{
 		mlx_pixel_put(mlx, mlx_win, line.p1.x, line.p1.y,
-			encode_rgb(255, 255, 255));
+			line.color);
 		line.error += line.slope;
 		if (line.error >= 0)
 		{
@@ -75,10 +75,11 @@ void	line_ver(void *mlx, void *mlx_win, t_line line)
 	}
 }
 
-void	draw_line(void *mlx, void *mlx_win, t_2Dpoint p1, t_2Dpoint p2)
+void	draw_line(void *mlx, void *mlx_win, t_2Dpoint p1, t_2Dpoint p2, int color)
 {
 	t_line	line;
 
+	line.color = color;
 	line.p1 = p1;
 	line.p2 = p2;
 	line.dx = p2.x - p1.x;

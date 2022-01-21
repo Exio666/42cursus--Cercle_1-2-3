@@ -6,20 +6,27 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/17 15:53:14 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/01/20 13:06:44 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/01/21 14:44:52 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
+//x = (x - y) * cos(ANGLE);
+//y = (x + y) * sin(ANGLES) - z;
+
 t_2Dpoint	isometric_point(t_3Dpoint p3d)
 {
 	t_2Dpoint	p2d;
 
+	/*p2d.x = p3d.x;
+	p2d.y = p3d.y;*/
+	/*p2d.x = (int)(((float)p3d.x - (float)p3d.y) * cos(M_PI/4));
+	p2d.y = (int)(((float)p3d.x + (float)p3d.y) * sin(M_PI/4) - (float)p3d.z);*/
 	p2d.x = (int)((float)p3d.x * cos(0) + (float)p3d.y * cos((2 * M_PI) / 3)
-			+ (float)p3d.z * cos(-((2 * M_PI) / 3)));
-	p2d.y = (int)((float)p3d.x * sin(0) + (float)p3d.y * sin((2 * M_PI) / 3)
-			+ (float)p3d.z * sin(-((2 * M_PI) / 3)));
+            + (float)p3d.z * cos(-((2 * M_PI) / 3)));
+    p2d.y = (int)((float)p3d.x * sin(0) + (float)p3d.y * sin((2 * M_PI) / 3)
+            + (float)p3d.z * sin(-((2 * M_PI) / 3)));
 	return (p2d);
 }
 

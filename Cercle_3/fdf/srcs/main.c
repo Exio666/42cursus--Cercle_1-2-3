@@ -6,7 +6,7 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/07 13:25:54 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/01/20 14:10:41 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/01/21 13:33:33 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ int 	print_map(t_map	*map)
 {
 	int	i;
 	int	j;
+	int color;
 
 	j = 0;
 	convertor(map);
@@ -33,9 +34,15 @@ int 	print_map(t_map	*map)
 		while (i < map->len_line)
 		{
 			if (i < map->len_line - 1)
-				draw_line(map->mlx_ptr, map->mlx_win, map->map2d[j][i], map->map2d[j][i + 1]);
+			{
+				color = set_color(map->map3d[j][i], map->map3d[j][i + 1]);
+				draw_line(map->mlx_ptr, map->mlx_win, map->map2d[j][i], map->map2d[j][i + 1], color);
+			}
 			if (j < map->nb_line - 1)
-				draw_line(map->mlx_ptr, map->mlx_win, map->map2d[j][i], map->map2d[j + 1][i]);
+			{
+				color = set_color(map->map3d[j][i], map->map3d[j + 1][i]);
+				draw_line(map->mlx_ptr, map->mlx_win, map->map2d[j][i], map->map2d[j + 1][i], color);
+			}
 			i++;
 		}
 		j++;

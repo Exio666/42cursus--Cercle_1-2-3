@@ -6,13 +6,13 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/15 12:45:46 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/01/20 13:50:28 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/01/21 14:41:51 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-t_3Dpoint	set_3d_map(int x, int y, char *z)
+t_3Dpoint	set_3d_map(int y, int x, char *z)
 {
 	t_3Dpoint	p;
 

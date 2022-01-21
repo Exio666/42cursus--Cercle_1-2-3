@@ -6,7 +6,7 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/07 11:08:26 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/01/20 11:48:20 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/01/21 13:37:36 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,6 +102,7 @@ typedef struct s_line
 	int			dy;
 	int			inc_x;
 	int			inc_y;
+	int			color;
 }	t_line;
 
 typedef struct s_rot
@@ -126,7 +127,7 @@ int			ft_sign(int *a);
 void		const_line(void *mlx, void *mlx_win, t_line line);
 void		line_hor(void *mlx, void *mlx_win, t_line line);
 void		line_ver(void *mlx, void *mlx_win, t_line line);
-void		draw_line(void *mlx, void *mlx_win, t_2Dpoint p1, t_2Dpoint p2);
+void		draw_line(void *mlx, void *mlx_win, t_2Dpoint p1, t_2Dpoint p2, int color);
 
 /*
  *	end.c
@@ -139,6 +140,7 @@ int			free_map(t_3Dpoint **map);
  */
 
 int			encode_rgb(int red, int green, int blue);
+int			set_color(t_3Dpoint p1, t_3Dpoint p2);
 
 /*
  *	main.c
