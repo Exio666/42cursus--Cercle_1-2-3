@@ -6,7 +6,7 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/15 12:45:46 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/01/21 14:41:51 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/01/24 17:34:40 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ int	parse_map(int fd, t_map *map)
 			map->len_line = len_line(line);
 		map->map3d[j] = malloc(sizeof(t_3Dpoint) * (map->len_line + 1));
 		if (!map->map3d[j])
-			return (free_map(map->map3d));
+			return (free_map3d(map, j));
 		tab = ft_split(line, ' ');
 		free(line);
 		if (!tab)
@@ -120,7 +120,7 @@ int	parser(char *file, t_map *map)
 	if (close(fd) == -1 || error == 0)
 	{
 		if (map)
-			free_map(map->map3d);
+			free_map3d(map, map->nb_line);
 		return (0);
 	}
 	return (1);

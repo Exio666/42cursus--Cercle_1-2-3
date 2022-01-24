@@ -6,7 +6,7 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/18 17:06:23 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/01/19 15:56:29 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/01/24 17:26:17 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int	select_hook(int hook, t_map *map)
 {
 	if (hook == D_ESCAPE)
-		;
+		exit_prog(map, 0);
 	else if (hook == D_ROT_UPZ)
 		apply_rotate(map, ROTATION, 0, 0);
 	else if (hook == D_ROT_DOWNZ)
@@ -38,15 +38,16 @@ int	select_hook(int hook, t_map *map)
 		translat_horizontal(map, -TRANSLATION);
 	else
 		select_hook2(hook, map);
+	print_map(map);
 	return (0);
 }
 
 void	select_hook2(int hook, t_map *map)
 {
 	if (hook == D_UP_ZOOM)
-		up_zoom(map, V_ZOOM);
+		map->zoom += V_ZOOM;
 	else if (hook == D_DOWN_ZOOM)
-		down_zoom(map, V_ZOOM);
+		map->zoom -= V_ZOOM;
 	/*else if (hook == D_COLOR)
 		;
 	else if (hook == D_RESET)

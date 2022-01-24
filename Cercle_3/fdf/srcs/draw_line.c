@@ -6,11 +6,12 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/07 11:28:20 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/01/21 13:33:00 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/01/24 17:52:16 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
+
 
 int	ft_sign(int *a)
 {
@@ -75,7 +76,7 @@ void	line_ver(void *mlx, void *mlx_win, t_line line)
 	}
 }
 
-void	draw_line(void *mlx, void *mlx_win, t_2Dpoint p1, t_2Dpoint p2, int color)
+void	draw_line(t_map *map, t_2Dpoint p1, t_2Dpoint p2, int color)
 {
 	t_line	line;
 
@@ -87,13 +88,96 @@ void	draw_line(void *mlx, void *mlx_win, t_2Dpoint p1, t_2Dpoint p2, int color)
 	line.inc_x = ft_sign(&line.dx);
 	line.inc_y = ft_sign(&line.dy);
 	if (line.dy == 0 || line.dx == 0)
-		const_line(mlx, mlx_win, line);
+		const_line(map->mlx_ptr, map->mlx_win, line);
 	else if (line.dx >= line.dy)
-		line_hor(mlx, mlx_win, line);
+		line_hor(map->mlx_ptr, map->mlx_win, line);
 	else
-		line_ver(mlx, mlx_win, line);
+		line_ver(map->mlx_ptr, map->mlx_win, line);
 }
 
+/*
+int	ft_sign(int *a)
+{
+	if (*a > 0)
+		return (1);
+	else
+	{
+		*a = -(*a);
+		return (-1);
+	}
+}
+
+void	const_line(void *mlx, void *mlx_win, t_line line)
+{
+	while (line.p1.x != line.p2.x + line.inc_x && line.p1.y
+		!= line.p2.y + line.inc_y)
+	{
+		mlx_pixel_put(mlx, mlx_win, line.p1.x, line.p1.y,
+			line.color);
+		if (line.dy == 0)
+			line.p1.x += line.inc_x;
+		if (line.dx == 0)
+			line.p1.y += line.inc_y;
+	}
+}
+
+void	line_hor(void *mlx, void *mlx_win, t_line line)
+{
+	line.slope = 2 * line.dy;
+	line.error = -line.dx;
+	line.error_inc = -2 * line.dx;
+	while (line.p1.x != line.p2.x + line.inc_x)
+	{
+		mlx_pixel_put(mlx, mlx_win, line.p1.x, line.p1.y,
+			line.color);
+		line.error += line.slope;
+		if (line.error >= 0)
+		{
+			line.p1.y += line.inc_y;
+			line.error += line.error_inc;
+		}
+		line.p1.x += line.inc_x;
+	}
+}
+
+void	line_ver(void *mlx, void *mlx_win, t_line line)
+{
+	line.slope = 2 * line.dx;
+	line.error = -line.dy;
+	line.error_inc = -2 * line.dy;
+	while (line.p1.y != line.p2.y + line.inc_y)
+	{
+		mlx_pixel_put(mlx, mlx_win, line.p1.x, line.p1.y,
+			line.color);
+		line.error += line.slope;
+		if (line.error >= 0)
+		{
+			line.p1.x += line.inc_x;
+			line.error += line.error_inc;
+		}
+		line.p1.y += line.inc_y;
+	}
+}
+
+void	draw_line(t_map *map, t_2Dpoint p1, t_2Dpoint p2, int color)
+{
+	t_line	line;
+
+	line.color = color;
+	line.p1 = p1;
+	line.p2 = p2;
+	line.dx = p2.x - p1.x;
+	line.dy = p2.y - p1.y;
+	line.inc_x = ft_sign(&line.dx);
+	line.inc_y = ft_sign(&line.dy);
+	if (line.dy == 0 || line.dx == 0)
+		const_line(map->mlx_ptr, map->mlx_win, line);
+	else if (line.dx >= line.dy)
+		line_hor(map->mlx_ptr, map->mlx_win, line);
+	else
+		line_ver(map->mlx_ptr, map->mlx_win, line);
+}
+*/
 /* Code save*/
 /*
 void	draw_line(void *mlx, void *mlx_win, t_2Dpoint p1, t_2Dpoint p2)

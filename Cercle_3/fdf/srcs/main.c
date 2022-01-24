@@ -6,7 +6,7 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/07 13:25:54 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/01/21 13:33:33 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/01/24 17:47:16 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,8 @@ int 	print_map(t_map	*map)
 
 	j = 0;
 	convertor(map);
-	up_zoom(map, 20);
+	translat_horizontal(map, map->translation_x);
+	translat_vertical(map, map->translation_y);
 	while (j < map->nb_line)
 	{
 		i = 0;
@@ -36,12 +37,12 @@ int 	print_map(t_map	*map)
 			if (i < map->len_line - 1)
 			{
 				color = set_color(map->map3d[j][i], map->map3d[j][i + 1]);
-				draw_line(map->mlx_ptr, map->mlx_win, map->map2d[j][i], map->map2d[j][i + 1], color);
+				draw_line(map, map->map2d[j][i], map->map2d[j][i + 1], color);
 			}
 			if (j < map->nb_line - 1)
 			{
 				color = set_color(map->map3d[j][i], map->map3d[j + 1][i]);
-				draw_line(map->mlx_ptr, map->mlx_win, map->map2d[j][i], map->map2d[j + 1][i], color);
+				draw_line(map, map->map2d[j][i], map->map2d[j + 1][i], color);
 			}
 			i++;
 		}
@@ -55,18 +56,20 @@ int	main(int ac, char **av)
 {
 	t_map	map;
 
+	map.zoom = 20;
+	map.scaling = 7;
+	map.translation_x = 400;
+	map.translation_y = 400;
 	if (ac != 2)
 		return (0);
 	map.mlx_ptr = mlx_init();
 	parser(av[1], &map);
 	map.mlx_win = mlx_new_window(map.mlx_ptr, WEIGHT, HEIGHT, av[1]);
 	map.image = mlx_new_image(map.mlx_ptr, WEIGHT, HEIGHT);
+	malloc_map2d(&map);
 	print_map(&map);
 	mlx_key_hook(map.mlx_win, select_hook, &map);
 	mlx_loop(map.mlx_ptr);
-	mlx_destroy_window(map.mlx_ptr, map.mlx_win);
-	mlx_destroy_image(map.mlx_ptr,map.image);
-	mlx_destroy_display(map.mlx_ptr);
 }
 
 /*

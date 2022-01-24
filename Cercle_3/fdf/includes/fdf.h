@@ -6,7 +6,7 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/07 11:08:26 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/01/21 13:37:36 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/01/24 17:35:07 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,6 +89,9 @@ typedef struct s_map
 	int			nb_line;
 	int			zoom;
 	int			camera;
+	int 		scaling;
+	int 		translation_x;
+	int 		translation_y;
 }	t_map;
 
 typedef struct s_line
@@ -117,7 +120,8 @@ typedef struct s_rot
  */
 
 int			convertor(t_map *map);
-t_2Dpoint	isometric_point(t_3Dpoint p3d);
+t_2Dpoint	isometric_point(t_3Dpoint p3d, int zoom, int scaling);
+int			malloc_map2d(t_map *map);
 
 /*
  *	draw_line.c
@@ -127,13 +131,15 @@ int			ft_sign(int *a);
 void		const_line(void *mlx, void *mlx_win, t_line line);
 void		line_hor(void *mlx, void *mlx_win, t_line line);
 void		line_ver(void *mlx, void *mlx_win, t_line line);
-void		draw_line(void *mlx, void *mlx_win, t_2Dpoint p1, t_2Dpoint p2, int color);
+void		draw_line(t_map *map, t_2Dpoint p1, t_2Dpoint p2, int color);
 
 /*
  *	end.c
  */
 
-int			free_map(t_3Dpoint **map);
+int			free_map3d(t_map *map, int j);
+int			free_map2d(t_map *map, int j);
+void		exit_prog(t_map *map, int status);
 
 /*
  *	fdf_utils.c
@@ -146,6 +152,7 @@ int			set_color(t_3Dpoint p1, t_3Dpoint p2);
  *	main.c
  */
 
+int 	print_map(t_map	*map);
 void		start_fdf(t_map *map);
 
 /*
