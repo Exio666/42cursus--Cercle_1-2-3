@@ -6,7 +6,7 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/07 11:28:20 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/01/24 17:52:16 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/01/24 17:56:24 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,12 +24,12 @@ int	ft_sign(int *a)
 	}
 }
 
-void	const_line(void *mlx, void *mlx_win, t_line line)
+void	const_line(t_map *map, t_line line)
 {
 	while (line.p1.x != line.p2.x + line.inc_x && line.p1.y
 		!= line.p2.y + line.inc_y)
 	{
-		mlx_pixel_put(mlx, mlx_win, line.p1.x, line.p1.y,
+		mlx_pixel_put(map->mlx_ptr, map->mlx_win, line.p1.x, line.p1.y,
 			line.color);
 		if (line.dy == 0)
 			line.p1.x += line.inc_x;
@@ -38,14 +38,14 @@ void	const_line(void *mlx, void *mlx_win, t_line line)
 	}
 }
 
-void	line_hor(void *mlx, void *mlx_win, t_line line)
+void	line_hor(t_map *map, t_line line)
 {
 	line.slope = 2 * line.dy;
 	line.error = -line.dx;
 	line.error_inc = -2 * line.dx;
 	while (line.p1.x != line.p2.x + line.inc_x)
 	{
-		mlx_pixel_put(mlx, mlx_win, line.p1.x, line.p1.y,
+		mlx_pixel_put(map->mlx_ptr, map->mlx_win, line.p1.x, line.p1.y,
 			line.color);
 		line.error += line.slope;
 		if (line.error >= 0)
@@ -57,14 +57,14 @@ void	line_hor(void *mlx, void *mlx_win, t_line line)
 	}
 }
 
-void	line_ver(void *mlx, void *mlx_win, t_line line)
+void	line_ver(t_map *map, t_line line)
 {
 	line.slope = 2 * line.dx;
 	line.error = -line.dy;
 	line.error_inc = -2 * line.dy;
 	while (line.p1.y != line.p2.y + line.inc_y)
 	{
-		mlx_pixel_put(mlx, mlx_win, line.p1.x, line.p1.y,
+		mlx_pixel_put(map->mlx_ptr, map->mlx_win, line.p1.x, line.p1.y,
 			line.color);
 		line.error += line.slope;
 		if (line.error >= 0)
@@ -88,11 +88,11 @@ void	draw_line(t_map *map, t_2Dpoint p1, t_2Dpoint p2, int color)
 	line.inc_x = ft_sign(&line.dx);
 	line.inc_y = ft_sign(&line.dy);
 	if (line.dy == 0 || line.dx == 0)
-		const_line(map->mlx_ptr, map->mlx_win, line);
+		const_line(map, line);
 	else if (line.dx >= line.dy)
-		line_hor(map->mlx_ptr, map->mlx_win, line);
+		line_hor(map, line);
 	else
-		line_ver(map->mlx_ptr, map->mlx_win, line);
+		line_ver(map, line);
 }
 
 /*

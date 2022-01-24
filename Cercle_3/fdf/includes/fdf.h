@@ -6,7 +6,7 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/07 11:08:26 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/01/24 17:35:07 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/01/24 17:56:56 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,9 +128,9 @@ int			malloc_map2d(t_map *map);
  */
 
 int			ft_sign(int *a);
-void		const_line(void *mlx, void *mlx_win, t_line line);
-void		line_hor(void *mlx, void *mlx_win, t_line line);
-void		line_ver(void *mlx, void *mlx_win, t_line line);
+void		const_line(t_map *map, t_line line);
+void		line_hor(t_map *map, t_line line);
+void		line_ver(t_map *map, t_line line);
 void		draw_line(t_map *map, t_2Dpoint p1, t_2Dpoint p2, int color);
 
 /*
