@@ -6,7 +6,7 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/07 11:28:20 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/01/24 17:56:24 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/01/24 18:14:55 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void	line_hor(t_map *map, t_line line)
 	line.error_inc = -2 * line.dx;
 	while (line.p1.x != line.p2.x + line.inc_x)
 	{
-		mlx_pixel_put(map->mlx_ptr, map->mlx_win, line.p1.x, line.p1.y,
+		mlx_image(map->mlx_ptr, map->mlx_win, line.p1.x, line.p1.y,
 			line.color);
 		line.error += line.slope;
 		if (line.error >= 0)

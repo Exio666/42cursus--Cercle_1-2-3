@@ -6,7 +6,7 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/07 13:25:54 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/01/24 17:47:16 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/01/24 18:13:07 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ int 	print_map(t_map	*map)
 		}
 		j++;
 	}
+	mlx_put_image_to_window(map->mlx_ptr, map->mlx_win, map->image, 0, 0);
 	return (1);
 }
 
