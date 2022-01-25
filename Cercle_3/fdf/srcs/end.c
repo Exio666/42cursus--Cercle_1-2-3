@@ -6,7 +6,7 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/17 15:42:53 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/01/24 17:33:41 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/01/25 15:53:24 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ void	exit_prog(t_map *map, int status)
 	if (status == 0 || status == 2)
 		free_map2d(map, map->nb_line);
 	mlx_destroy_window(map->mlx_ptr, map->mlx_win);
-	mlx_destroy_image(map->mlx_ptr,map->image);
+	mlx_destroy_image(map->mlx_ptr, map->image.img);
 	mlx_destroy_display(map->mlx_ptr);
 	free(map->mlx_ptr);
 	exit(1);

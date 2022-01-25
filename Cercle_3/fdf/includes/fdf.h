@@ -6,7 +6,7 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/07 11:08:26 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/01/24 17:56:56 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/01/25 17:24:53 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,9 @@
  */
 
 # define HEIGHT 1200
-# define WEIGHT 2000
+# define WIDTH 2000
 # define ROTATION 1
-# define TRANSLATION 1
+# define TRANSLATION 10
 # define V_ZOOM 1
 
 /*
@@ -57,6 +57,14 @@
  *	Structure
  */
 
+typedef struct	s_data {
+	void	*img;
+	char	*addr;
+	int		bits_per_pixel;
+	int		line_length;
+	int		endian;
+}	t_data;
+
 typedef struct s_2Dpoint
 {
 	int	x;
@@ -79,7 +87,7 @@ typedef struct s_angle
 
 typedef struct s_map
 {
-	void		*image;
+	t_data		image;
 	t_angle		*angle;
 	void		*mlx_ptr;
 	void		*mlx_win;
@@ -115,6 +123,15 @@ typedef struct s_rot
 	int	rot_z;
 }	t_rot;
 
+typedef struct s_color
+{
+	int	vaiation;
+	int rapport;
+	int start;
+	int max_z;
+	int min_z;
+}	t_rot;
+
 /*
  *	convertor.c
  */
@@ -127,11 +144,11 @@ int			malloc_map2d(t_map *map);
  *	draw_line.c
  */
 
-int			ft_sign(int *a);
-void		const_line(t_map *map, t_line line);
-void		line_hor(t_map *map, t_line line);
-void		line_ver(t_map *map, t_line line);
-void		draw_line(t_map *map, t_2Dpoint p1, t_2Dpoint p2, int color);
+int		ft_sign(int *a);
+void	const_line(t_map *map, t_line line);
+void	line_hor(t_map *map, t_line line);
+void	line_ver(t_map *map, t_line line);
+void	draw_line(t_map *map, t_2Dpoint p1, t_2Dpoint p2, int color);
 
 /*
  *	end.c
@@ -145,6 +162,8 @@ void		exit_prog(t_map *map, int status);
  *	fdf_utils.c
  */
 
+void		reset_black(t_data *image);
+void		pixel_put_image(t_data *image, int x, int y, int color);
 int			encode_rgb(int red, int green, int blue);
 int			set_color(t_3Dpoint p1, t_3Dpoint p2);
 
@@ -152,7 +171,7 @@ int			set_color(t_3Dpoint p1, t_3Dpoint p2);
  *	main.c
  */
 
-int 	print_map(t_map	*map);
+int 		print_map(t_map	*map);
 void		start_fdf(t_map *map);
 
 /*
@@ -195,6 +214,7 @@ int			translat_vertical(t_map *map, int tran);
  */
 
 void print_point_3d(t_3Dpoint p);
+
 
 void print_point_2d(t_2Dpoint p);
 

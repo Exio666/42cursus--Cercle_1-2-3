@@ -6,7 +6,7 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/15 13:47:21 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/01/24 11:42:14 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/01/25 17:18:04 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,39 +15,39 @@
 //z
 int	rotate_alpha(t_3Dpoint *point, int rotation)
 {
-	int	xtmp;
-	int	ytmp;
+	float	xtmp;
+	float	ytmp;
 
 	xtmp = point->x;
 	ytmp = point->y;
-	point->x = xtmp * cos(rotation) - ytmp * sin(rotation);
-	point->y = xtmp * sin(rotation) + ytmp * cos(rotation);
+	point->x = xtmp * cos(rotation) - ytmp * sin(rotation)+ 0.5;
+	point->y = xtmp * sin(rotation) + ytmp * cos(rotation)+ 0.5;
 	return (1);
 }
 
 //y
 int	rotate_beta(t_3Dpoint *point, int rotation)
 {
-	int	xtmp;
-	int	ztmp;
+	float	xtmp;
+	float	ztmp;
 
 	xtmp = point->x;
 	ztmp = point->z;
-	point->x = xtmp * cos(rotation) + ztmp * sin(rotation);
-	point->z = -xtmp * sin(rotation) + ztmp * cos(rotation);
+	point->x = xtmp * cos(rotation) + ztmp * sin(rotation)+ 0.5;
+	point->z = -xtmp * sin(rotation) + ztmp * cos(rotation)+ 0.5;
 	return (1);
 }
 
 //x
 int	rotate_gamma(t_3Dpoint *point, int rotation)
 {
-	int	ytmp;
-	int	ztmp;
+	float	ytmp;
+	float	ztmp;
 
 	ytmp = point->y;
 	ztmp = point->z;
-	point->y = ytmp * cos(rotation) - ztmp * sin(rotation);
-	point->z = ytmp * sin(rotation) + ztmp * cos(rotation);
+	point->y = ytmp * cos(rotation) - ztmp * sin(rotation) + 0.5;
+	point->z = ytmp * sin(rotation) + ztmp * cos(rotation) + 0.5 ;
 	return (1);
 }
 

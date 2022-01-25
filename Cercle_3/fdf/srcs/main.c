@@ -6,26 +6,30 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/07 13:25:54 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/01/24 18:13:07 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/01/25 16:50:03 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 #include <stdio.h>
 
-// TODO initialiser->parser->rotation_de_base->convertir_en_2d->tracer_la_map->attendre des instruction->remmtre_noir	->mollete->zoom
-//																														->esc->exit_poprement
-//																														->fleche->bouger
-//																														->wasd->rotation
-//																														->c->couleur
+// TODO initialiser->parser->rotation_de_base->convertir_en_2d->tracer_la_map->
+//		attendre des instruction->remmtre_noir			
+//														->mollete->zoom
+//														->esc->exit_poprement
+//														->fleche->bouger
+//														->wasd->rotation
+//														->c->couleur
 // TODO modif draw line pour image
-int 	print_map(t_map	*map)
+
+int	print_map(t_map	*map)
 {
 	int	i;
 	int	j;
 	int color;
 
 	j = 0;
+	reset_black(&map->image);
 	convertor(map);
 	translat_horizontal(map, map->translation_x);
 	translat_vertical(map, map->translation_y);
@@ -48,7 +52,7 @@ int 	print_map(t_map	*map)
 		}
 		j++;
 	}
-	mlx_put_image_to_window(map->mlx_ptr, map->mlx_win, map->image, 0, 0);
+	mlx_put_image_to_window(map->mlx_ptr, map->mlx_win, map->image.img, 0, 0);
 	return (1);
 }
 
@@ -65,14 +69,15 @@ int	main(int ac, char **av)
 		return (0);
 	map.mlx_ptr = mlx_init();
 	parser(av[1], &map);
-	map.mlx_win = mlx_new_window(map.mlx_ptr, WEIGHT, HEIGHT, av[1]);
-	map.image = mlx_new_image(map.mlx_ptr, WEIGHT, HEIGHT);
+	map.mlx_win = mlx_new_window(map.mlx_ptr, WIDTH, HEIGHT, av[1]);
+	map.image.img = mlx_new_image(map.mlx_ptr, WIDTH, HEIGHT);
+	map.image.addr = mlx_get_data_addr(map.image.img, &map.image.bits_per_pixel,
+			&map.image.line_length, &map.image.endian);
 	malloc_map2d(&map);
 	print_map(&map);
 	mlx_key_hook(map.mlx_win, select_hook, &map);
 	mlx_loop(map.mlx_ptr);
 }
-
 /*
 int main(int ac, char **av)
 {
@@ -89,11 +94,11 @@ int main(int ac, char **av)
 		i = 0;
 		while (i < map.len_line)
 		{
-			printf("i: %i j: %i\n", i,j);
+			//printf("i: %i j: %i", i,j);
 			print_point_3d(map.map3d[j][i]);
 			i++;
 		}
-		printf("You suck to\n");
+		printf("\n");
 		j++;
 	}
 	
@@ -134,7 +139,7 @@ int	main(int ac, char **av)
 	parser(av[1], map);
 	map->mlx_ptr = mlx_init();
 	parser(av[1], map);
-	map->mlx_win = mlx_new_window (map->mlx_ptr, WEIGHT, HEIGHT, "Fdf 42");
+	map->mlx_win = mlx_new_window (map->mlx_ptr, WIDTH, HEIGHT, "Fdf 42");
 	
 	
 	mlx_destroy_window(map->mlx_ptr, map->mlx_win);
@@ -177,7 +182,7 @@ int	main(void)
 	point_9.x = 20;
 	point_9.y = 200;
 	mlx_ptr = mlx_init();
-	mlx_win = mlx_new_window (mlx_ptr, WEIGHT, HEIGHT, "Le titre");
+	mlx_win = mlx_new_window (mlx_ptr, WIDTH, HEIGHT, "Le titre");
 	draw_line(mlx_ptr, mlx_win, point_1, point_2);
 	draw_line(mlx_ptr, mlx_win, point_1, point_1);
 	draw_line(mlx_ptr, mlx_win, point_2, point_3);

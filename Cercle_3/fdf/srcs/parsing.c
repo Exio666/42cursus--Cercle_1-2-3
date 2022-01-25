@@ -6,7 +6,7 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/15 12:45:46 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/01/24 17:34:40 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/01/25 14:15:04 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,19 +26,24 @@ int	len_line(char *str)
 {
 	int		i;
 	int		counter;
-	char	**tab;
 
 	i = 0;
 	counter = 0;
-	tab = ft_split(str, ' ');
-	while (tab[i])
+	while (str[i])
 	{
-		if (ft_isdigit(tab[i][0]) == 1)
+		if (ft_isdigit(str[i]) == 1 || str[i] == '-')
 			counter++;
-		free(tab[i]);
-		i++;
+		while ((ft_isdigit(str[i]) == 1 || str[i] == '-' ) && str[i])
+			i++;
+		while (str[i] != ' ' && str[i])
+			i++;
+		if (str[i] == ' ')
+			i++;
+		if (ft_isdigit(str[i]) == 1 || str[i] == '-')
+			counter++;
+		while ((ft_isdigit(str[i]) || str[i] == '-') == 1 && str[i])
+			i++;
 	}
-	free(tab);
 	return (counter);
 }
 
@@ -46,8 +51,8 @@ int	parse_map(int fd, t_map *map)
 {
 	int		i;
 	int		j;
+	int		k;
 	char	*line;
-	char	**tab;
 
 	j = 0;
 	map->map3d = malloc(sizeof(t_3Dpoint *) * (map->nb_line + 1));
@@ -56,24 +61,35 @@ int	parse_map(int fd, t_map *map)
 	while (j != map->nb_line)
 	{
 		i = 0;
+		k = 0;
 		line = get_next_line(fd);
 		if (j == 0)
 			map->len_line = len_line(line);
 		map->map3d[j] = malloc(sizeof(t_3Dpoint) * (map->len_line + 1));
 		if (!map->map3d[j])
 			return (free_map3d(map, j));
-		tab = ft_split(line, ' ');
-		free(line);
-		if (!tab)
-			return (0);
-		while (tab[i])
+		while (line[i])
 		{
-			map->map3d[j][i] = set_3d_map(j, i, tab[i]);
-			free(tab[i]);
-			i++;
+			if (ft_isdigit(line[i]) == 1 || line[i] == '-')
+			{
+				map->map3d[j][k] = set_3d_map(j, k, &line[i]);
+				k++;
+			}
+			while ((ft_isdigit(line[i]) == 1 || line[i] == '-' ) && line[i])
+				i++;
+			while (line[i] != ' ' && line[i])
+				i++;
+			if (line[i] == ' ')
+				i++;
+			if (ft_isdigit(line[i]) == 1 || line[i] == '-')
+			{
+				map->map3d[j][k] = set_3d_map(j, k, &line[i]);
+				k++;
+			}
+			while ((ft_isdigit(line[i]) || line[i] == '-') == 1 && line[i])
+				i++;
 		}
-		
-		free(tab);
+		free(line);
 		j++;
 	}
 	return (1);
