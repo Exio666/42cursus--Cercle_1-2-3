@@ -6,7 +6,7 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/07 11:08:26 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/01/25 17:24:53 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/01/26 14:08:06 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@
 
 # define HEIGHT 1200
 # define WIDTH 2000
-# define ROTATION 1
+# define ROTATION 0.01
 # define TRANSLATION 10
 # define V_ZOOM 1
 
@@ -57,7 +57,8 @@
  *	Structure
  */
 
-typedef struct	s_data {
+typedef struct s_data
+{
 	void	*img;
 	char	*addr;
 	int		bits_per_pixel;
@@ -87,6 +88,9 @@ typedef struct s_angle
 
 typedef struct s_map
 {
+	float		rot_z;
+	float		rot_y;
+	float		rot_x;
 	t_data		image;
 	t_angle		*angle;
 	void		*mlx_ptr;
@@ -97,9 +101,9 @@ typedef struct s_map
 	int			nb_line;
 	int			zoom;
 	int			camera;
-	int 		scaling;
-	int 		translation_x;
-	int 		translation_y;
+	int			scaling;
+	int			translation_x;
+	int			translation_y;
 }	t_map;
 
 typedef struct s_line
@@ -126,29 +130,29 @@ typedef struct s_rot
 typedef struct s_color
 {
 	int	vaiation;
-	int rapport;
-	int start;
-	int max_z;
-	int min_z;
-}	t_rot;
+	int	rapport;
+	int	start;
+	int	max_z;
+	int	min_z;
+}	t_color;
 
 /*
  *	convertor.c
  */
 
 int			convertor(t_map *map);
-t_2Dpoint	isometric_point(t_3Dpoint p3d, int zoom, int scaling);
+t_2Dpoint	isometric_point(t_3Dpoint p3d, int zoom, int scaling, t_map *map);
 int			malloc_map2d(t_map *map);
 
 /*
  *	draw_line.c
  */
 
-int		ft_sign(int *a);
-void	const_line(t_map *map, t_line line);
-void	line_hor(t_map *map, t_line line);
-void	line_ver(t_map *map, t_line line);
-void	draw_line(t_map *map, t_2Dpoint p1, t_2Dpoint p2, int color);
+int			ft_sign(int *a);
+void		const_line(t_map *map, t_line line);
+void		line_hor(t_map *map, t_line line);
+void		line_ver(t_map *map, t_line line);
+void		draw_line(t_map *map, t_2Dpoint p1, t_2Dpoint p2, int color);
 
 /*
  *	end.c
@@ -171,7 +175,7 @@ int			set_color(t_3Dpoint p1, t_3Dpoint p2);
  *	main.c
  */
 
-int 		print_map(t_map	*map);
+int			print_map(t_map	*map);
 void		start_fdf(t_map *map);
 
 /*
@@ -188,10 +192,10 @@ int			parser(char *file, t_map *map);
  *	rotate.c
  */
 
-int			rotate_alpha(t_3Dpoint *point, int rotation);
-int			rotate_beta(t_3Dpoint *point, int rotation);
-int			rotate_gamma(t_3Dpoint *point, int rotation);
-void		apply_rotate(t_map *map, int z, int y, int x);
+int			rotate_alpha(t_3Dpoint *point, float rotation);
+int			rotate_beta(t_3Dpoint *point, float rotation);
+int			rotate_gamma(t_3Dpoint *point, float rotation);
+void		apply_rotate(t_3Dpoint *p3d, float z, float y, float x);
 
 /*
  *	select_hook.c
@@ -210,12 +214,11 @@ int			translat_horizontal(t_map *map, int tran);
 int			translat_vertical(t_map *map, int tran);
 
 /*
- *
+ *	init_print.c
  */
 
-void print_point_3d(t_3Dpoint p);
-
-
-void print_point_2d(t_2Dpoint p);
+int			calcul_zoom_hor(t_map *map);
+int			calcul_zoom_ver(t_map *map);
+int			intital_zoom(t_map *map);
 
 #endif

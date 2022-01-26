@@ -6,14 +6,14 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/15 13:47:21 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/01/25 17:18:04 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/01/26 13:09:02 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
 //z
-int	rotate_alpha(t_3Dpoint *point, int rotation)
+int	rotate_alpha(t_3Dpoint *point, float rotation)
 {
 	float	xtmp;
 	float	ytmp;
@@ -26,7 +26,7 @@ int	rotate_alpha(t_3Dpoint *point, int rotation)
 }
 
 //y
-int	rotate_beta(t_3Dpoint *point, int rotation)
+int	rotate_beta(t_3Dpoint *point, float rotation)
 {
 	float	xtmp;
 	float	ztmp;
@@ -39,7 +39,7 @@ int	rotate_beta(t_3Dpoint *point, int rotation)
 }
 
 //x
-int	rotate_gamma(t_3Dpoint *point, int rotation)
+int	rotate_gamma(t_3Dpoint *point, float rotation)
 {
 	float	ytmp;
 	float	ztmp;
@@ -51,22 +51,9 @@ int	rotate_gamma(t_3Dpoint *point, int rotation)
 	return (1);
 }
 
-void	apply_rotate(t_map *map, int z, int y, int x)
+void	apply_rotate(t_3Dpoint *p3d, float z, float y, float x)
 {
-	int	i;
-	int	j;
-
-	j = 0;
-	while (j < map->nb_line)
-	{
-		i = 0;
-		while (i < map->len_line)
-		{
-			rotate_alpha(&map->map3d[j][i], z);
-			rotate_beta(&map->map3d[j][i], y);
-			rotate_gamma(&map->map3d[j][i], x);
-			i++;
-		}
-		j++;
-	}
+	rotate_alpha(p3d, z);
+	rotate_beta(p3d, y);
+	rotate_gamma(p3d, x);
 }

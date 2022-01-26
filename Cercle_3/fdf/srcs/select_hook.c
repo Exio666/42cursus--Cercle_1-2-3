@@ -6,7 +6,7 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/18 17:06:23 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/01/25 16:52:01 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/01/26 13:14:52 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,17 +17,17 @@ int	select_hook(int hook, t_map *map)
 	if (hook == D_ESCAPE)
 		exit_prog(map, 0);
 	else if (hook == D_ROT_UPZ)
-		apply_rotate(map, ROTATION, 0, 0);
+		map->rot_z += ROTATION;
 	else if (hook == D_ROT_DOWNZ)
-		apply_rotate(map, -ROTATION, 0, 0);
+		map->rot_z -= ROTATION;
 	else if (hook == D_ROT_UPX)
-		apply_rotate(map, 0, 0, ROTATION);
+		map->rot_x += ROTATION;
 	else if (hook == D_ROT_DOWNX)
-		apply_rotate(map, 0, 0, -ROTATION);
+		map->rot_x -= ROTATION;
 	else if (hook == D_ROT_UPY)
-		apply_rotate(map, 0, ROTATION, 0);
+		map->rot_y += ROTATION;
 	else if (hook == D_ROT_DOWNY)
-		apply_rotate(map, 0, -ROTATION, 0);
+		map->rot_y -= ROTATION;
 	else if (hook == D_TRANS_UP)
 		map->translation_y -= TRANSLATION;
 	else if (hook == D_TRANS_DOWN)
