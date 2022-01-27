@@ -6,7 +6,7 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/18 17:06:23 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/01/26 13:14:52 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/01/27 13:07:43 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,6 @@ int	select_hook(int hook, t_map *map)
 		map->translation_y -= TRANSLATION;
 	else if (hook == D_TRANS_DOWN)
 		map->translation_y += TRANSLATION;
-	else if (hook == D_TRANS_LEFT)
-		map->translation_x -= TRANSLATION;
-	else if (hook == D_TRANS_RIGHT)
-		map->translation_x += TRANSLATION;
 	else
 		select_hook2(hook, map);
 	print_map(map);
@@ -44,16 +40,18 @@ int	select_hook(int hook, t_map *map)
 
 void	select_hook2(int hook, t_map *map)
 {
-	if (hook == D_UP_ZOOM)
+	if (hook == D_TRANS_LEFT)
+		map->translation_x -= TRANSLATION;
+	else if (hook == D_TRANS_RIGHT)
+		map->translation_x += TRANSLATION;
+	else if (hook == D_UP_ZOOM)
 		map->zoom += V_ZOOM;
 	else if (hook == D_DOWN_ZOOM)
 		map->zoom -= V_ZOOM;
 	else if (hook == D_COLOR)
 		map->zoom -= V_ZOOM;
 	else if (hook == D_RESET)
-		map->zoom -= V_ZOOM;
-	else if (hook == D_ISOMETRIC)
-		map->zoom -= V_ZOOM;
-	else if (hook == D_PARALLEL)
-		map->zoom -= V_ZOOM;
+		reset_map(map);
+	else if (hook == D_PROJECTION)
+		map->projection += 1;
 }

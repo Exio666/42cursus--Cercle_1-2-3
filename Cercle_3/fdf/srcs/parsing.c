@@ -6,20 +6,24 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/15 12:45:46 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/01/25 14:15:04 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/01/27 15:03:46 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-t_3Dpoint	set_3d_map(int y, int x, char *z)
+void	set_3d_map(int j, int k, char *z, t_map *map)
 {
-	t_3Dpoint	p;
+	int	tmpz;
 
-	p.x = x;
-	p.y = y;
-	p.z = ft_atoi(z);
-	return (p);
+	map->map3d[j][k].x = j;
+	map->map3d[j][k].y = k;
+	tmpz = ft_atoi(z);
+	map->map3d[j][k].z = tmpz;
+	if (map->max_z < tmpz)
+		map->max_z = tmpz;
+	if (map->min_z > tmpz)
+		map->min_z = tmpz;
 }
 
 int	len_line(char *str)
@@ -72,7 +76,7 @@ int	parse_map(int fd, t_map *map)
 		{
 			if (ft_isdigit(line[i]) == 1 || line[i] == '-')
 			{
-				map->map3d[j][k] = set_3d_map(j, k, &line[i]);
+				set_3d_map(j, k, &line[i], map);
 				k++;
 			}
 			while ((ft_isdigit(line[i]) == 1 || line[i] == '-' ) && line[i])
@@ -83,7 +87,7 @@ int	parse_map(int fd, t_map *map)
 				i++;
 			if (ft_isdigit(line[i]) == 1 || line[i] == '-')
 			{
-				map->map3d[j][k] = set_3d_map(j, k, &line[i]);
+				set_3d_map(j, k, &line[i], map);
 				k++;
 			}
 			while ((ft_isdigit(line[i]) || line[i] == '-') == 1 && line[i])
@@ -100,19 +104,32 @@ int	counter_line(int fd, t_map *map)
 	char	str[1001];
 	int		i;
 	int		ret;
+	int		first;
 
 	ret = 1;
 	map->nb_line = 0;
+	first = 0;
 	while (ret != 0)
 	{
 		i = 0;
 		ret = read(fd, str, 1000);
-		str[ret] = '\0';
-		while (str[i])
+		if (ret < 0)
+			exit_prog(map, 5);
+		else
 		{
-			if (str[i] == '\n')
-				map->nb_line++;
-			i++;
+			str[ret] = '\0';
+			if (first = 0)
+			{
+				first = 1;
+				map->min_z = ft_atoi(str);
+				map->max_z = ft_atoi(str);
+			}
+			while (str[i])
+			{
+				if (str[i] == '\n')
+					map->nb_line++;
+				i++;
+			}
 		}
 	}
 	return (1);
@@ -124,20 +141,20 @@ int	parser(char *file, t_map *map)
 	int	error;
 
 	fd = open(file, O_RDONLY);
-	if (fd == -1)
+	if (fd < 0)
 		return (0);
 	error = counter_line(fd, map);
 	if (close(fd) == -1 || error == 0)
 		return (0);
 	fd = open(file, O_RDONLY);
-	if (fd == -1)
+	if (fd < 0)
 		return (0);
 	error = parse_map(fd, map);
 	if (close(fd) == -1 || error == 0)
 	{
-		if (map)
+		if (map->map3d)
 			free_map3d(map, map->nb_line);
-		return (0);
+		exit(1);
 	}
 	return (1);
 }

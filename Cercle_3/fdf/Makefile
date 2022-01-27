@@ -6,7 +6,7 @@
 #    By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/07 11:02:27 by bsavinel          #+#    #+#              #
-#    Updated: 2022/01/26 14:22:39 by bsavinel         ###   ########.fr        #
+#    Updated: 2022/01/27 13:24:34 by bsavinel         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,7 @@ SRCS =	srcs/convertor.c		\
 		srcs/rotate.c			\
 		srcs/select_hook.c		\
 		srcs/translate_zoom.c	\
-		srcs/init_zoom.c
+		srcs/init_zoom_trans.c
 
 OBJS = $(SRCS:.c=.o)
 

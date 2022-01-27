@@ -6,7 +6,7 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/07 11:08:26 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/01/26 14:08:06 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/01/27 16:09:16 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,8 +50,7 @@
 # define D_ESCAPE 65307
 # define D_COLOR 99
 # define D_RESET 114
-# define D_ISOMETRIC 105
-# define D_PARALLEL 112
+# define D_PROJECTION 112
 
 /*
  *	Structure
@@ -102,8 +101,15 @@ typedef struct s_map
 	int			zoom;
 	int			camera;
 	int			scaling;
+	int			first;
 	int			translation_x;
 	int			translation_y;
+	int			projection;
+	int			max_z;
+	int			min_z;
+	float		rapport_color;
+	float		rapport_pixel;
+	float		rest;
 }	t_map;
 
 typedef struct s_line
@@ -127,14 +133,6 @@ typedef struct s_rot
 	int	rot_z;
 }	t_rot;
 
-typedef struct s_color
-{
-	int	vaiation;
-	int	rapport;
-	int	start;
-	int	max_z;
-	int	min_z;
-}	t_color;
 
 /*
  *	convertor.c
@@ -177,12 +175,13 @@ int			set_color(t_3Dpoint p1, t_3Dpoint p2);
 
 int			print_map(t_map	*map);
 void		start_fdf(t_map *map);
+void		reset_map(t_map *map);
 
 /*
  *	parsing.c
  */
 
-t_3Dpoint	set_3D_map(int x, int y, char *z);
+void		set_3D_map(int x, int y, char *z);
 int			len_line(char *str);
 int			parse_map(int fd, t_map *map);
 int			counter_line(int fd, t_map *map);
@@ -214,11 +213,12 @@ int			translat_horizontal(t_map *map, int tran);
 int			translat_vertical(t_map *map, int tran);
 
 /*
- *	init_print.c
+ *	init_zoom_trans.c
  */
 
 int			calcul_zoom_hor(t_map *map);
 int			calcul_zoom_ver(t_map *map);
 int			intital_zoom(t_map *map);
+void		init_translat(t_map *map);
 
 #endif

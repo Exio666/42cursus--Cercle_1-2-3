@@ -6,7 +6,7 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/12 14:08:57 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/01/26 15:01:34 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/01/27 14:49:36 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	encode_rgb(int red, int green, int blue)
 
 int	set_color(t_3Dpoint p1, t_3Dpoint p2)
 {
-	if (p1.z == 0 && p2.z == 0)
+	if (p1.z == p2.z)
 		return (encode_rgb(255, 255, 255));
 	else
 		return (encode_rgb(255, 0, 0));
