@@ -6,7 +6,7 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/15 12:45:46 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/01/27 15:03:46 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/01/28 11:47:17 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@ void	set_3d_map(int j, int k, char *z, t_map *map)
 {
 	int	tmpz;
 
-	map->map3d[j][k].x = j;
-	map->map3d[j][k].y = k;
+	map->map3d[j][k].x = k;
+	map->map3d[j][k].y = j;
 	tmpz = ft_atoi(z);
 	map->map3d[j][k].z = tmpz;
 	if (map->max_z < tmpz)
@@ -118,7 +118,7 @@ int	counter_line(int fd, t_map *map)
 		else
 		{
 			str[ret] = '\0';
-			if (first = 0)
+			if (first == 0)
 			{
 				first = 1;
 				map->min_z = ft_atoi(str);

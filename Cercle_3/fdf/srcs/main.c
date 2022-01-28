@@ -6,7 +6,7 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/07 13:25:54 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/01/27 14:52:57 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/01/28 13:22:03 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,12 +39,12 @@ void	draw_map(t_map *map)
 		{
 			if (i < map->len_line - 1)
 			{
-				color = set_color(map->map3d[j][i], map->map3d[j][i + 1]);
+				color = set_color2(map->map3d[j][i], map->map3d[j][i + 1]);
 				draw_line(map, map->map2d[j][i], map->map2d[j][i + 1], color);
 			}
 			if (j < map->nb_line - 1)
 			{
-				color = set_color(map->map3d[j][i], map->map3d[j + 1][i]);
+				color = set_color2(map->map3d[j][i], map->map3d[j + 1][i]);
 				draw_line(map, map->map2d[j][i], map->map2d[j + 1][i], color);
 			}
 			i++;
@@ -83,6 +83,7 @@ int	main(int ac, char **av)
 	reset_map(&map);
 	if (parser(av[1], &map) == 0)
 		exit_prog(&map, 5);
+	set_color(&map);
 	malloc_map2d(&map);
 	map.mlx_ptr = mlx_init();
 	map.mlx_win = mlx_new_window(map.mlx_ptr, WIDTH, HEIGHT, av[1]);

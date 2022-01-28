@@ -6,7 +6,7 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/07 11:08:26 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/01/27 16:09:16 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/01/28 13:19:47 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -167,7 +167,7 @@ void		exit_prog(t_map *map, int status);
 void		reset_black(t_data *image);
 void		pixel_put_image(t_data *image, int x, int y, int color);
 int			encode_rgb(int red, int green, int blue);
-int			set_color(t_3Dpoint p1, t_3Dpoint p2);
+int			set_color2(t_3Dpoint p1, t_3Dpoint p2);
 
 /*
  *	main.c
@@ -220,5 +220,14 @@ int			calcul_zoom_hor(t_map *map);
 int			calcul_zoom_ver(t_map *map);
 int			intital_zoom(t_map *map);
 void		init_translat(t_map *map);
+
+/*
+ *	color.c
+ */
+
+void		set_color(t_map *map);
+int			color_z(t_map *map, int z);
+void		rapport(t_map *map, int z_start, int z_end, int nb_pixel);
+int			up_color(t_map *map);
 
 #endif
