@@ -6,14 +6,11 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/17 15:53:14 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/01/27 13:55:55 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/01/28 15:39:06 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
-
-//x = (x - y) * cos(ANGLE);
-//y = (x + y) * sin(ANGLES) - z;
 
 int	malloc_map2d(t_map *map)
 {

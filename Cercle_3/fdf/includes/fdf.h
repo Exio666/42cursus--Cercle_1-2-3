@@ -6,7 +6,7 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/07 11:08:26 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/01/28 13:19:47 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/01/28 17:21:41 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,8 @@
 # define HEIGHT 1200
 # define WIDTH 2000
 # define ROTATION 0.01
-# define TRANSLATION 10
-# define V_ZOOM 1
+# define TRANSLATION 130
+# define V_ZOOM 2
 
 /*
  *	Define touche
@@ -108,7 +108,6 @@ typedef struct s_map
 	int			max_z;
 	int			min_z;
 	float		rapport_color;
-	float		rapport_pixel;
 	float		rest;
 }	t_map;
 
@@ -123,7 +122,9 @@ typedef struct s_line
 	int			dy;
 	int			inc_x;
 	int			inc_y;
-	int			color;
+	float		color;
+	float		increment;
+	float		rest;
 }	t_line;
 
 typedef struct s_rot
@@ -133,6 +134,12 @@ typedef struct s_rot
 	int	rot_z;
 }	t_rot;
 
+typedef struct s_color
+{
+	int	color_start;
+	int	p1_z;
+	int	p2_z;
+}	t_color;
 
 /*
  *	convertor.c
@@ -147,10 +154,10 @@ int			malloc_map2d(t_map *map);
  */
 
 int			ft_sign(int *a);
-void		const_line(t_map *map, t_line line);
-void		line_hor(t_map *map, t_line line);
-void		line_ver(t_map *map, t_line line);
-void		draw_line(t_map *map, t_2Dpoint p1, t_2Dpoint p2, int color);
+void		const_line(t_map *map, t_line line, t_color color);
+void		line_hor(t_map *map, t_line line, t_color color);
+void		line_ver(t_map *map, t_line line, t_color color);
+void		draw_line(t_map *map, t_2Dpoint p1, t_2Dpoint p2, t_color color);
 
 /*
  *	end.c
@@ -227,7 +234,9 @@ void		init_translat(t_map *map);
 
 void		set_color(t_map *map);
 int			color_z(t_map *map, int z);
-void		rapport(t_map *map, int z_start, int z_end, int nb_pixel);
-int			up_color(t_map *map);
+float		rapport(t_map *map, int z_start, int z_end, int nb_pixel);
+int			up_color(t_line *line);
+int			set_gradian(int gradiant);
+
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/07 13:25:54 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/01/28 13:22:03 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/01/28 17:40:31 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,9 @@ void	reset_map(t_map *map)
 
 void	draw_map(t_map *map)
 {
-	int	i;
-	int	j;
-	int	color;
+	int		i;
+	int		j;
+	t_color	color;
 
 	j = 0;
 	while (j < map->nb_line)
@@ -37,14 +37,16 @@ void	draw_map(t_map *map)
 		i = 0;
 		while (i < map->len_line)
 		{
+			color.color_start = color_z(map, map->map3d[j][i].z);
+			color.p1_z = map->map3d[j][i].z;
 			if (i < map->len_line - 1)
 			{
-				color = set_color2(map->map3d[j][i], map->map3d[j][i + 1]);
+				color.p2_z = map->map3d[j][i + 1].z;
 				draw_line(map, map->map2d[j][i], map->map2d[j][i + 1], color);
 			}
 			if (j < map->nb_line - 1)
 			{
-				color = set_color2(map->map3d[j][i], map->map3d[j + 1][i]);
+				color.p2_z = map->map3d[j + 1][i].z;
 				draw_line(map, map->map2d[j][i], map->map2d[j + 1][i], color);
 			}
 			i++;
@@ -57,6 +59,11 @@ int	print_map(t_map	*map)
 {
 	if (map->first == 0)
 		map->zoom = intital_zoom(map);
+	if (map->zoom <= 1)
+	{
+		map->zoom = 2;
+		return (1);
+	}
 	reset_black(&map->image);
 	convertor(map);
 	if (map->first == 0)
