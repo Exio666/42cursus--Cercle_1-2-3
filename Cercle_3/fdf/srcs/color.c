@@ -6,7 +6,7 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/27 15:10:45 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/01/31 15:36:11 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/01/31 16:39:02 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ int	up_color(t_line *line)
 	return ((int)temp);
 }
 
-int	set_gradian(int gradiant, t_map *map)
+int	set_gradian(int gradiant)
 {
 	ft_sign(&gradiant);
 	if (gradiant > 255)

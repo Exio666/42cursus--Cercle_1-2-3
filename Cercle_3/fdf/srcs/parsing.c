@@ -6,7 +6,7 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/15 12:45:46 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/01/31 15:55:57 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/01/31 16:40:52 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,32 @@ int	len_line(char *str)
 
 int	parse_map(int fd, t_map *map)
 {
+	int		j;
+	int		k;
+	char	*line;
+
+	j = 0;
+	map->map3d = malloc(sizeof(t_3Dpoint *) * (map->nb_line + 1));
+	if (!map->map3d)
+		return (0);
+	while (j != map->nb_line)
+	{
+		k = 0;
+		line = get_next_line(fd);
+		if (j == 0)
+			map->len_line = len_line(line);
+		map->map3d[j] = malloc(sizeof(t_3Dpoint) * (map->len_line + 1));
+		if (!map->map3d[j])
+			return (free_map3d(map, j));
+		parse_map2(map, line, j, k);
+		free(line);
+		j++;
+	}
+	return (1);
+}
+
+/*int	parse_map(int fd, t_map *map)
+{
 	int		i;
 	int		j;
 	int		k;
@@ -97,9 +123,29 @@ int	parse_map(int fd, t_map *map)
 		j++;
 	}
 	return (1);
-}
+}*/
 
 int	counter_line(int fd, t_map *map)
+{
+	char	str[1001];
+	int		ret;
+	int		first;
+
+	ret = 1;
+	map->nb_line = 0;
+	first = 0;
+	while (ret != 0)
+	{
+		ret = read(fd, str, 1000);
+		if (ret < 0)
+			exit_prog(map, 5);
+		else
+			counter_line2(str, ret, map, first);
+	}
+	return (1);
+}
+
+/*int	counter_line(int fd, t_map *map)
 {
 	char	str[1001];
 	int		i;
@@ -133,7 +179,7 @@ int	counter_line(int fd, t_map *map)
 		}
 	}
 	return (1);
-}
+}*/
 
 int	parser(char *file, t_map *map)
 {

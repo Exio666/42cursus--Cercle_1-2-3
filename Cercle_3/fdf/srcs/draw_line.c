@@ -6,7 +6,7 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/25 14:49:23 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/01/31 16:14:18 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/01/31 16:39:29 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void	const_line(t_map *map, t_line line, t_color color)
 	{
 		line.color = line.color + line.increment;
 		pixel_put_image(&map->image, line.p1.x, line.p1.y,
-			set_gradian((int)line.color, map));
+			set_gradian((int)line.color));
 		if (line.dy == 0)
 			line.p1.x += line.inc_x;
 		if (line.dx == 0)
@@ -55,7 +55,7 @@ void	line_hor(t_map *map, t_line line, t_color color)
 	{
 		line.color = line.color + line.increment;
 		pixel_put_image(&map->image, line.p1.x, line.p1.y,
-			set_gradian((int)line.color, map));
+			set_gradian((int)line.color));
 		line.error += line.slope;
 		if (line.error >= 0)
 		{
@@ -77,7 +77,7 @@ void	line_ver(t_map *map, t_line line, t_color color)
 	{
 		line.color = line.color + line.increment;
 		pixel_put_image(&map->image, line.p1.x, line.p1.y,
-			set_gradian((int)line.color, map));
+			set_gradian((int)line.color));
 		line.error += line.slope;
 		if (line.error >= 0)
 		{

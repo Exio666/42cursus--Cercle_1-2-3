@@ -6,13 +6,12 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/15 13:47:21 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/01/26 13:09:02 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/01/31 16:21:18 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-//z
 int	rotate_alpha(t_3Dpoint *point, float rotation)
 {
 	float	xtmp;
@@ -25,7 +24,6 @@ int	rotate_alpha(t_3Dpoint *point, float rotation)
 	return (1);
 }
 
-//y
 int	rotate_beta(t_3Dpoint *point, float rotation)
 {
 	float	xtmp;
@@ -38,7 +36,6 @@ int	rotate_beta(t_3Dpoint *point, float rotation)
 	return (1);
 }
 
-//x
 int	rotate_gamma(t_3Dpoint *point, float rotation)
 {
 	float	ytmp;

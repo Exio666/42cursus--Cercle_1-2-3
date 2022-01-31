@@ -6,7 +6,7 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/07 11:08:26 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/01/31 14:57:35 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/01/31 16:42:23 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -189,11 +189,18 @@ void		reset_map(t_map *map);
  *	parsing.c
  */
 
-void		set_3D_map(int x, int y, char *z);
+void		set_3d_map(int j, int k, char *z, t_map *map);
 int			len_line(char *str);
 int			parse_map(int fd, t_map *map);
 int			counter_line(int fd, t_map *map);
 int			parser(char *file, t_map *map);
+
+/*
+ *	parsing2.c
+ */
+
+void	parse_map2(t_map *map, char *line, int j, int k);
+void	counter_line2(char *str, int ret, t_map *map, int first);
 
 /*
  *	rotate.c
@@ -237,6 +244,6 @@ void		set_color(t_map *map);
 int			color_z(t_map *map, int z);
 float		rapport(t_map *map, int z_start, int z_end, int nb_pixel);
 int			up_color(t_line *line);
-int			set_gradian(int gradiant, t_map *map);
+int			set_gradian(int gradiant);
 
 #endif

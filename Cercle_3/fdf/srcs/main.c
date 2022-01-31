@@ -6,7 +6,7 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/07 13:25:54 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/01/31 15:54:25 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/01/31 16:24:28 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,11 +31,11 @@ void	draw_map(t_map *map)
 	int		j;
 	t_color	color;
 
-	j = 0;
-	while (j < map->nb_line)
+	j = -1;
+	while (++j < map->nb_line)
 	{
-		i = 0;
-		while (i < map->len_line)
+		i = -1;
+		while (++i < map->len_line)
 		{
 			color.color_start = color_z(map, map->map3d[j][i].z);
 			color.p1_z = map->map3d[j][i].z;
@@ -49,9 +49,7 @@ void	draw_map(t_map *map)
 				color.p2_z = map->map3d[j + 1][i].z;
 				draw_line(map, map->map2d[j][i], map->map2d[j + 1][i], color);
 			}
-			i++;
 		}
-		j++;
 	}
 }
 
