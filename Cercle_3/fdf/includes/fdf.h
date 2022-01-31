@@ -6,7 +6,7 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/07 11:08:26 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/01/31 16:42:23 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/01/31 17:16:43 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -199,8 +199,8 @@ int			parser(char *file, t_map *map);
  *	parsing2.c
  */
 
-void	parse_map2(t_map *map, char *line, int j, int k);
-void	counter_line2(char *str, int ret, t_map *map, int first);
+void		parse_map2(t_map *map, char *line, int j, int k);
+void		counter_line2(char *str, int ret, t_map *map, int first);
 
 /*
  *	rotate.c
