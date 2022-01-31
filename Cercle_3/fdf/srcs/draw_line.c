@@ -6,7 +6,7 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/25 14:49:23 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/01/28 17:26:56 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/01/31 16:14:18 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,14 +26,17 @@ int	ft_sign(int *a)
 void	const_line(t_map *map, t_line line, t_color color)
 {
 	if (line.dy == 0)
-		line.increment = rapport(map, color.p1_z, color.p2_z, line.p2.x - line.p1.x);
+		line.increment = rapport(map, color.p1_z, color.p2_z, line.p2.x
+				- line.p1.x);
 	if (line.dx == 0)
-		line.increment = rapport(map, color.p1_z, color.p2_z, line.p2.y - line.p1.y);
+		line.increment = rapport(map, color.p1_z, color.p2_z, line.p2.y
+				- line.p1.y);
 	while (line.p1.x != line.p2.x + line.inc_x && line.p1.y
 		!= line.p2.y + line.inc_y)
 	{
 		line.color = line.color + line.increment;
-		pixel_put_image(&map->image, line.p1.x, line.p1.y, set_gradian((int)line.color));
+		pixel_put_image(&map->image, line.p1.x, line.p1.y,
+			set_gradian((int)line.color, map));
 		if (line.dy == 0)
 			line.p1.x += line.inc_x;
 		if (line.dx == 0)
@@ -46,11 +49,13 @@ void	line_hor(t_map *map, t_line line, t_color color)
 	line.slope = 2 * line.dy;
 	line.error = -line.dx;
 	line.error_inc = -2 * line.dx;
-	line.increment = rapport(map, color.p1_z, color.p2_z, (line.p2.x - line.p1.x) * line.inc_y);
+	line.increment = rapport(map, color.p1_z, color.p2_z,
+			(line.p2.x - line.p1.x) * line.inc_x);
 	while (line.p1.x != line.p2.x + line.inc_x)
 	{
 		line.color = line.color + line.increment;
-		pixel_put_image(&map->image, line.p1.x, line.p1.y, set_gradian((int)line.color));
+		pixel_put_image(&map->image, line.p1.x, line.p1.y,
+			set_gradian((int)line.color, map));
 		line.error += line.slope;
 		if (line.error >= 0)
 		{
@@ -66,11 +71,13 @@ void	line_ver(t_map *map, t_line line, t_color color)
 	line.slope = 2 * line.dx;
 	line.error = -line.dy;
 	line.error_inc = -2 * line.dy;
-	line.increment = rapport(map, color.p1_z, color.p2_z, (line.p2.y - line.p1.y) * line.inc_y);
+	line.increment = rapport(map, color.p1_z, color.p2_z,
+			(line.p2.y - line.p1.y) * line.inc_y);
 	while (line.p1.y != line.p2.y + line.inc_y)
 	{
 		line.color = line.color + line.increment;
-		pixel_put_image(&map->image, line.p1.x, line.p1.y, set_gradian((int)line.color));
+		pixel_put_image(&map->image, line.p1.x, line.p1.y,
+			set_gradian((int)line.color, map));
 		line.error += line.slope;
 		if (line.error >= 0)
 		{

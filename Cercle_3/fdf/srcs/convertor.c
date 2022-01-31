@@ -6,7 +6,7 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/17 15:53:14 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/01/28 15:39:06 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/01/31 12:01:38 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,26 +34,26 @@ int	malloc_map2d(t_map *map)
 	return (1);
 }
 
-t_2Dpoint	isometric_point(t_3Dpoint p3d, int zoom, int scaling, t_map *map)
+t_2Dpoint	isometric_point(t_3Dpoint p3d, float zoom, int scaling, t_map *map)
 {
 	t_2Dpoint	p2d;
 
-	p3d.x *= zoom;
-	p3d.y *= zoom;
-	p3d.z *= (float) zoom / scaling;
+	p3d.x = p3d.x * zoom;
+	p3d.y = p3d.y * zoom;
+	p3d.z = p3d.z * (zoom / scaling);
 	apply_rotate(&p3d, map->rot_z, map->rot_x, map->rot_y);
 	p2d.x = (p3d.x - p3d.y) * cos(0.463646716);
 	p2d.y = (p3d.x + p3d.y) * sin(0.463646716) - p3d.z;
 	return (p2d);
 }
 
-t_2Dpoint	parallele_point(t_3Dpoint p3d, int zoom, int scaling, t_map *map)
+t_2Dpoint	parallele_point(t_3Dpoint p3d, float zoom, int scaling, t_map *map)
 {
 	t_2Dpoint	p2d;
 
-	p3d.x *= zoom;
-	p3d.y *= zoom;
-	p3d.z *= (float) zoom / scaling;
+	p3d.x = p3d.x * zoom;
+	p3d.y = p3d.y * zoom;
+	p3d.z = p3d.z * (zoom / scaling);
 	apply_rotate(&p3d, map->rot_z, map->rot_x, map->rot_y);
 	p2d.x = p3d.x;
 	p2d.y = p3d.y;

@@ -6,7 +6,7 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/18 17:06:23 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/01/28 15:00:15 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/01/31 10:57:04 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,13 +45,9 @@ void	select_hook2(int hook, t_map *map)
 	else if (hook == D_TRANS_RIGHT)
 		map->translation_x += TRANSLATION;
 	else if (hook == D_UP_ZOOM)
-		map->zoom += V_ZOOM;
+		map->zoom = map->zoom * V_ZOOM;
 	else if (hook == D_DOWN_ZOOM)
-	{
-		map->zoom -= V_ZOOM;
-		if (map->zoom <= 1)
-			map->zoom = 1;
-	}
+		map->zoom = map->zoom / V_ZOOM;
 	else if (hook == D_RESET)
 		reset_map(map);
 	else if (hook == D_PROJECTION)

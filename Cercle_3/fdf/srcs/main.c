@@ -6,7 +6,7 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/07 13:25:54 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/01/28 17:40:31 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/01/31 15:54:25 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,11 +59,6 @@ int	print_map(t_map	*map)
 {
 	if (map->first == 0)
 		map->zoom = intital_zoom(map);
-	if (map->zoom <= 1)
-	{
-		map->zoom = 2;
-		return (1);
-	}
 	reset_black(&map->image);
 	convertor(map);
 	if (map->first == 0)

@@ -6,15 +6,15 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 11:10:01 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/01/27 13:07:14 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/01/31 15:56:46 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-int	calcul_zoom_hor(t_map *map)
+float	calcul_zoom_hor(t_map *map)
 {
-	int			zoom;
+	float		zoom;
 	t_2Dpoint	p1;
 	t_2Dpoint	p2;
 
@@ -22,49 +22,58 @@ int	calcul_zoom_hor(t_map *map)
 	p1 = isometric_point(map->map3d[0][0], zoom, 7, map);
 	p2 = isometric_point(map->map3d[map->nb_line - 1][map->len_line - 1],
 			zoom, 7, map);
-	while (p2.y - p1.y < 900)
+	while (ft_abs(p2.y - p1.y) < 900)
 	{
 		p1 = isometric_point(map->map3d[0][0], zoom, 7, map);
 		p2 = isometric_point(map->map3d[map->nb_line - 1][map->len_line - 1],
 				zoom, 7, map);
-		zoom++;
+		zoom = zoom * V_ZOOM;
 	}
-	if (p2.y - p1.y > 1000 && zoom != 1)
-		return (zoom - 2);
-	return (zoom - 1);
+	while (ft_abs(p2.y - p1.y) > 1000)
+	{
+		p1 = isometric_point(map->map3d[0][0], zoom, 7, map);
+		p2 = isometric_point(map->map3d[map->nb_line - 1][map->len_line - 1],
+				zoom, 7, map);
+		zoom = zoom / V_ZOOM;
+	}
+	return (zoom);
 }
 
-int	calcul_zoom_ver(t_map *map)
+float	calcul_zoom_ver(t_map *map)
 {
-	int			zoom;
+	float		zoom;
 	t_2Dpoint	p1;
 	t_2Dpoint	p2;
 
 	zoom = 1;
 	p1 = isometric_point(map->map3d[map->nb_line - 1][0], zoom, 7, map);
 	p2 = isometric_point(map->map3d[0][map->len_line - 1], zoom, 7, map);
-	while (p2.x - p1.x < 1700)
+	while (ft_abs(p2.x - p1.x) < 1700)
 	{
 		p1 = isometric_point(map->map3d[map->nb_line - 1][0], zoom, 7, map);
 		p2 = isometric_point(map->map3d[0][map->len_line - 1], zoom, 7, map);
-		zoom++;
+		zoom = zoom * V_ZOOM;
 	}
-	if (p2.x - p1.x > 1800 && zoom != 1)
-		return (zoom - 2);
-	return (zoom - 1);
+	while (ft_abs(p2.x - p1.x) > 1800)
+	{
+		p1 = isometric_point(map->map3d[map->nb_line - 1][0], zoom, 7, map);
+		p2 = isometric_point(map->map3d[0][map->len_line - 1], zoom, 7, map);
+		zoom = zoom / V_ZOOM;
+	}
+	return (zoom);
 }
 
-int	intital_zoom(t_map *map)
+float	intital_zoom(t_map *map)
 {
-	int	zoom_ver;
-	int	zoom_hot;
+	float	zoom_ver;
+	float	zoom_hot;
 
 	zoom_ver = calcul_zoom_ver(map);
 	zoom_hot = calcul_zoom_hor(map);
 	if (zoom_hot > zoom_ver)
-		return (zoom_ver);
+		return (zoom_ver / V_ZOOM);
 	else
-		return (zoom_hot);
+		return (zoom_hot / V_ZOOM);
 }
 
 void	init_translat(t_map *map)

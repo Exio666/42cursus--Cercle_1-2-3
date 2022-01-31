@@ -6,7 +6,7 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/07 11:08:26 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/01/28 17:21:41 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/01/31 14:57:35 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@
 # define WIDTH 2000
 # define ROTATION 0.01
 # define TRANSLATION 130
-# define V_ZOOM 2
+# define V_ZOOM 1.15
 
 /*
  *	Define touche
@@ -73,9 +73,9 @@ typedef struct s_2Dpoint
 
 typedef struct s_3Dpoint
 {
-	int	z;
-	int	x;
-	int	y;
+	float	z;
+	float	x;
+	float	y;
 }	t_3Dpoint;
 
 typedef struct s_angle
@@ -98,7 +98,7 @@ typedef struct s_map
 	t_2Dpoint	**map2d;
 	int			len_line;
 	int			nb_line;
-	int			zoom;
+	float		zoom;
 	int			camera;
 	int			scaling;
 	int			first;
@@ -146,7 +146,8 @@ typedef struct s_color
  */
 
 int			convertor(t_map *map);
-t_2Dpoint	isometric_point(t_3Dpoint p3d, int zoom, int scaling, t_map *map);
+t_2Dpoint	isometric_point(t_3Dpoint p3d, float zoom, int scaling, t_map *map);
+t_2Dpoint	parallele_point(t_3Dpoint p3d, float zoom, int scaling, t_map *map);
 int			malloc_map2d(t_map *map);
 
 /*
@@ -223,9 +224,9 @@ int			translat_vertical(t_map *map, int tran);
  *	init_zoom_trans.c
  */
 
-int			calcul_zoom_hor(t_map *map);
-int			calcul_zoom_ver(t_map *map);
-int			intital_zoom(t_map *map);
+float		calcul_zoom_hor(t_map *map);
+float		calcul_zoom_ver(t_map *map);
+float		intital_zoom(t_map *map);
 void		init_translat(t_map *map);
 
 /*
@@ -236,7 +237,6 @@ void		set_color(t_map *map);
 int			color_z(t_map *map, int z);
 float		rapport(t_map *map, int z_start, int z_end, int nb_pixel);
 int			up_color(t_line *line);
-int			set_gradian(int gradiant);
-
+int			set_gradian(int gradiant, t_map *map);
 
 #endif
