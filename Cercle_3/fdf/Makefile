@@ -6,7 +6,7 @@
 #    By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/07 11:02:27 by bsavinel          #+#    #+#              #
-#    Updated: 2022/01/31 16:41:16 by bsavinel         ###   ########.fr        #
+#    Updated: 2022/02/01 12:32:43 by bsavinel         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,7 +27,7 @@ OBJS = $(SRCS:.c=.o)
 
 DEPS = $(SRCS:.c=.d)
 
-CC = gcc
+CC = cc
 
 CFLAGS = -Wall -Wextra -Werror -O3
 

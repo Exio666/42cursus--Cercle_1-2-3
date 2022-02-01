@@ -6,7 +6,7 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 11:10:01 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/01/31 15:56:46 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/02/01 13:46:33 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,5 +87,15 @@ void	init_translat(t_map *map)
 	{
 		translat_vertical(map, 25);
 		map->translation_y += 25;
+	}
+	while (map->map2d[map->nb_line - 1][0].x > 100)
+	{
+		translat_horizontal(map, -25);
+		map->translation_x -= 25;
+	}
+	while (map->map2d[0][0].y > 100)
+	{
+		translat_vertical(map, -25);
+		map->translation_y -= 25;
 	}
 }

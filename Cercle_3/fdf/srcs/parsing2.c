@@ -6,7 +6,7 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/31 16:26:49 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/01/31 16:39:52 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/02/01 13:24:05 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,4 +58,11 @@ void	counter_line2(char *str, int ret, t_map *map, int first)
 			map->nb_line++;
 		i++;
 	}
+}
+
+void	exit_bug(t_map *map, char **line, int j)
+{
+	free(line);
+	free_map3d(map, j);
+	exit_prog(map, 5);
 }
