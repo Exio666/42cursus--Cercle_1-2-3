@@ -6,7 +6,7 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/30 08:36:14 by bsavinel          #+#    #+#             */
-/*   Updated: 2021/12/06 13:34:25 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/02/01 16:15:44 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,6 +86,8 @@ char	*get_next_line(int fd)
 	if (fd < 0)
 		return (NULL);
 	str = malloc(sizeof(char) * 1);
+	if (!str)
+		return (NULL);
 	str[0] = '\0';
 	first = 0;
 	while (ft_new_line(tab[fd]) == 2 || first++ == 0)
@@ -100,7 +102,5 @@ char	*get_next_line(int fd)
 		}
 	}
 	str = ft_line_return(str, tab[fd]);
-	if (str[0] == '\0')
-		return (ft_end(str));
-	return (str);
+	return (ft_end(str));
 }

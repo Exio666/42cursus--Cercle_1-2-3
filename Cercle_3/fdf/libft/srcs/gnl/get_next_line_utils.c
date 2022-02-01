@@ -6,7 +6,7 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/30 08:36:11 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/01/16 12:49:20 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/02/01 16:15:27 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,10 @@ void	ft_replace2(char *str, char *tmp, int i, int j)
 
 char	*ft_end(char *str)
 {
-	free(str);
-	return (NULL);
+	if (str[0] == '\0')
+	{
+		free(str);
+		return (NULL);
+	}
+	return (str);
 }

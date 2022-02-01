@@ -6,7 +6,7 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/07 11:08:26 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/02/01 13:24:25 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/02/01 16:19:28 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@
 
 # define HEIGHT 1200
 # define WIDTH 2000
-# define ROTATION 0.01
+# define ROTATION 0.1
 # define TRANSLATION 130
 # define V_ZOOM 1.15
 

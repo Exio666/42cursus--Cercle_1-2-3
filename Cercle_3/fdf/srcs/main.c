@@ -6,7 +6,7 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/07 13:25:54 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/01/31 16:24:28 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/02/01 16:23:36 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	reset_map(t_map *map)
 	map->rot_z = 0;
 	map->rot_x = 0;
 	map->rot_y = 0;
-	map->scaling = 7;
+	map->scaling = 1;
 	map->projection = 0;
 	map->translation_x = 0;
 	map->translation_y = 0;
