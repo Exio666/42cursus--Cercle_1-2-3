@@ -1,23 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_putstr_unsigned.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/23 11:18:06 by bsavinel          #+#    #+#             */
-/*   Updated: 2021/11/25 13:40:03 by bsavinel         ###   ########.fr       */
+/*   Created: 2022/01/05 12:39:45 by bsavinel          #+#    #+#             */
+/*   Updated: 2022/01/06 12:39:10 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_strlen(const char *s)
+int	ft_putchar_unsigned_fd(unsigned char c, int fd)
 {
-	size_t	i;
+	return (write(fd, &c, 1));
+}
 
+int	ft_putstr_unsigned_fd(unsigned char *s, int fd)
+{
+	int	i;
+
+	if (!s)
+		return (-1);
 	i = 0;
-	while (s[i] != 0)
+	while (s[i])
+	{
+		ft_putchar_unsigned_fd((unsigned char)s[i], fd);
 		i++;
+	}
 	return (i);
 }

@@ -6,8 +6,18 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/04 13:41:51 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/01/04 13:44:29 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/02/05 14:08:52 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+int	main(int ac, char **av)
+{
+	t_stack	stack;
+
+	if (ac <= 1)
+		return (1);
+	start(&stack, ac, av);
+	
+}

@@ -1,39 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   operation1.c                                       :+:      :+:    :+:   */
+/*   all_lib.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/04 13:41:54 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/02/05 13:29:02 by bsavinel         ###   ########.fr       */
+/*   Created: 2022/01/15 15:47:24 by bsavinel          #+#    #+#             */
+/*   Updated: 2022/01/16 14:49:33 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#ifndef ALL_LIB_H
+# define ALL_LIB_H
 
-void	ft_sa(t_stack *stack)
-{
+# include "libft.h"
+# include "ft_printf.h"
+# include "get_next_line.h"
 
-}
-
-void	ft_sb(t_stack *stack)
-{
-	
-}
-
-void	ft_ss(t_stack *stack)
-{
-	ft_sb(stack);
-	ft_sa(stack);
-}
-
-void	ft_pa(t_stack *stack)
-{
-	
-}
-
-void	ft_pb(t_stack *stack)
-{
-	
-}
+#endif

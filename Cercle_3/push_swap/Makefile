@@ -6,36 +6,42 @@
 #    By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/04 13:33:13 by bsavinel          #+#    #+#              #
-#    Updated: 2022/01/04 13:38:30 by bsavinel         ###   ########.fr        #
+#    Updated: 2022/02/05 13:15:42 by bsavinel         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRCS = 
+SRCS =	
 
 OBJS = $(SRCS:.c=.o)
 
-CC = gcc
+DEPS = $(SRCS:.c=.d)
 
-CFLAGS = -Wall -Wextra -Werror
+CC = cc
+
+CFLAGS = -Wall -Wextra -Werror -O3
 
 RM = rm -f
 
 CLIB = ar -rcs
 
-INCS = includes
+LIB = fdf.a
 
-NAME = push_swap.a
+INCS = -I includes -I minilibx -I libft/includes
+
+NAME = push_swap
+
+ALLLIB = libft/libft.a minilibx/libmlx_Linux.a
 
 all: $(NAME)
 
-$(NAME): makelibft $(OBJS)
-	$(CLIB) $(NAME) $(OBJS)
+$(NAME) : makelibft $(OBJS)
+	$(CC) $(CFLAGS) $(OBJS) $(ALLLIB) $(LIBIXFLAGS) -o $(NAME) $(INCS)
 
-.c.o:
-	$(CC) $(CFLAGS) -c $< -o $(<:.c=.o) -I $(INCS) -I libft/includes
+%.o: %.c
+	$(CC) $(CFLAGS) -MMD -MP -c $< -o $@ $(INCS)
 
 clean :
-	$(RM) $(OBJS)
+	$(RM) $(OBJS) $(DEPS)
 	$(MAKE) -C libft clean
 
 fclean : clean
@@ -44,10 +50,11 @@ fclean : clean
 
 makelibft :
 	$(MAKE) -C libft all
-	cp libft/libft.a $(NAME)
 
 bonus : all
 
 re : fclean all
 
-.PHONY: all clean fclean re makelibft
+-include $(DEPS)
+
+.PHONY: all clean fclean re makelibft makeminilibx bonus

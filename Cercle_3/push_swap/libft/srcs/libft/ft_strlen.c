@@ -1,39 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   operation1.c                                       :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/04 13:41:54 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/02/05 13:29:02 by bsavinel         ###   ########.fr       */
+/*   Created: 2021/11/23 11:18:06 by bsavinel          #+#    #+#             */
+/*   Updated: 2022/01/06 10:32:08 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-void	ft_sa(t_stack *stack)
+size_t	ft_strlen(const char *s)
 {
+	size_t	i;
 
+	i = 0;
+	while (s[i] != 0)
+		i++;
+	return (i);
 }
 
-void	ft_sb(t_stack *stack)
+size_t	ft_unsigned_strlen(const unsigned char *s)
 {
-	
-}
+	size_t	i;
 
-void	ft_ss(t_stack *stack)
-{
-	ft_sb(stack);
-	ft_sa(stack);
-}
-
-void	ft_pa(t_stack *stack)
-{
-	
-}
-
-void	ft_pb(t_stack *stack)
-{
-	
+	i = 0;
+	while (s[i] != 0)
+		i++;
+	return (i);
 }

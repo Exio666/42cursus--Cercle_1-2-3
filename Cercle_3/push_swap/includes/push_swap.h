@@ -3,35 +3,55 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   *by: *bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/04 13:44:38 *by *bsavinel          #+#    #+#             */
-/*   Updated: 2022/01/04 13:58:28 *by *bsavinel         ###   ########.fr       */
+/*   Created: 2022/02/05 13:13:41 by bsavinel          #+#    #+#             */
+/*   Updated: 2022/02/05 14:22:32 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
-#include "libft.h"
+#include "all_lib.h"
+
+/*
+ *	structure
+ */
+
+typedef struct s_stack
+{
+	t_list	**stack_a;
+	t_list	**stack_b;
+	int		madian;
+	int		size;
+	int		*tab[3];
+}	t_stack;
 
 /*
  *	all operation
  */
 
-	void	ft_sa(t_list *a, t_list *b);
-	void	ft_sb(t_list *a, t_list *b);
-	void	ft_ss(t_list *a, t_list *b);
-	void	ft_pa(t_list *a, t_list *b);
-	void	ft_pb(t_list *a, t_list *b);
-	void	ft_ra(t_list *a, t_list *b);
-	void	ft_rb(t_list *a, t_list *b);
-	void	ft_rr(t_list *a, t_list *b);
-	void	ft_rra(t_list *a, t_list *b);
-	void	ft_rrb(t_list *a, t_list *b);
-	void	ft_rrr(t_list *a, t_list *b);
+void	ft_sa(t_stack *stack);
+void	ft_sb(t_stack *stack);
+void	ft_ss(t_stack *stack);
+void	ft_pa(t_stack *stack);
+void	ft_pb(t_stack *stack);
+void	ft_ra(t_stack *stack);
+void	ft_rb(t_stack *stack);
+void	ft_rr(t_stack *stack);
+void	ft_rra(t_stack *stack);
+void	ft_rrb(t_stack *stack);
+void	ft_rrr(t_stack *stack);
+
 /*
- *
+ *	start.c
  */
+
+void	create_stack(t_stack *stack);
+int		check_int(char *str);
+int		check_doublon(int *tab,int i, int nb);
+void	ft_sort(int *tab, int i);
+void	start(t_stack *stack, int ac, char **av);
 
 #endif

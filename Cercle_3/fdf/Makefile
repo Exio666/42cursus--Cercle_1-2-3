@@ -6,7 +6,7 @@
 #    By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/07 11:02:27 by bsavinel          #+#    #+#              #
-#    Updated: 2022/02/01 12:32:43 by bsavinel         ###   ########.fr        #
+#    Updated: 2022/02/05 13:17:29 by bsavinel         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -61,6 +61,8 @@ clean :
 fclean : clean
 	$(RM) $(NAME)
 	$(RM) libft/libft.a
+	$(RM) minilibx/libmlx_Linux.a
+	$(RM) minilibx/libmlx.a
 
 makelibft :
 	$(MAKE) -C libft all

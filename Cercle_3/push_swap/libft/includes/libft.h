@@ -6,7 +6,7 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/23 10:38:07 by bsavinel          #+#    #+#             */
-/*   Updated: 2021/12/19 14:31:24 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/01/15 12:40:16 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,22 +76,26 @@ void	ft_putnbr_fd(int n, int fd);
  */
 
 t_list	*ft_lstnew(void *content);
-void	ft_lstadd_front(t_list **alst, t_list *new);
+void	ft_lstadd_front(t_list **alst, t_list *elem);
 int		ft_lstsize(t_list *lst);
 t_list	*ft_lstlast(t_list *lst);
-void	ft_lstadd_back(t_list **alst, t_list *new);
+void	ft_lstadd_back(t_list **alst, t_list *elem);
 void	ft_lstdelone(t_list *lst, void (*del)(void*));
 void	ft_lstclear(t_list **lst, void (*del)(void*));
 void	ft_lstiter(t_list *lst, void (*f)(void *));
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
 
 /*
- *	putnbr.c
+ *	autre
  */
 
 int		ft_putnbr_unsign_base(unsigned long long int nbr, char *base);
 int		ft_putnbr_base(long long int nbr, char *base);
 int		ft_len_nbr(long long int n, char *base);
 int		ft_len_nbr_unsign(unsigned long long int n, char *base);
+int		ft_putchar_unsigned_fd(unsigned char c, int fd);
+int		ft_putstr_unsigned_fd(unsigned char *s, int fd);
+size_t	ft_unsigned_strlen(const unsigned char *s);
+int		ft_abs(int a);
 
 #endif

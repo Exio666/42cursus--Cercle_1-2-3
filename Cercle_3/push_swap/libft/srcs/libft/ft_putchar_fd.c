@@ -1,39 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   operation1.c                                       :+:      :+:    :+:   */
+/*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/04 13:41:54 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/02/05 13:29:02 by bsavinel         ###   ########.fr       */
+/*   Created: 2021/11/25 10:11:41 by bsavinel          #+#    #+#             */
+/*   Updated: 2022/01/05 12:46:12 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-void	ft_sa(t_stack *stack)
+int	ft_putchar_fd(char c, int fd)
 {
-
-}
-
-void	ft_sb(t_stack *stack)
-{
-	
-}
-
-void	ft_ss(t_stack *stack)
-{
-	ft_sb(stack);
-	ft_sa(stack);
-}
-
-void	ft_pa(t_stack *stack)
-{
-	
-}
-
-void	ft_pb(t_stack *stack)
-{
-	
+	return (write(fd, &c, 1));
 }
