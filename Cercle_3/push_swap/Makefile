@@ -6,12 +6,15 @@
 #    By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/04 13:33:13 by bsavinel          #+#    #+#              #
-#    Updated: 2022/02/06 15:29:21 by bsavinel         ###   ########.fr        #
+#    Updated: 2022/02/06 18:03:50 by bsavinel         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRCS =	srcs/main.c	\
-		srcs/start.c
+SRCS =	srcs/main.c			\
+		srcs/start.c		\
+		srcs/operation1.c	\
+		srcs/operation2.c	\
+		srcs/operation3.c
 
 OBJS = $(SRCS:.c=.o)
 

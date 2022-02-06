@@ -6,7 +6,7 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/05 14:08:26 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/02/06 15:33:11 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/02/06 17:26:00 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 void	create_stack(t_stack *stack, int len)
 {
-	int	i;
-	int	j;
+	int		i;
+	int		j;
 	t_list	*list;
 
 	i = 0;
@@ -51,8 +51,8 @@ void	create_stack(t_stack *stack, int len)
 
 int	check_int(char *str)
 {
-	int len;
-	int i;
+	int	len;
+	int	i;
 
 	i = 0;
 	len = ft_strlen(str);
@@ -62,7 +62,7 @@ int	check_int(char *str)
 		i++;
 	while (str[i])
 	{
-		if(!ft_isdigit(str[i]))
+		if (!ft_isdigit(str[i]))
 			return (0);
 		i++;
 	}
@@ -85,13 +85,13 @@ int	check_int(char *str)
 
 int	check_doublon(int *tab, int i, int nb)
 {
-	int j;
-	
+	int	j;
+
 	j = 0;
 	while (j < i)
 	{
 		if (tab[j] == nb)
-			return(0);
+			return (0);
 		j++;
 	}
 	return (1);
@@ -99,15 +99,15 @@ int	check_doublon(int *tab, int i, int nb)
 
 void	ft_sort(int *tab, int i)
 {
-	int j;
-	int k;
-	int tmp;
-	
+	int	j;
+	int	k;
+	int	tmp;
+
 	k = 0;
-	while(k < i)
+	while (k < i)
 	{
 		j = 0;
-		while(j < i)
+		while (j < i)
 		{
 			if (tab[j] > tab[j + 1])
 			{
@@ -165,8 +165,5 @@ void	start(t_stack *stack, int ac, char **av)
 		i++;
 	}
 	ft_sort(stack->tab[0], i - 1);
-	printf("%i %i %i\n",stack->tab[0][0],stack->tab[0][1],stack->tab[0][2]);
-	printf("%i %i %i\n",stack->tab[1][0],stack->tab[1][1],stack->tab[1][2]);
-	printf("%i %i %i\n",stack->tab[2][0],stack->tab[2][1],stack->tab[2][2]);
 	create_stack(stack, i);
 }

@@ -6,7 +6,7 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/23 10:38:07 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/02/06 14:52:25 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/02/06 17:22:08 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ void		ft_putnbr_fd(int n, int fd);
  *  Fonction Bonus part
  */
 
-t_list		*ft_lstnew(int	content);
+t_list		*ft_lstnew(int content);
 void		ft_lstadd_front(t_list **alst, t_list *elem);
 int			ft_lstsize(t_list *lst);
 t_list		*ft_lstlast(t_list *lst);
