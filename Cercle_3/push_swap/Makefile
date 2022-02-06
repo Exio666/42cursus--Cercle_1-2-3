@@ -6,39 +6,36 @@
 #    By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/04 13:33:13 by bsavinel          #+#    #+#              #
-#    Updated: 2022/02/05 13:15:42 by bsavinel         ###   ########.fr        #
+#    Updated: 2022/02/06 15:29:21 by bsavinel         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRCS =	
+SRCS =	srcs/main.c	\
+		srcs/start.c
 
 OBJS = $(SRCS:.c=.o)
 
 DEPS = $(SRCS:.c=.d)
 
-CC = cc
+CC = gcc
 
-CFLAGS = -Wall -Wextra -Werror -O3
+CFLAGS = -Wall -Wextra -Werror
 
 RM = rm -f
 
-CLIB = ar -rcs
-
-LIB = fdf.a
-
-INCS = -I includes -I minilibx -I libft/includes
+INCS = -I includes -I libft/includes
 
 NAME = push_swap
 
-ALLLIB = libft/libft.a minilibx/libmlx_Linux.a
+ALLLIB = libft/libft.a
 
 all: $(NAME)
 
 $(NAME) : makelibft $(OBJS)
-	$(CC) $(CFLAGS) $(OBJS) $(ALLLIB) $(LIBIXFLAGS) -o $(NAME) $(INCS)
+	$(CC) $(CFLAGS) $(OBJS) $(ALLLIB) -o $(NAME) $(INCS)
 
 %.o: %.c
-	$(CC) $(CFLAGS) -MMD -MP -c $< -o $@ $(INCS)
+	$(CC) $(CFLAGS) -MMD -c $< -o $@ $(INCS)
 
 clean :
 	$(RM) $(OBJS) $(DEPS)
@@ -57,4 +54,4 @@ re : fclean all
 
 -include $(DEPS)
 
-.PHONY: all clean fclean re makelibft makeminilibx bonus
+.PHONY: all clean fclean re makelibft bonus

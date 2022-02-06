@@ -6,14 +6,15 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/05 13:13:41 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/02/05 14:22:32 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/02/06 15:19:44 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
-#include "all_lib.h"
+# include "all_lib.h"
+#include <stdio.h>
 
 /*
  *	structure
@@ -48,7 +49,7 @@ void	ft_rrr(t_stack *stack);
  *	start.c
  */
 
-void	create_stack(t_stack *stack);
+void	create_stack(t_stack *stack, int len);
 int		check_int(char *str);
 int		check_doublon(int *tab,int i, int nb);
 void	ft_sort(int *tab, int i);

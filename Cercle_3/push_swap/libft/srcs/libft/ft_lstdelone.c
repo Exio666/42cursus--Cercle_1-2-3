@@ -6,14 +6,13 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/25 16:25:46 by bsavinel          #+#    #+#             */
-/*   Updated: 2021/11/27 13:45:07 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/02/06 14:49:18 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_lstdelone(t_list *lst, void (*del)(void*))
+void	ft_lstdelone(t_list *lst)
 {
-	del(lst->content);
 	free(lst);
 }

@@ -6,7 +6,7 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/23 10:36:10 by bsavinel          #+#    #+#             */
-/*   Updated: 2021/11/24 12:23:04 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/02/06 14:11:34 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,3 +47,31 @@ int	ft_atoi(const char *nptr)
 		nb = -nb;
 	return (nb);
 }
+
+long int	ft_atoi_long(const char *nptr)
+{
+	long int	neg;
+	int			i;
+	long int	nb;
+
+	i = 0;
+	nb = 0;
+	neg = 1;
+	while (ft_isspace(nptr[i]) == 1)
+		i++;
+	if (nptr[i] == '-' || nptr[i] == '+')
+	{
+		if (nptr[i] == '-')
+			neg = -1;
+		i++;
+	}
+	while (nptr[i] <= '9' && nptr[i] >= '0')
+	{
+		nb = nb * 10 + nptr[i] - 48;
+		i++;
+	}
+	if (neg == -1)
+		nb = -nb;
+	return (nb);
+}
+

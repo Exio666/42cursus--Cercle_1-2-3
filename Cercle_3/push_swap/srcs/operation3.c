@@ -6,7 +6,7 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/05 13:29:29 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/02/05 13:31:05 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/02/06 16:05:39 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,5 +24,6 @@ void	ft_rrb(t_stack *stack)
 
 void	ft_rrr(t_stack *stack)
 {
-	
+	ft_rra(stack);
+	ft_rrb(stack);
 }
