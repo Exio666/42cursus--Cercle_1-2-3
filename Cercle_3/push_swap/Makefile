@@ -6,15 +6,17 @@
 #    By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/04 13:33:13 by bsavinel          #+#    #+#              #
-#    Updated: 2022/02/07 10:02:55 by bsavinel         ###   ########.fr        #
+#    Updated: 2022/02/07 18:26:32 by bsavinel         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRCS =	srcs/main.c			\
-		srcs/start.c		\
-		srcs/operation1.c	\
-		srcs/operation2.c	\
-		srcs/operation3.c
+SRCS =	srcs/main.c				\
+		srcs/start.c			\
+		srcs/operation1.c		\
+		srcs/operation2.c		\
+		srcs/operation3.c		\
+		srcs/cheker.c			\
+		srcs/sort_2_and_3.c
 
 OBJS = $(SRCS:.c=.o)
 
@@ -22,7 +24,7 @@ DEPS = $(SRCS:.c=.d)
 
 CC = gcc
 
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror #-g3 -fsanitize=address
 
 RM = rm -f
 

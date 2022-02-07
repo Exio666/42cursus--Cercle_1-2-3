@@ -6,7 +6,7 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/15 12:45:46 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/02/01 13:24:14 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/02/07 16:20:02 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,8 +67,8 @@ int	parse_map(int fd, t_map *map)
 		line = get_next_line(fd);
 		if (j == 0)
 			map->len_line = len_line(line);
-		if (map->len_line != len_line(line) || map->len_line <= 1)
-			exit_bug(map, &line, j);
+		if (map->len_line != len_line(line) || map->len_line < 1 || (map->len_line == 1 && map->nb_line == 1))
+			exit_bug(map, line, j);
 		map->map3d[j] = malloc(sizeof(t_3Dpoint) * (map->len_line + 1));
 		if (!map->map3d[j])
 			return (free_map3d(map, j));
@@ -84,6 +84,7 @@ int	counter_line(int fd, t_map *map)
 	char	str[1001];
 	int		ret;
 	int		first;
+	char	end;
 
 	ret = 1;
 	map->nb_line = 0;
@@ -96,10 +97,12 @@ int	counter_line(int fd, t_map *map)
 		else if (str[0] != ' ' && str[0] != '-' && ft_isdigit(str[0]) == 0
 			&& first == 0)
 			exit_prog(map, 5);
-		else
-			counter_line2(str, ret, map, first);
+		else if (ret != 0)
+			end = counter_line2(str, ret, map, first);
 		first = 1;
 	}
+	if (end != '\n')
+		map->nb_line++;
 	return (1);
 }
 

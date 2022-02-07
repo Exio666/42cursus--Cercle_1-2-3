@@ -6,7 +6,7 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/05 13:13:41 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/02/06 17:22:56 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/02/07 18:06:53 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,5 +54,18 @@ int		check_int(char *str);
 int		check_doublon(int *tab, int i, int nb);
 void	ft_sort(int *tab, int i);
 void	start(t_stack *stack, int ac, char **av);
+
+/*
+ *	cheker.c
+ */
+
+int		cheker_sort(t_stack *stack);
+
+/*
+ *	
+ */
+
+void	sort_2(t_stack *stack);
+void	sort_3(t_stack *stack);
 
 #endif

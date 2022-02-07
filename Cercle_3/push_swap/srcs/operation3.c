@@ -6,7 +6,7 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/05 13:29:29 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/02/06 18:17:48 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/02/07 18:22:15 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	ft_rra(t_stack *stack)
 		return ;
 	if (size == 2)
 	{
-		ft_pa(stack);
+		ft_sa(stack);
 		return ;
 	}
 	last = ft_lstlast(*stack->stack_a);
@@ -53,7 +53,7 @@ void	ft_rrb(t_stack *stack)
 		return ;
 	if (size == 2)
 	{
-		ft_pb(stack);
+		ft_sb(stack);
 		return ;
 	}
 	last = ft_lstlast(*stack->stack_b);

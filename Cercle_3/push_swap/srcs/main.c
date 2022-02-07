@@ -6,7 +6,7 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/04 13:41:51 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/02/06 18:15:05 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/02/07 18:07:20 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,25 @@ int	main(int ac, char **av)
 	if (ac <= 1)
 		return (1);
 	start(&stack, ac, av);
+	if (!cheker_sort(&stack))
+	{
+		if (ac <= 3)
+			sort_2(&stack);
+		else if (ac <= 4)
+			sort_3(&stack);
+		/*else if (ac <= 6)
+			sort_5(&stack);
+		else
+			sort_all(&stack);*/
+	}
+	print_stack_a(&stack);
+	print_stack_b(&stack);
+	return (0);
+}
+/*	=============================
+	==== TEST RA/B/R  RA/B/R ====
+	=============================
+	ft_pb(&stack);
 	ft_pb(&stack);
 	ft_pb(&stack);
 	ft_pb(&stack);
@@ -69,7 +88,6 @@ int	main(int ac, char **av)
 	print_stack_b(&stack);
 	printf("*******reverse a*******\n");
 	ft_rra(&stack);
-	printf("!!!\n");
 	print_stack_a(&stack);
 	print_stack_b(&stack);
 	printf("*******reverse b*******\n");
@@ -82,7 +100,21 @@ int	main(int ac, char **av)
 	ft_rrr(&stack);
 	print_stack_a(&stack);
 	print_stack_b(&stack);
-}
+	printf("*******reverse a*******\n");
+	ft_ra(&stack);
+	print_stack_a(&stack);
+	print_stack_b(&stack);
+	printf("*******reverse b*******\n");
+	ft_rb(&stack);
+	ft_rb(&stack);
+	print_stack_a(&stack);
+	print_stack_b(&stack);
+	printf("*******2 reverse*******\n");
+	ft_rr(&stack);
+	ft_rr(&stack);
+	print_stack_a(&stack);
+	print_stack_b(&stack);
+*/
 /*	===========================
 	==== TEST PA/B  SA/B/S ====
 	===========================

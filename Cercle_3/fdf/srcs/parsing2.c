@@ -6,7 +6,7 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/31 16:26:49 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/02/01 13:24:05 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/02/07 17:09:41 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void	parse_map2(t_map *map, char *line, int j, int k)
 	}
 }
 
-void	counter_line2(char *str, int ret, t_map *map, int first)
+char	counter_line2(char *str, int ret, t_map *map, int first)
 {
 	int	i;
 
@@ -58,9 +58,10 @@ void	counter_line2(char *str, int ret, t_map *map, int first)
 			map->nb_line++;
 		i++;
 	}
+	return (str[ret - 1]);
 }
 
-void	exit_bug(t_map *map, char **line, int j)
+void	exit_bug(t_map *map, char *line, int j)
 {
 	free(line);
 	free_map3d(map, j);
