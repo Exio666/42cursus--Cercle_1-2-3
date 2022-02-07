@@ -6,7 +6,7 @@
 #    By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/07 11:02:27 by bsavinel          #+#    #+#              #
-#    Updated: 2022/02/05 13:17:29 by bsavinel         ###   ########.fr        #
+#    Updated: 2022/02/07 10:52:54 by bsavinel         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -47,7 +47,7 @@ LIBIXFLAGS = -lm -lbsd -lX11 -lXext
 
 all: $(NAME)
 
-$(NAME) : makelibft makeminilibx $(OBJS)
+$(NAME) : $(OBJS) $(ALLLIB)
 	$(CC) $(CFLAGS) $(OBJS) $(ALLLIB) $(LIBIXFLAGS) -o $(NAME) $(INCS)
 
 %.o: %.c
@@ -64,10 +64,10 @@ fclean : clean
 	$(RM) minilibx/libmlx_Linux.a
 	$(RM) minilibx/libmlx.a
 
-makelibft :
+libft/libft.a :
 	$(MAKE) -C libft all
 
-makeminilibx :
+minilibx/libmlx_Linux.a :
 	$(MAKE) -C minilibx all
 
 bonus : all
@@ -76,4 +76,4 @@ re : fclean all
 
 -include $(DEPS)
 
-.PHONY: all clean fclean re makelibft makeminilibx bonus
+.PHONY: all clean fclean re bonus

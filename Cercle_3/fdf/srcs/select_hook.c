@@ -6,7 +6,7 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/18 17:06:23 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/01/31 10:57:04 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/02/07 11:22:02 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int	select_hook(int hook, t_map *map)
 {
 	if (hook == D_ESCAPE)
-		exit_prog(map, 0);
+		exit_prog2(map);
 	else if (hook == D_ROT_UPZ)
 		map->rot_z += ROTATION;
 	else if (hook == D_ROT_DOWNZ)

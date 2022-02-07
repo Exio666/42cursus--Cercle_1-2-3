@@ -6,7 +6,7 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/17 15:42:53 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/01/31 12:43:41 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/02/07 11:43:59 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,4 +60,16 @@ void	exit_prog(t_map *map, int status)
 		free(map->mlx_ptr);
 	}
 	exit(1);
+}
+
+int	exit_prog2(t_map *map)
+{
+	free_map3d(map, map->nb_line);
+	free_map2d(map, map->nb_line);
+	mlx_destroy_window(map->mlx_ptr, map->mlx_win);
+	mlx_destroy_image(map->mlx_ptr, map->image.img);
+	mlx_destroy_display(map->mlx_ptr);
+	free(map->mlx_ptr);
+	exit(0);
+	return (0);
 }

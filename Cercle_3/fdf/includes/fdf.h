@@ -6,7 +6,7 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/07 11:08:26 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/02/01 16:19:28 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/02/07 11:29:48 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define FDF_H
 
 # include "mlx.h"
-# include "libft.h"
+# include "all_lib.h"
 # include "get_next_line.h"
 # include <unistd.h>
 # include <fcntl.h>
@@ -28,8 +28,9 @@
 # define HEIGHT 1200
 # define WIDTH 2000
 # define ROTATION 0.1
-# define TRANSLATION 130
+# define TRANSLATION 20
 # define V_ZOOM 1.15
+# define SCALING 7
 
 /*
  *	Define touche
@@ -167,6 +168,7 @@ void		draw_line(t_map *map, t_2Dpoint p1, t_2Dpoint p2, t_color color);
 int			free_map3d(t_map *map, int j);
 int			free_map2d(t_map *map, int j);
 void		exit_prog(t_map *map, int status);
+int			exit_prog2(t_map *map);
 
 /*
  *	fdf_utils.c

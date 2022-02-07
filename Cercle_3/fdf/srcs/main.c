@@ -6,12 +6,11 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/07 13:25:54 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/02/01 16:23:36 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/02/07 11:44:47 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
-#include <stdio.h>
 
 void	reset_map(t_map *map)
 {
@@ -19,7 +18,7 @@ void	reset_map(t_map *map)
 	map->rot_z = 0;
 	map->rot_x = 0;
 	map->rot_y = 0;
-	map->scaling = 1;
+	map->scaling = SCALING;
 	map->projection = 0;
 	map->translation_x = 0;
 	map->translation_y = 0;
@@ -72,6 +71,16 @@ int	print_map(t_map	*map)
 	return (1);
 }
 
+void	print_action(void)
+{
+	ft_printf("You can rotate with: 'q' 'w' 'e' 'a' 's' 'd'\n");
+	ft_printf("You can moove the map with: directional arrow\n");
+	ft_printf("You can zoom with: '+' '-'\n");
+	ft_printf("You can change view with: 'p'\n");
+	ft_printf("You can reset view with: 'r'\n");
+	ft_printf("You can close window with: 'esc' or the cross\n");
+}
+
 int	main(int ac, char **av)
 {
 	t_map	map;
@@ -91,6 +100,8 @@ int	main(int ac, char **av)
 	map.image.addr = mlx_get_data_addr(map.image.img, &map.image.bits_per_pixel,
 			&map.image.line_length, &map.image.endian);
 	print_map(&map);
+	print_action();
+	mlx_hook(map.mlx_win, 17, 0, exit_prog2, &map);
 	mlx_key_hook(map.mlx_win, select_hook, &map);
 	mlx_loop(map.mlx_ptr);
 	return (1);
