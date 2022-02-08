@@ -6,7 +6,7 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/04 13:41:57 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/02/07 18:10:08 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/02/08 16:13:16 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,12 @@
 
 void	ft_ra(t_stack *stack)
 {
-	t_list	*first;
-	t_list	*last;
+	t_chain	*first;
+	t_chain	*last;
 	int		size;
 	
 	first = *stack->stack_a;
-	size = ft_lstsize(first);
+	size = ft_chainsize(first);
 	if (!first || size <= 1)
 		return ;
 	if (size == 2)
@@ -27,20 +27,22 @@ void	ft_ra(t_stack *stack)
 		ft_sa(stack);
 		return ;
 	}
-	last = ft_lstlast(first);
+	last = ft_chainlast(first);
 	*stack->stack_a = first->next;
+	first->next->back = NULL;
 	first->next = NULL;
 	last->next = first;
+	first->back = last;
 }
 
 void	ft_rb(t_stack *stack)
 {
-	t_list	*first;
-	t_list	*last;
+	t_chain	*first;
+	t_chain	*last;
 	int		size;
 	
 	first = *stack->stack_b;
-	size = ft_lstsize(first);
+	size = ft_chainsize(first);
 	if (!first || size <= 1)
 		return ;
 	if (size == 2)
@@ -48,10 +50,12 @@ void	ft_rb(t_stack *stack)
 		ft_sb(stack);
 		return ;
 	}
-	last = ft_lstlast(first);
+	last = ft_chainlast(first);
 	*stack->stack_b = first->next;
+	first->next->back = NULL;
 	first->next = NULL;
 	last->next = first;
+	first->back = last;
 }
 
 void	ft_rr(t_stack *stack)

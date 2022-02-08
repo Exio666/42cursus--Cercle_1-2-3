@@ -6,7 +6,7 @@
 #    By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/23 11:34:09 by bsavinel          #+#    #+#              #
-#    Updated: 2022/02/06 15:08:21 by bsavinel         ###   ########.fr        #
+#    Updated: 2022/01/15 14:54:37 by bsavinel         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -89,7 +89,7 @@ NAME	= libft.a
 
 CC		= gcc
 
-CFLAGS	= -Wall -Wextra -Werror -MMD
+CFLAGS	= -Wall -Wextra -Werror -MMD -MP
 
 all: $(NAME)
 

@@ -6,7 +6,7 @@
 #    By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/04 13:33:13 by bsavinel          #+#    #+#              #
-#    Updated: 2022/02/07 18:26:32 by bsavinel         ###   ########.fr        #
+#    Updated: 2022/02/08 16:06:31 by bsavinel         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,8 @@ SRCS =	srcs/main.c				\
 		srcs/operation2.c		\
 		srcs/operation3.c		\
 		srcs/cheker.c			\
-		srcs/sort_2_and_3.c
+		srcs/sort_2_and_3.c		\
+		srcs/sort_all.c
 
 OBJS = $(SRCS:.c=.o)
 

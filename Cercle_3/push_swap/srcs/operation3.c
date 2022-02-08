@@ -6,7 +6,7 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/05 13:29:29 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/02/07 18:22:15 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/02/08 16:13:28 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,57 +14,47 @@
 
 void	ft_rra(t_stack *stack)
 {
-	t_list	*last;
-	t_list	*tmp1;
+	t_chain	*last;
+	t_chain	*first;
 	int		size;
-	int		i;
-	
-	tmp1 = *stack->stack_a;
-	size = ft_lstsize(tmp1);
-	if (!tmp1 || size <= 1)
+
+	first = *stack->stack_a;
+	size = ft_chainsize(first);
+	if (!first || size <= 1)
 		return ;
 	if (size == 2)
 	{
 		ft_sa(stack);
 		return ;
 	}
-	last = ft_lstlast(*stack->stack_a);
-	i = 0;
-	while (i < size - 2)
-	{
-		tmp1 = tmp1->next;
-		i++;
-	}
-	tmp1->next = NULL;
-	last->next = *stack->stack_a;
+	last = ft_chainlast(*stack->stack_a);
+	last->back->next = NULL;
+	last->next = first;
+	last->back = NULL;
+	first->back = last;
 	*stack->stack_a = last;
 }
 
 void	ft_rrb(t_stack *stack)
 {
-	t_list	*last;
-	t_list	*tmp1;
+	t_chain	*last;
+	t_chain	*first;
 	int		size;
-	int		i;
 	
-	tmp1 = *stack->stack_b;
-	size = ft_lstsize(tmp1);
-	if (!tmp1 || size <= 1)
+	first = *stack->stack_b;
+	size = ft_chainsize(first);
+	if (!first || size <= 1)
 		return ;
 	if (size == 2)
 	{
 		ft_sb(stack);
 		return ;
 	}
-	last = ft_lstlast(*stack->stack_b);
-	i = 0;
-	while (i < size - 2)
-	{
-		tmp1 = tmp1->next;
-		i++;
-	}
-	tmp1->next = NULL;
-	last->next = *stack->stack_b;
+	last = ft_chainlast(*stack->stack_b);
+	last->back->next = NULL;
+	last->next = first;
+	last->back = NULL;
+	first->back = last;
 	*stack->stack_b = last;
 }
 

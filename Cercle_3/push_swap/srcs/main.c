@@ -6,7 +6,7 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/04 13:41:51 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/02/07 18:07:20 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/02/08 17:06:40 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,44 +14,50 @@
 
 void	print_stack_a(t_stack *stack)
 {
-	t_list	*list;
+	t_chain	*chain;
 	int		i;
 
 	i = 0;
-	list = *stack->stack_a;
-	if (!list)
+	chain = *stack->stack_a;
+	if (!chain)
 	{
-		printf("Stack A : VIDE\n\n");
+		printf("Stack A: VIDE\n\n");
 		return ;
 	}
-	while (list->next != NULL && i < 100)
+	while (chain->next != NULL && i < 100)
 	{
-		printf("Stack A: %3i : %i\n", i, list->content);
-		list = list->next;
+		printf("Stack A: %3i -> %i\n", i, chain->content);
+		chain = chain->next;
 		i++;
 	}
-	printf("Stack A: %3i : %i\n\n", i, list->content);
+	printf("Stack A: %3i -> %i\n\n", i, chain->content);
 }
 
 void	print_stack_b(t_stack *stack)
 {
-	t_list	*list;
+	t_chain	*chain;
 	int		i;
 
 	i = 0;
-	list = *stack->stack_b;
-	if (!list)
+	chain = *stack->stack_b;
+	if (!chain)
 	{
-		printf("Stack B : VIDE\n\n");
+		printf("Stack B: VIDE\n\n");
 		return ;
 	}
-	while (list->next != NULL && i < 100)
+	while (chain->next != NULL && i < 100)
 	{
-		printf("Stack B %3i : %i\n", i, list->content);
-		list = list->next;
+		printf("Stack B: %3i -> %i\n", i, chain->content);
+		chain = chain->next;
 		i++;
 	}
-	printf("Stack B %3i : %i\n\n", i, list->content);
+	printf("Stack B: %3i -> %i\n\n", i, chain->content);
+}
+
+void	print_stack(t_stack *stack)
+{
+	print_stack_a(stack);
+	print_stack_b(stack);
 }
 
 int	main(int ac, char **av)
@@ -61,21 +67,26 @@ int	main(int ac, char **av)
 	if (ac <= 1)
 		return (1);
 	start(&stack, ac, av);
+	print_stack(&stack);
+	stack.action = 0;
 	if (!cheker_sort(&stack))
 	{
+		stack.size = ft_chainsize(*stack.stack_a);
+		stack.median = stack.size / 2;
+		ft_printf("size: %5i\nmedian: %3i\n\n", stack.size, stack.median);
 		if (ac <= 3)
 			sort_2(&stack);
 		else if (ac <= 4)
 			sort_3(&stack);
-		/*else if (ac <= 6)
-			sort_5(&stack);
 		else
-			sort_all(&stack);*/
+			sort_all(&stack);
 	}
-	print_stack_a(&stack);
-	print_stack_b(&stack);
+	ft_printf("\n\n");
+	print_stack(&stack);
+	ft_printf("action: %4i\n", stack.action);
 	return (0);
 }
+
 /*	=============================
 	==== TEST RA/B/R  RA/B/R ====
 	=============================

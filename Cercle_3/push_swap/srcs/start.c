@@ -6,7 +6,7 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/05 14:08:26 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/02/06 17:26:00 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/02/08 16:12:28 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,10 @@ void	create_stack(t_stack *stack, int len)
 {
 	int		i;
 	int		j;
-	t_list	*list;
+	t_chain	*chain;
 
 	i = 0;
-	stack->stack_a = malloc(sizeof(t_list **));
+	stack->stack_a = malloc(sizeof(t_chain **));
 	if (!stack->stack_a)
 	{
 		free(stack->tab[0]);
@@ -27,7 +27,7 @@ void	create_stack(t_stack *stack, int len)
 		free(stack->tab[2]);
 		return ;
 	}
-	stack->stack_b = malloc(sizeof(t_list **));
+	stack->stack_b = malloc(sizeof(t_chain **));
 	if (!stack->stack_b)
 	{
 		free(stack->tab[0]);
@@ -43,8 +43,8 @@ void	create_stack(t_stack *stack, int len)
 		{
 			j++;
 		}
-		list = ft_lstnew(stack->tab[1][j]);
-		ft_lstadd_back(stack->stack_a, list);
+		chain = ft_chainnew(stack->tab[1][j]);
+		ft_chainadd_back(stack->stack_a, chain);
 		i++;
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/05 13:13:41 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/02/07 18:06:53 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/02/08 16:50:05 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,11 @@
 
 typedef struct s_stack
 {
-	t_list	**stack_a;
-	t_list	**stack_b;
-	int		madian;
+	t_chain	**stack_a;
+	t_chain	**stack_b;
+	int		median;
 	int		size;
+	int		action;
 	int		*tab[3];
 }	t_stack;
 
@@ -60,12 +61,28 @@ void	start(t_stack *stack, int ac, char **av);
  */
 
 int		cheker_sort(t_stack *stack);
+int		cheker_sort_3a(t_stack *stack);
 
 /*
- *	
+ *	sort_2_and_3.c
  */
 
 void	sort_2(t_stack *stack);
 void	sort_3(t_stack *stack);
+
+/*
+ *	sort_all.c
+ */
+
+void	push_median(t_stack *stack);
+void	sort_all(t_stack *stack);
+
+/*
+ *	main.c
+ */
+
+void	print_stack(t_stack *stack);
+void	print_stack_b(t_stack *stack);
+void	print_stack_a(t_stack *stack);
 
 #endif

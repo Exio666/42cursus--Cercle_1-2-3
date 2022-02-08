@@ -6,7 +6,7 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/23 10:36:10 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/02/06 14:11:34 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/02/08 16:08:47 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,4 +74,3 @@ long int	ft_atoi_long(const char *nptr)
 		nb = -nb;
 	return (nb);
 }
-

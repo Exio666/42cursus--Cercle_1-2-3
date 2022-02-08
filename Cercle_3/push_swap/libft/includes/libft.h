@@ -6,7 +6,7 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/23 10:38:07 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/02/06 17:22:08 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/02/08 16:10:44 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,20 @@
 
 typedef struct s_list
 {
-	int				content;
+	void			*content;
 	struct s_list	*next;
 }	t_list;
+
+/*
+ *  chain struct
+ */
+
+typedef struct s_chain
+{
+	int				content;
+	struct s_chain	*next;
+	struct s_chain	*back;
+}	t_chain;
 
 /*
  *  Fonction Part 1
@@ -75,15 +86,30 @@ void		ft_putnbr_fd(int n, int fd);
  *  Fonction Bonus part
  */
 
-t_list		*ft_lstnew(int content);
+t_list		*ft_lstnew(void *content);
 void		ft_lstadd_front(t_list **alst, t_list *elem);
 int			ft_lstsize(t_list *lst);
 t_list		*ft_lstlast(t_list *lst);
 void		ft_lstadd_back(t_list **alst, t_list *elem);
-void		ft_lstdelone(t_list *lst);
-void		ft_lstclear(t_list **lst);
-void		ft_lstiter(t_list *lst, int (*f)(int));
-t_list		*ft_lstmap(t_list *lst, int (*f)(int));
+void		ft_lstdelone(t_list *lst, void (*del)(void*));
+void		ft_lstclear(t_list **lst, void (*del)(void*));
+void		ft_lstiter(t_list *lst, void (*f)(void *));
+t_list		*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
+
+
+/*
+ *	Fonction Chain
+ */
+
+t_chain		*ft_chainlast(t_chain *lst);
+t_chain		*ft_chainmap(t_chain *lst, int(*f)(int));
+t_chain		*ft_chainnew(int content);
+int			ft_chainsize(t_chain *lst);
+void		ft_chainadd_back(t_chain **alst, t_chain *new);
+void		ft_chainadd_front(t_chain **alst, t_chain *new);
+void		ft_chainclear(t_chain **lst);
+void		ft_chaindelone(t_chain *lst);
+void		ft_chainiter(t_chain *lst, int (*f)(int));
 
 /*
  *	autre

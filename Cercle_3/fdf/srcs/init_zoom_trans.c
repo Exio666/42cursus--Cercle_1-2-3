@@ -6,7 +6,7 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 11:10:01 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/02/01 13:46:33 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/02/08 17:39:32 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 float	calcul_zoom_hor(t_map *map)
 {
+	return (1);
 	float		zoom;
 	t_2Dpoint	p1;
 	t_2Dpoint	p2;
@@ -41,6 +42,7 @@ float	calcul_zoom_hor(t_map *map)
 
 float	calcul_zoom_ver(t_map *map)
 {
+	return (1);
 	float		zoom;
 	t_2Dpoint	p1;
 	t_2Dpoint	p2;
@@ -65,6 +67,7 @@ float	calcul_zoom_ver(t_map *map)
 
 float	intital_zoom(t_map *map)
 {
+	return (40);
 	float	zoom_ver;
 	float	zoom_hot;
 

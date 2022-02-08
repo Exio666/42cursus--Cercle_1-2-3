@@ -6,7 +6,7 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/07 14:21:56 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/02/07 17:53:04 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/02/08 14:35:13 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	cheker_sort(t_stack *stack)
 {
-	t_list	*to_check;
+	t_chain	*to_check;
 	int		i;
 
 	to_check = *stack->stack_b;
@@ -29,5 +29,16 @@ int	cheker_sort(t_stack *stack)
 		to_check = to_check->next;
 		i++;
 	}	
+	return (1);
+}
+
+int	cheker_sort_3a(t_stack *stack)
+{
+	t_chain	*to_check;
+
+	to_check = *stack->stack_a;
+	if (to_check->content > to_check->next->content
+			|| to_check->next->content > to_check->next->next->content)
+		return (0);
 	return (1);
 }
