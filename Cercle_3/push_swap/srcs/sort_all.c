@@ -6,7 +6,7 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 10:30:33 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/02/08 17:27:06 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/02/13 14:07:56 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,72 @@ void	push_median(t_stack *stack)
 	sort_3(stack);
 }
 
+int	find_most_lower(int nb, t_stack *stack, t_option *option)
+{
+	t_chain	*stack_a;
+	int		lower;
+	int 	i;
+
+	i = 0;
+	stack_a = *stack->stack_a;
+	lower = stack->size + 5;
+	while (stack_a)
+	{
+		if (stack_a->content > nb && stack_a->content < lower)
+		{
+			lower = stack_a->content;
+			option->tab_cost[1] = i;
+		}
+		stack_a = stack_a->next;
+		i++;
+	}
+	i = 0;
+	if (lower == stack->size + 5)
+	{
+		stack_a = *stack->stack_a;
+		while (stack_a)
+		{
+			if (stack_a->content < lower)
+			{
+				lower = stack_a->content;
+				option->tab_cost[1] = i;
+			}
+			stack_a = stack_a->next;
+		}
+		i++;
+	}
+	return (lower);
+}
+
+void	feed_option(t_option *option, t_stack *stack)
+{
+
+}
+
+void	second_part(t_stack *stack)
+{
+	t_chain		*stack_b;
+	t_option	option;
+
+	stack_b = *stack->stack_b;
+	option.tab_cost[3] = 0;
+	while (stack_b)
+	{
+		while (stack_b)
+		{
+			option.corespond = find_most_lower(stack_b->content, stack, &option);
+			feed_option(&option, stack);
+			stack_b = stack_b->next;
+			option.tab_cost[3]++;
+		}
+		reinjection(stack, &option);
+		stack_b = *stack->stack_b;
+	}
+}
+
 void	sort_all(t_stack *stack)
 {
 	push_median(stack);
+	second_part(stack);
+	up_first(stack);
 }

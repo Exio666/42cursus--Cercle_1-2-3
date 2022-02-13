@@ -6,7 +6,7 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/05 13:13:41 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/02/08 16:50:05 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/02/13 11:40:30 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,13 @@ typedef struct s_stack
 	int		action;
 	int		*tab[3];
 }	t_stack;
+
+typedef struct s_option
+{
+	int	corespond;
+	int tab_cost[4];
+}	t_option;
+
 
 /*
  *	all operation
