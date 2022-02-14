@@ -6,7 +6,7 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/04 13:41:51 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/02/08 17:06:40 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/02/14 11:56:23 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void	print_stack_b(t_stack *stack)
 		printf("Stack B: VIDE\n\n");
 		return ;
 	}
-	while (chain->next != NULL && i < 100)
+	while (chain->next != NULL /*&& i < 100*/)
 	{
 		printf("Stack B: %3i -> %i\n", i, chain->content);
 		chain = chain->next;

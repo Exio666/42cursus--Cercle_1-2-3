@@ -6,7 +6,7 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/05 13:13:41 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/02/13 11:40:30 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/02/14 11:08:35 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include "all_lib.h"
 #include <stdio.h>
+# include <limits.h>
 
 /*
  *	structure
@@ -30,10 +31,26 @@ typedef struct s_stack
 	int		*tab[3];
 }	t_stack;
 
+/*
+= 1 ->￼↑↓
+= 2 ->￼↓↑
+= 3 -> ↑↑
+= 4 ->￼↓↓
+*/
+typedef struct s_choice
+{
+	int choice;
+	int cost;
+	int nb_stack_a;
+	int nb_stack_b;
+}	t_choice;
+
 typedef struct s_option
 {
 	int	corespond;
+	int place[2];
 	int tab_cost[4];
+	t_choice choice;
 }	t_option;
 
 
