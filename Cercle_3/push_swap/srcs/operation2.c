@@ -6,7 +6,7 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/04 13:41:57 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/02/08 16:13:16 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/02/15 14:47:03 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,16 +17,11 @@ void	ft_ra(t_stack *stack)
 	t_chain	*first;
 	t_chain	*last;
 	int		size;
-	
+
 	first = *stack->stack_a;
 	size = ft_chainsize(first);
 	if (!first || size <= 1)
 		return ;
-	if (size == 2)
-	{
-		ft_sa(stack);
-		return ;
-	}
 	last = ft_chainlast(first);
 	*stack->stack_a = first->next;
 	first->next->back = NULL;
@@ -40,16 +35,11 @@ void	ft_rb(t_stack *stack)
 	t_chain	*first;
 	t_chain	*last;
 	int		size;
-	
+
 	first = *stack->stack_b;
 	size = ft_chainsize(first);
 	if (!first || size <= 1)
 		return ;
-	if (size == 2)
-	{
-		ft_sb(stack);
-		return ;
-	}
 	last = ft_chainlast(first);
 	*stack->stack_b = first->next;
 	first->next->back = NULL;

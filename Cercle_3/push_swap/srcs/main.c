@@ -6,7 +6,7 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/04 13:41:51 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/02/14 11:56:23 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/02/15 15:34:29 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,16 +21,16 @@ void	print_stack_a(t_stack *stack)
 	chain = *stack->stack_a;
 	if (!chain)
 	{
-		printf("Stack A: VIDE\n\n");
+		ft_printf("Stack A: VIDE\n\n");
 		return ;
 	}
-	while (chain->next != NULL && i < 100)
+	while (chain->next != NULL)
 	{
-		printf("Stack A: %3i -> %i\n", i, chain->content);
+		ft_printf("Stack A: %3i -> %i\n", i, chain->content);
 		chain = chain->next;
 		i++;
 	}
-	printf("Stack A: %3i -> %i\n\n", i, chain->content);
+	ft_printf("Stack A: %3i -> %i\n\n", i, chain->content);
 }
 
 void	print_stack_b(t_stack *stack)
@@ -42,16 +42,16 @@ void	print_stack_b(t_stack *stack)
 	chain = *stack->stack_b;
 	if (!chain)
 	{
-		printf("Stack B: VIDE\n\n");
+		ft_printf("Stack B: VIDE\n\n");
 		return ;
 	}
-	while (chain->next != NULL /*&& i < 100*/)
+	while (chain->next != NULL)
 	{
-		printf("Stack B: %3i -> %i\n", i, chain->content);
+		ft_printf("Stack B: %3i -> %i\n", i, chain->content);
 		chain = chain->next;
 		i++;
 	}
-	printf("Stack B: %3i -> %i\n\n", i, chain->content);
+	ft_printf("Stack B: %3i -> %i\n\n", i, chain->content);
 }
 
 void	print_stack(t_stack *stack)
@@ -67,13 +67,11 @@ int	main(int ac, char **av)
 	if (ac <= 1)
 		return (1);
 	start(&stack, ac, av);
-	print_stack(&stack);
 	stack.action = 0;
 	if (!cheker_sort(&stack))
 	{
 		stack.size = ft_chainsize(*stack.stack_a);
 		stack.median = stack.size / 2;
-		ft_printf("size: %5i\nmedian: %3i\n\n", stack.size, stack.median);
 		if (ac <= 3)
 			sort_2(&stack);
 		else if (ac <= 4)
@@ -81,9 +79,10 @@ int	main(int ac, char **av)
 		else
 			sort_all(&stack);
 	}
-	ft_printf("\n\n");
-	print_stack(&stack);
-	ft_printf("action: %4i\n", stack.action);
+	ft_chainclear(stack.stack_a);
+	ft_chainclear(stack.stack_b);
+	free(stack.stack_a);
+	free(stack.stack_b);
 	return (0);
 }
 

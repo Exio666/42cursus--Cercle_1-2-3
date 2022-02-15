@@ -6,7 +6,7 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/05 13:29:29 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/02/14 17:08:05 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/02/15 14:45:28 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	ft_rrb(t_stack *stack)
 	t_chain	*last;
 	t_chain	*first;
 	int		size;
-	
+
 	first = *stack->stack_b;
 	size = ft_chainsize(first);
 	if (!first || size <= 1)

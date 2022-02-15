@@ -6,7 +6,7 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/25 16:25:54 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/02/08 14:14:25 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/02/15 13:43:40 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 	return (begin);
 }
 
-t_chain	*ft_chainmap(t_chain *lst, int(*f)(int))
+t_chain	*ft_chainmap(t_chain *lst, int (*f)(int))
 {
 	t_chain	*begin;
 	t_chain	*index_lst;

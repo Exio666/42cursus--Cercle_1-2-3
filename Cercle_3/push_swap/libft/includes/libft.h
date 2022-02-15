@@ -6,7 +6,7 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/23 10:38:07 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/02/08 16:10:44 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/02/15 13:44:28 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,13 +96,12 @@ void		ft_lstclear(t_list **lst, void (*del)(void*));
 void		ft_lstiter(t_list *lst, void (*f)(void *));
 t_list		*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
 
-
 /*
  *	Fonction Chain
  */
 
 t_chain		*ft_chainlast(t_chain *lst);
-t_chain		*ft_chainmap(t_chain *lst, int(*f)(int));
+t_chain		*ft_chainmap(t_chain *lst, int (*f)(int));
 t_chain		*ft_chainnew(int content);
 int			ft_chainsize(t_chain *lst);
 void		ft_chainadd_back(t_chain **alst, t_chain *new);

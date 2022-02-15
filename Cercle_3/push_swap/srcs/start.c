@@ -6,7 +6,7 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/05 14:08:26 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/02/08 16:12:28 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/02/15 15:33:29 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -166,4 +166,7 @@ void	start(t_stack *stack, int ac, char **av)
 	}
 	ft_sort(stack->tab[0], i - 1);
 	create_stack(stack, i);
+	free(stack->tab[0]);
+	free(stack->tab[1]);
+	free(stack->tab[2]);
 }
