@@ -6,7 +6,7 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/05 13:13:41 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/02/15 14:44:55 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/02/15 17:14:07 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,6 +92,8 @@ void	sort_3(t_stack *stack);
 
 void	push_median(t_stack *stack);
 void	sort_all(t_stack *stack);
+int		clacul_choice(int place_a, int place_b);
+int		proche(t_stack *stack);
 
 /*
  *	main.c
@@ -100,5 +102,31 @@ void	sort_all(t_stack *stack);
 void	print_stack(t_stack *stack);
 void	print_stack_b(t_stack *stack);
 void	print_stack_a(t_stack *stack);
+
+/*
+ *	up_first.c
+ */
+
+void	ft_down_a(t_stack *stack);
+void	ft_up_a(t_stack *stack);
+void	up_first(t_stack *stack);
+
+/*
+ *	reinjection.c
+ */
+
+void	up_a_down_b(t_stack *stack, t_option *option, int size_b);
+void	up_b_down_a(t_stack *stack, t_option *option, int size_a);
+void	up_b_and_a(t_stack *stack, t_option *option);
+void	down_b_and_a(t_stack *stack, t_option *option, int size_a, int size_b);
+void	reinjection(t_stack *stack, t_option *option);
+
+/*
+ *	second_part.c
+ */
+
+int		find_most_lower(int nb, t_stack *stack, t_option *option);
+void	feed_option(t_option *option, t_stack *stack);
+void	second_part(t_stack *stack);
 
 #endif
