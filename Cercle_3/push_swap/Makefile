@@ -6,7 +6,7 @@
 #    By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/04 13:33:13 by bsavinel          #+#    #+#              #
-#    Updated: 2022/02/16 10:35:34 by bsavinel         ###   ########.fr        #
+#    Updated: 2022/02/16 11:01:22 by bsavinel         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,13 +23,21 @@ SRCS =	srcs/cheker.c			\
 		srcs/start.c			\
 		srcs/up_first.c
 
+SRCS_BONUS = 	srcs/cheker.c			\
+				srcs/operation1.c		\
+				srcs/operation2.c		\
+				srcs/operation3.c		\
+				srcs/start.c
+
 OBJS = $(SRCS:.c=.o)
 
-DEPS = $(SRCS:.c=.d)
+OBJS = $(SRCS:.c=.o)
+
+DEPS = $(SRCS_BONUS:.c=.d)
 
 CC = gcc
 
-CFLAGS = -Wall -Wextra -Werror #-g3 -fsanitize=address
+CFLAGS = -Wall -Wextra -Werror
 
 RM = rm -f
 
@@ -58,7 +66,8 @@ fclean : clean
 makelibft :
 	$(MAKE) -C libft all
 
-bonus : all
+bonus :
+	$(CC) $(CFLAGS) $(OBJS) $(ALLLIB) -o checker $(INCS)
 
 re : fclean all
 
