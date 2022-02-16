@@ -6,7 +6,7 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/04 13:41:54 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/02/15 19:58:48 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/02/16 19:10:57 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,20 +60,19 @@ void	ft_ss(t_stack *stack)
 
 void	ft_pb(t_stack *stack)
 {
-	t_chain	*stack_a;
 	t_chain	*stack_b;
+	t_chain	*stack_a;
 
 	stack_a = *stack->stack_a;
 	if (!stack_a)
 		return ;
-	*stack->stack_a = stack_a->next;
-	stack_a->next->back = NULL;
 	if (*stack->stack_b)
 	{
 		stack_b = *stack->stack_b;
-		stack_b->back = NULL;
 		stack_b->back = stack_a;
+		stack_a->back = NULL;
 	}
+	*stack->stack_a = stack_a->next;
 	stack_a->next = *stack->stack_b;
 	*stack->stack_b = stack_a;
 }

@@ -6,7 +6,7 @@
 #    By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/04 13:33:13 by bsavinel          #+#    #+#              #
-#    Updated: 2022/02/16 11:01:22 by bsavinel         ###   ########.fr        #
+#    Updated: 2022/02/16 18:48:11 by bsavinel         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,13 +27,17 @@ SRCS_BONUS = 	srcs/cheker.c			\
 				srcs/operation1.c		\
 				srcs/operation2.c		\
 				srcs/operation3.c		\
-				srcs/start.c
+				srcs/start.c			\
+				srcs/main_checker.c		\
+				srcs/do_action.c
 
 OBJS = $(SRCS:.c=.o)
 
-OBJS = $(SRCS:.c=.o)
+OBJS_BONUS = $(SRCS_BONUS:.c=.o)
 
-DEPS = $(SRCS_BONUS:.c=.d)
+DEPS = $(SRCS:.c=.d)
+
+DEPS_BONUS = $(SRCS_BONUS:.c=.d)
 
 CC = gcc
 
@@ -56,21 +60,22 @@ $(NAME) : makelibft $(OBJS)
 	$(CC) $(CFLAGS) -MMD -c $< -o $@ $(INCS)
 
 clean :
-	$(RM) $(OBJS) $(DEPS)
+	$(RM) $(OBJS) $(OBJS_BONUS) $(DEPS) $(DEPS_BONUS)
 	$(MAKE) -C libft clean
 
 fclean : clean
-	$(RM) $(NAME)
+	$(RM) $(NAME) checker
 	$(RM) libft/libft.a
 
 makelibft :
 	$(MAKE) -C libft all
 
-bonus :
-	$(CC) $(CFLAGS) $(OBJS) $(ALLLIB) -o checker $(INCS)
+bonus : makelibft $(OBJS_BONUS)
+	$(CC) $(CFLAGS) $(OBJS_BONUS) $(ALLLIB) -o checker $(INCS)
 
 re : fclean all
 
 -include $(DEPS)
+-include $(DEPS_BONUS)
 
 .PHONY: all clean fclean re makelibft bonus

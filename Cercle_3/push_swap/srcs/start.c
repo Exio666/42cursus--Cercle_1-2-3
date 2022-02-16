@@ -6,7 +6,7 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/05 14:08:26 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/02/16 15:31:11 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/02/16 17:50:10 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ void	free_tab(t_stack *stack, int nb, int chain, int cut)
 		free(stack->tab[i]);
 		i++;
 	}
-	write(2, "Error\n", 6);
 	if (chain == 1)
 	{
 		ft_chainclear(stack->stack_a);
@@ -30,7 +29,10 @@ void	free_tab(t_stack *stack, int nb, int chain, int cut)
 		free(stack->stack_b);
 	}
 	if (cut == 1)
+	{
+		write(2, "Error\n", 6);
 		exit(1);
+	}
 }
 
 void	create_stack(t_stack *stack, int len)

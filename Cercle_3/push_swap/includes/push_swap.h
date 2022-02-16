@@ -6,7 +6,7 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/05 13:13:41 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/02/16 10:38:04 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/02/16 18:47:45 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,5 +131,13 @@ int		find_most_lower(int nb, t_stack *stack, t_option *option);
 void	feed_option(t_option *option, t_stack *stack);
 void	second_part(t_stack *stack);
 void	choice_the_choice(t_option *option, t_stack *stack, t_choice *test);
+
+/*
+ *	do_action.c
+ */
+
+int		do_action1(char *action, t_stack *stack);
+int		do_action2(char *action, t_stack *stack);
+int		do_action3(char *action, t_stack *stack);
 
 #endif
