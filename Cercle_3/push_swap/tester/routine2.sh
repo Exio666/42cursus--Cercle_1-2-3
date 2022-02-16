@@ -1,5 +1,5 @@
 #!/bin/bash
-make
+make -C .. re
 clear
 echo "generateur du github de charlesjullien"
 while true
