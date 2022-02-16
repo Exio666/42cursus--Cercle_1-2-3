@@ -5,102 +5,114 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/30 08:36:14 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/02/01 16:15:44 by bsavinel         ###   ########.fr       */
+/*   Created: 2022/02/16 11:12:40 by bsavinel          #+#    #+#             */
+/*   Updated: 2022/02/16 15:31:30 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-char	*ft_joinstr(char *str, char *buf)
+char	*ft_up_line(char *line, char *buffer)
 {
-	char	*ret;
+	char	*new_line;
+	int		i;
+	int		j;
 
-	if (str[0] == '\0')
-	{
-		ret = malloc(sizeof(char) * BUFFER_SIZE + 1);
-		if (!ret)
-			return (NULL);
-	}
-	else
-	{
-		ret = malloc(sizeof(char) * (ft_strlen(str) + BUFFER_SIZE + 1));
-		if (!ret)
-			return (NULL);
-	}
-	ft_joinstr2(str, buf, ret);
-	free(str);
-	return (ret);
-}
-
-int	ft_new_line(char *str)
-{
-	int	i;
-
+	new_line = malloc(sizeof(char) * (ft_strlen(line) + sizeline(buffer) + 1));
+	if (!new_line)
+		return (NULL);
 	i = 0;
-	if (str[0] == '\0')
-		return (0);
-	while (str[i])
+	while (line[i])
 	{
-		if (str[i] == '\n')
-			return (1);
+		new_line[i] = line[i];
 		i++;
 	}
-	return (2);
+	free(line);
+	j = 0;
+	while (buffer[j] && buffer[j] != '\n')
+	{
+		new_line[i] = buffer[j];
+		j++;
+		i++;
+	}
+	if (buffer[j] == '\n')
+		new_line[i++] = '\n';
+	new_line[i] = '\0';
+	return (new_line);
 }
 
-void	ft_replace(char *str)
+char	*get_line(char *buffer, int fd)
+{
+	int		ret;
+	char	*line;
+
+	ret = 1;
+	line = malloc(sizeof(char) * 1);
+	if (!line)
+		return (NULL);
+	line[0] = '\0';
+	while (ret != 0 && no_newline(buffer))
+	{
+		if (buffer[0] != '\0')
+		{
+			line = ft_up_line(line, buffer);
+			if (!line)
+				return (bug_malloc(line));
+		}
+		ft_bzero(buffer, BUFFER_SIZE);
+		ret = read(fd, buffer, BUFFER_SIZE);
+		buffer[ret] = '\0';
+	}
+	line = ft_up_line(line, buffer);
+	if (!line)
+		return (bug_malloc(line));
+	return (line);
+}
+
+void	replace(char *buffer)
 {
 	char	tmp[BUFFER_SIZE + 1];
 	int		i;
 	int		j;
 
-	i = 0;
+	i = 1;
+	while (buffer[i - 1] != '\n' && buffer[i])
+		i++;
 	j = 0;
-	while (str[i] && str[i] != '\n')
-		i++;
-	i++;
-	while (str[i])
+	while (i <= BUFFER_SIZE)
 	{
-		tmp[j] = str[i];
-		i++;
+		tmp[j] = buffer[i];
 		j++;
+		i++;
 	}
-	ft_replace2(str, tmp, i, j);
-}
-
-char	*ft_line_return(char *str, char *tab)
-{
-	str = ft_joinstr(str, tab);
-	ft_replace(tab);
-	return (str);
+	i = 0;
+	while (i < j)
+	{
+		buffer[i] = tmp[i];
+		i++;
+	}
+	while (i <= BUFFER_SIZE)
+	{
+		buffer[i] = '\0';
+		i++;
+	}
 }
 
 char	*get_next_line(int fd)
 {
-	int			ret;
-	char		*str;
-	int			first;
-	static char	tab[2048][BUFFER_SIZE + 1];
+	static char	buffer[2048][BUFFER_SIZE + 1];
+	char		*line;
 
-	if (fd < 0)
+	if (fd < 0 || BUFFER_SIZE <= 0 || read(fd, 0, 0) <= -1)
 		return (NULL);
-	str = malloc(sizeof(char) * 1);
-	if (!str)
+	line = get_line(buffer[fd], fd);
+	if (!line)
 		return (NULL);
-	str[0] = '\0';
-	first = 0;
-	while (ft_new_line(tab[fd]) == 2 || first++ == 0)
+	replace(buffer[fd]);
+	if (line[0] == '\0')
 	{
-		if (ft_new_line(tab[fd]) != 1)
-		{
-			if (tab[fd][0] != '\0')
-				str = ft_joinstr(str, tab[fd]);
-			ft_bzero(tab[fd], BUFFER_SIZE);
-			ret = read(fd, tab[fd], BUFFER_SIZE);
-			tab[fd][ret] = '\0';
-		}
+		free(line);
+		return (NULL);
 	}
-	str = ft_line_return(str, tab[fd]);
-	return (ft_end(str));
+	return (line);
 }

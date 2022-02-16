@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/30 08:36:07 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/02/01 15:23:53 by bsavinel         ###   ########.fr       */
+/*   Created: 2022/02/16 11:16:49 by bsavinel          #+#    #+#             */
+/*   Updated: 2022/02/16 15:31:37 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,25 +17,32 @@
 # include <stdlib.h>
 # include "libft.h"
 
-# define BUFFER_SIZE 100
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 1024
+# endif
+
+typedef struct s_gnl
+{
+	char	*str;
+	int		len_read;
+	int		place_newline;
+}	t_gnl;
 
 /*
- *  get_next_line.c
+ *	get_next_line.c
  */
 
-char	*ft_joinstr(char *str, char *buf);
-int		ft_new_line(char *str);
-void	ft_replace(char *str);
+void	replace(char *buffer);
+char	*get_line(char *buffer, int fd);
+char	*ft_up_line(char *line, char *buffer);
 char	*get_next_line(int fd);
-char	*ft_line_return(char *str, char *tab);
 
 /*
- *  get_next_line_utils.c
+ *	get_next_line_utils.c
  */
 
-void	ft_replace2(char *str, char *tmp, int i, int j);
-void	ft_joinstr2(char *str, char *buf, char *ret);
-void	ft_bzero(void *s, size_t n);
-char	*ft_end(char *str);
+int		sizeline(char *str);
+int		no_newline(char *str);
+char	*bug_malloc(char *line);
 
 #endif
