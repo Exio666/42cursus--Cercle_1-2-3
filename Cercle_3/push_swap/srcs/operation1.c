@@ -6,7 +6,7 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/04 13:41:54 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/02/15 17:22:24 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/02/15 19:58:48 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,8 @@ void	ft_sa(t_stack *stack)
 	tmp2->next = tmp1;
 	tmp2->back = NULL;
 	tmp1->back = tmp2;
-	tmp1->next->back = tmp1;
+	if (tmp1->next)
+		tmp1->next->back = tmp1;
 }
 
 void	ft_sb(t_stack *stack)
@@ -47,7 +48,8 @@ void	ft_sb(t_stack *stack)
 	tmp2->next = tmp1;
 	tmp2->back = NULL;
 	tmp1->back = tmp2;
-	tmp1->next->back = tmp1;
+	if (tmp1->next)
+		tmp1->next->back = tmp1;
 }
 
 void	ft_ss(t_stack *stack)

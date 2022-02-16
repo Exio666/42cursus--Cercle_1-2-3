@@ -6,7 +6,7 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 10:30:33 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/02/15 17:11:12 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/02/15 18:54:54 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,34 +34,39 @@ int	proche(t_stack *stack)
 		return (-1);
 }
 
+void	push_under(t_stack *stack)
+{
+	int		sens;
+	t_chain	*stack_a;
+
+	sens = proche(stack);
+	stack_a = *stack->stack_a;
+	while (stack_a->content >= stack->median)
+	{
+		if (sens == 1)
+		{
+			ft_ra(stack);
+			ft_printf("ra\n");
+		}
+		else
+		{
+			ft_rra(stack);
+			ft_printf("rra\n");
+		}
+		stack_a = *stack->stack_a;
+	}
+	ft_pb(stack);
+	ft_printf("pb\n");
+}
+
 void	push_median(t_stack *stack)
 {
-	t_chain	*stack_a;
 	int		i;
-	int		sens;
 
 	i = 0;
 	while (i < stack->median)
 	{
-		sens = proche(stack);
-		stack_a = *stack->stack_a;
-		while (stack_a->content >= stack->median)
-		{
-			if (sens == 1)
-			{
-				ft_ra(stack);
-				ft_printf("ra\n");
-			}
-			else
-			{
-				ft_rra(stack);
-				ft_printf("rra\n");
-			}
-			stack_a = *stack->stack_a;
-		}
-		ft_pb(stack);
-		ft_printf("pb\n");
-		stack->action++;
+		push_under(stack);
 		i++;
 	}
 	ft_ra(stack);
@@ -70,7 +75,6 @@ void	push_median(t_stack *stack)
 	{
 		ft_pb(stack);
 		ft_printf("pb\n");
-		stack->action++;
 		i++;
 	}
 	sort_3(stack);

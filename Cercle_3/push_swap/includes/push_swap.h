@@ -6,7 +6,7 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/05 13:13:41 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/02/15 17:14:07 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/02/16 10:38:04 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ typedef struct s_stack
 	t_chain	**stack_b;
 	int		median;
 	int		size;
-	int		action;
 	int		*tab[3];
 }	t_stack;
 
@@ -67,8 +66,8 @@ void	ft_rrr(t_stack *stack);
  */
 
 void	create_stack(t_stack *stack, int len);
-int		check_int(char *str);
-int		check_doublon(int *tab, int i, int nb);
+void	free_tab(t_stack *stack, int nb, int chain, int cut);
+void	malloc_tab(t_stack *stack, int ac);
 void	ft_sort(int *tab, int i);
 void	start(t_stack *stack, int ac, char **av);
 
@@ -76,8 +75,10 @@ void	start(t_stack *stack, int ac, char **av);
  *	cheker.c
  */
 
+int		check_int(char *str);
 int		cheker_sort(t_stack *stack);
 int		cheker_sort_3a(t_stack *stack);
+int		check_doublon(int *tab, int i, int nb);
 
 /*
  *	sort_2_and_3.c
@@ -94,9 +95,10 @@ void	push_median(t_stack *stack);
 void	sort_all(t_stack *stack);
 int		clacul_choice(int place_a, int place_b);
 int		proche(t_stack *stack);
+void	push_under(t_stack *stack);
 
 /*
- *	main.c
+ *	print_stack.c
  */
 
 void	print_stack(t_stack *stack);
@@ -128,5 +130,6 @@ void	reinjection(t_stack *stack, t_option *option);
 int		find_most_lower(int nb, t_stack *stack, t_option *option);
 void	feed_option(t_option *option, t_stack *stack);
 void	second_part(t_stack *stack);
+void	choice_the_choice(t_option *option, t_stack *stack, t_choice *test);
 
 #endif

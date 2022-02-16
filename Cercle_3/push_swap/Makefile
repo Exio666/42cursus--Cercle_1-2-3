@@ -6,7 +6,7 @@
 #    By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/04 13:33:13 by bsavinel          #+#    #+#              #
-#    Updated: 2022/02/15 17:16:55 by bsavinel         ###   ########.fr        #
+#    Updated: 2022/02/16 10:35:34 by bsavinel         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,6 +15,7 @@ SRCS =	srcs/cheker.c			\
 		srcs/operation1.c		\
 		srcs/operation2.c		\
 		srcs/operation3.c		\
+		srcs/print_stack.c		\
 		srcs/reinjection.c		\
 		srcs/second_part.c		\
 		srcs/sort_2_and_3.c		\

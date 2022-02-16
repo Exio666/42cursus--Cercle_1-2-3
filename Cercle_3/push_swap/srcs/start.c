@@ -6,11 +6,32 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/05 14:08:26 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/02/15 15:33:29 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/02/16 10:36:21 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+void	free_tab(t_stack *stack, int nb, int chain, int cut)
+{
+	int	i;
+
+	i = 0;
+	while (i < nb)
+	{
+		free(stack->tab[i]);
+		i++;
+	}
+	write(2, "Error\n", 6);
+	if (chain == 1)
+	{
+		ft_chainclear(*stack->stack_a);
+		free(stack->stack_a);
+		free(stack->stack_b);
+	}
+	if (cut == 1)
+		exit(1);
+}
 
 void	create_stack(t_stack *stack, int len)
 {
@@ -21,80 +42,24 @@ void	create_stack(t_stack *stack, int len)
 	i = 0;
 	stack->stack_a = malloc(sizeof(t_chain **));
 	if (!stack->stack_a)
-	{
-		free(stack->tab[0]);
-		free(stack->tab[1]);
-		free(stack->tab[2]);
-		return ;
-	}
+		free_tab(stack, 3, 0, 1);
 	stack->stack_b = malloc(sizeof(t_chain **));
 	if (!stack->stack_b)
 	{
-		free(stack->tab[0]);
-		free(stack->tab[1]);
-		free(stack->tab[2]);
 		free(stack->stack_a);
-		return ;
+		free_tab(stack, 3, 0, 1);
 	}
 	while (i < len)
 	{
 		j = 0;
 		while (stack->tab[2][i] != stack->tab[0][j])
-		{
 			j++;
-		}
 		chain = ft_chainnew(stack->tab[1][j]);
+		if (!chain)
+			free_tab(stack, 3, 1, 1);
 		ft_chainadd_back(stack->stack_a, chain);
 		i++;
 	}
-}
-
-int	check_int(char *str)
-{
-	int	len;
-	int	i;
-
-	i = 0;
-	len = ft_strlen(str);
-	if (len > 12)
-		return (0);
-	if (str[i] == '-')
-		i++;
-	while (str[i])
-	{
-		if (!ft_isdigit(str[i]))
-			return (0);
-		i++;
-	}
-	if (len == 12)
-	{
-		if (str[i] != '-')
-			return (0);
-		if (ft_atoi_long(str) > -1000000000)
-			return (0);
-	}
-	else if (len == 11)
-	{
-		if (str[i] == '-')
-			return (1);
-		if (ft_atoi_long(str) < 1000000000)
-			return (0);
-	}
-	return (1);
-}
-
-int	check_doublon(int *tab, int i, int nb)
-{
-	int	j;
-
-	j = 0;
-	while (j < i)
-	{
-		if (tab[j] == nb)
-			return (0);
-		j++;
-	}
-	return (1);
 }
 
 void	ft_sort(int *tab, int i)
@@ -121,44 +86,31 @@ void	ft_sort(int *tab, int i)
 	}
 }
 
+void	malloc_tab(t_stack *stack, int ac)
+{
+	stack->tab[0] = malloc(sizeof(int) * ac - 1);
+	if (!stack->tab[0])
+		free_tab(stack, 0, 0, 1);
+	stack->tab[1] = malloc(sizeof(int) * ac - 1);
+	if (!stack->tab[0])
+		free_tab(stack, 1, 0, 1);
+	stack->tab[2] = malloc(sizeof(int) * ac - 1);
+	if (!stack->tab[0])
+		free_tab(stack, 2, 0, 1);
+}
+
 void	start(t_stack *stack, int ac, char **av)
 {
 	int	i;
 	int	nb;
 
 	i = 0;
-	stack->tab[0] = malloc(sizeof(int) * ac - 1);
-	if (!stack->tab[0])
-	{
-		write(2, "Error\n", 6);
-		exit(1);
-	}
-	stack->tab[1] = malloc(sizeof(int) * ac - 1);
-	if (!stack->tab[0])
-	{
-		write(2, "Error\n", 6);
-		free(stack->tab[0]);
-		exit(1);
-	}
-	stack->tab[2] = malloc(sizeof(int) * ac - 1);
-	if (!stack->tab[0])
-	{
-		write(2, "Error\n", 6);
-		free(stack->tab[0]);
-		free(stack->tab[1]);
-		exit(1);
-	}
+	malloc_tab(stack, ac);
 	while (i + 1 < ac)
 	{
 		nb = ft_atoi(av[i + 1]);
 		if (!check_int(av[i + 1]) || !check_doublon(stack->tab[0], i, nb))
-		{
-			free(stack->tab[0]);
-			free(stack->tab[1]);
-			free(stack->tab[2]);
-			write(2, "Error\n", 6);
-			exit(1);
-		}
+			free_tab(stack, 3, 0, 1);
 		stack->tab[0][i] = nb;
 		stack->tab[1][i] = i;
 		stack->tab[2][i] = nb;
@@ -166,7 +118,5 @@ void	start(t_stack *stack, int ac, char **av)
 	}
 	ft_sort(stack->tab[0], i - 1);
 	create_stack(stack, i);
-	free(stack->tab[0]);
-	free(stack->tab[1]);
-	free(stack->tab[2]);
+	free_tab(stack, 3, 0, 0);
 }
