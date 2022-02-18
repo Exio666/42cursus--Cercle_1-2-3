@@ -6,11 +6,12 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/25 16:25:51 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/02/15 13:42:53 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/02/17 12:08:39 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stdio.h>
 
 t_list	*ft_lstlast(t_list *lst)
 {

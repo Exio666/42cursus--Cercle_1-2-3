@@ -6,7 +6,7 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/16 11:12:40 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/02/16 15:30:27 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/02/17 13:53:37 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ char	*ft_up_line(char *line, char *buffer)
 	int		i;
 	int		j;
 
-	new_line = malloc(sizeof(char) * (ft_strlen(line) + sizeline(buffer) + 1));
+	new_line = malloc(sizeof(char) * (ft_strlen(line) + sizeline(buffer) + 2));
 	if (!new_line)
 		return (NULL);
 	i = 0;

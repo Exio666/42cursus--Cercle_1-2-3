@@ -6,7 +6,7 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 10:30:33 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/02/15 18:54:54 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/02/18 10:06:18 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ void	push_median(t_stack *stack)
 	int		i;
 
 	i = 0;
-	while (i < stack->median)
+	while (i < stack->median && i < stack->size - 3)
 	{
 		push_under(stack);
 		i++;

@@ -31,9 +31,9 @@ long int	ft_atoi(const char *str)
 	return ((long int)res);
 }
 
-int		is_doublon(long int *tab, long int size, long int n)
+int	is_doublon(long int *tab, long int size, long int n)
 {
-	int		i;
+	int	i;
 
 	i = 0;
 	while (i < size)
@@ -45,13 +45,13 @@ int		is_doublon(long int *tab, long int size, long int n)
 	return (0);
 }
 
-int main(int ac, char **av)
+int	main(int ac, char **av)
 {
 	long int	curr;
-	long int n;
-	long int i;
-	long int min;
-	long int max;
+	long int	n;
+	long int	i;
+	long int	min;
+	long int	max;
 	long int	*tab;
 
 	curr = 0;

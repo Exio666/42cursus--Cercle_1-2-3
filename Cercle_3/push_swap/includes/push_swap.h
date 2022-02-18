@@ -6,7 +6,7 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/05 13:13:41 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/02/16 18:47:45 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/02/17 13:43:42 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ void	ft_rrr(t_stack *stack);
 
 void	create_stack(t_stack *stack, int len);
 void	free_tab(t_stack *stack, int nb, int chain, int cut);
-void	malloc_tab(t_stack *stack, int ac);
+void	malloc_stack(t_stack *stack, int ac);
 void	ft_sort(int *tab, int i);
 void	start(t_stack *stack, int ac, char **av);
 

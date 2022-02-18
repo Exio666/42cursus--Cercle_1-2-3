@@ -6,7 +6,7 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/07 17:49:58 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/02/15 18:52:53 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/02/18 10:08:42 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,6 @@ void	sort_3(t_stack *stack)
 		ft_rra(stack);
 		ft_printf("rra\n");
 	}
-	first = *stack->stack_a;
 	if (!cheker_sort_3a(stack))
 	{
 		ft_sa(stack);

@@ -6,7 +6,7 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/05 14:08:26 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/02/16 17:50:10 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/02/17 13:43:15 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,15 +42,6 @@ void	create_stack(t_stack *stack, int len)
 	t_chain	*chain;
 
 	i = 0;
-	stack->stack_a = malloc(sizeof(t_chain **));
-	if (!stack->stack_a)
-		free_tab(stack, 3, 0, 1);
-	stack->stack_b = malloc(sizeof(t_chain **));
-	if (!stack->stack_b)
-	{
-		free(stack->stack_a);
-		free_tab(stack, 3, 0, 1);
-	}
 	while (i < len)
 	{
 		j = 0;
@@ -88,7 +79,7 @@ void	ft_sort(int *tab, int i)
 	}
 }
 
-void	malloc_tab(t_stack *stack, int ac)
+void	malloc_stack(t_stack *stack, int ac)
 {
 	stack->tab[0] = malloc(sizeof(int) * ac - 1);
 	if (!stack->tab[0])
@@ -99,6 +90,17 @@ void	malloc_tab(t_stack *stack, int ac)
 	stack->tab[2] = malloc(sizeof(int) * ac - 1);
 	if (!stack->tab[0])
 		free_tab(stack, 2, 0, 1);
+	stack->stack_a = malloc(sizeof(t_chain **));
+	if (!stack->stack_a)
+		free_tab(stack, 3, 0, 1);
+	stack->stack_b = malloc(sizeof(t_chain **));
+	if (!stack->stack_b)
+	{
+		free(stack->stack_a);
+		free_tab(stack, 3, 0, 1);
+	}
+	*stack->stack_a = NULL;
+	*stack->stack_b = NULL;
 }
 
 void	start(t_stack *stack, int ac, char **av)
@@ -107,7 +109,7 @@ void	start(t_stack *stack, int ac, char **av)
 	int	nb;
 
 	i = 0;
-	malloc_tab(stack, ac);
+	malloc_stack(stack, ac);
 	while (i + 1 < ac)
 	{
 		nb = ft_atoi(av[i + 1]);

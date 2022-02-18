@@ -6,7 +6,7 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/07 14:21:56 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/02/16 10:36:19 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/02/18 09:58:47 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,13 @@ int	check_int(char *str)
 	long int	nb;
 
 	i = 0;
+	len = ft_strlen(str);
 	if (str[0] == '-')
 		i++;
-	while (str[i] == '0')
+	while (str[i] == '0' && i < len - 1)
 		i++;
 	len = ft_strlen(&str[i]);
-	if (len > 10)
+	if (len > 10 || len <= 0)
 		return (0);
 	while (str[i])
 	{

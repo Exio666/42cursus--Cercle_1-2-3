@@ -6,7 +6,7 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/16 15:39:17 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/02/16 18:46:45 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/02/17 11:35:12 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	make_action(t_stack *stack)
 	error = 0;
 	action = get_next_line(0);
 	if (!action)
-		error_in_prog(stack);
+		return ;
 	while (action)
 	{
 		error = do_action1(action, stack);
