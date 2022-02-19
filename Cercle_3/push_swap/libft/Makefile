@@ -6,7 +6,7 @@
 #    By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/23 11:34:09 by bsavinel          #+#    #+#              #
-#    Updated: 2022/02/17 14:49:18 by bsavinel         ###   ########.fr        #
+#    Updated: 2022/02/18 16:07:53 by bsavinel         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -89,7 +89,7 @@ NAME	= libft.a
 
 CC		= cc
 
-CFLAGS	= -Wall -Wextra -Werror -MMD -fsanitize=address -g3
+CFLAGS	= -Wall -Wextra -Werror -MMD -g3
 
 all: $(NAME)
 

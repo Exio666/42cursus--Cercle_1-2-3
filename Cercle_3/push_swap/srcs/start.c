@@ -6,7 +6,7 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/05 14:08:26 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/02/17 13:43:15 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/02/18 16:10:51 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,7 +114,11 @@ void	start(t_stack *stack, int ac, char **av)
 	{
 		nb = ft_atoi(av[i + 1]);
 		if (!check_int(av[i + 1]) || !check_doublon(stack->tab[0], i, nb))
+		{
+			free(stack->stack_a);
+			free(stack->stack_b);
 			free_tab(stack, 3, 0, 1);
+		}
 		stack->tab[0][i] = nb;
 		stack->tab[1][i] = i;
 		stack->tab[2][i] = nb;
