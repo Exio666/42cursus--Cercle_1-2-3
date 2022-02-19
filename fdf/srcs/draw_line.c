@@ -6,7 +6,7 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/25 14:49:23 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/02/19 14:27:55 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/02/19 18:51:18 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,6 +91,7 @@ void	line_ver(t_map *map, t_line line, t_color color)
 void	draw_line(t_map *map, t_2Dpoint p1, t_2Dpoint p2, t_color color)
 {
 	t_line	line;
+
 	line.color = (float)color.color_start;
 	line.p1 = p1;
 	line.p2 = p2;
