@@ -6,7 +6,7 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/07 11:08:26 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/02/08 17:34:44 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/02/20 14:54:39 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@
 # include <unistd.h>
 # include <fcntl.h>
 # include <math.h>
-# include <stdio.h>
 
 /*
  *	Define windows
@@ -88,6 +87,7 @@ typedef struct s_angle
 
 typedef struct s_map
 {
+	int			last_newline;
 	float		rot_z;
 	float		rot_y;
 	float		rot_x;
@@ -202,7 +202,7 @@ int			parser(char *file, t_map *map);
  */
 
 void		parse_map2(t_map *map, char *line, int j, int k);
-char		counter_line2(char *str, int ret, t_map *map, int first);
+void		counter_line2(char *str, int ret, t_map *map, int first);
 void		exit_bug(t_map *map, char *line, int j);
 
 /*

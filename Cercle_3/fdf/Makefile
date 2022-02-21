@@ -6,7 +6,7 @@
 #    By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/07 11:02:27 by bsavinel          #+#    #+#              #
-#    Updated: 2022/02/07 16:18:59 by bsavinel         ###   ########.fr        #
+#    Updated: 2022/02/19 14:36:06 by bsavinel         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,7 +29,7 @@ DEPS = $(SRCS:.c=.d)
 
 CC = cc
 
-CFLAGS = -Wall -Wextra -Werror -O3 -g3
+CFLAGS = -Wall -Wextra -Werror -g3 -O3
 
 RM = rm -f
 

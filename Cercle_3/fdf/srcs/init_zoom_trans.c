@@ -6,7 +6,7 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 11:10:01 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/02/08 17:39:32 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/02/18 15:49:57 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 float	calcul_zoom_hor(t_map *map)
 {
-	return (1);
 	float		zoom;
 	t_2Dpoint	p1;
 	t_2Dpoint	p2;
@@ -42,7 +41,6 @@ float	calcul_zoom_hor(t_map *map)
 
 float	calcul_zoom_ver(t_map *map)
 {
-	return (1);
 	float		zoom;
 	t_2Dpoint	p1;
 	t_2Dpoint	p2;
@@ -67,10 +65,11 @@ float	calcul_zoom_ver(t_map *map)
 
 float	intital_zoom(t_map *map)
 {
-	return (40);
 	float	zoom_ver;
 	float	zoom_hot;
 
+	if (map->len_line == 1 && map->nb_line == 1)
+		return (1);
 	zoom_ver = calcul_zoom_ver(map);
 	zoom_hot = calcul_zoom_hor(map);
 	if (zoom_hot > zoom_ver)
@@ -81,6 +80,8 @@ float	intital_zoom(t_map *map)
 
 void	init_translat(t_map *map)
 {
+	if (map->len_line == 1 && map->nb_line == 1)
+		return ;
 	while (map->map2d[map->nb_line - 1][0].x < 100)
 	{
 		translat_horizontal(map, 25);

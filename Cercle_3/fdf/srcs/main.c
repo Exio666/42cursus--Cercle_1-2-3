@@ -6,7 +6,7 @@
 /*   By: bsavinel <bsavinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/07 13:25:54 by bsavinel          #+#    #+#             */
-/*   Updated: 2022/02/07 11:44:47 by bsavinel         ###   ########.fr       */
+/*   Updated: 2022/02/19 14:30:28 by bsavinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,12 +89,14 @@ int	main(int ac, char **av)
 		return (0);
 	map.min_z = 0;
 	map.max_z = 0;
+	map.mlx_ptr = mlx_init();
+	if (!map.mlx_ptr)
+		return (0);
 	reset_map(&map);
 	if (parser(av[1], &map) == 0)
 		exit_prog(&map, 5);
 	set_color(&map);
 	malloc_map2d(&map);
-	map.mlx_ptr = mlx_init();
 	map.mlx_win = mlx_new_window(map.mlx_ptr, WIDTH, HEIGHT, av[1]);
 	map.image.img = mlx_new_image(map.mlx_ptr, WIDTH, HEIGHT);
 	map.image.addr = mlx_get_data_addr(map.image.img, &map.image.bits_per_pixel,
